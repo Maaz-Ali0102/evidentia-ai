@@ -39,6 +39,8 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download('wit
 
 | Path | What |
 |---|---|
+| `docs/PROJECT_STATUS.md` | **Current status:** what is built, original vision vs now, known issues, next steps |
+| `reports/ML_REPORT.md` | **Complete ML report in one file** (all sections + raw metrics, raw data rows, training log) |
 | `reports/DATASET_AUDIT.md` | Phase 1 audit: schema, leakage, splits |
 | `notebooks/01_eda.ipynb`, `reports/eda_summary.md` | Train-only EDA (9 charts) |
 | `reports/ML_RESULTS.md` | Phase 2 results: every metric, limitation and design choice |
@@ -59,4 +61,8 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download('wit
 - **Stage 1 (benign vs alert):** ≈ 1.0, which reflects log-type recognition, not threat detection.
 - **Labels:** these are WitFoo's automated triage, not analyst-verified ground truth.
 
-See `reports/ML_RESULTS.md` for the full picture.
+See `reports/ML_REPORT.md` for the full picture.
+
+## Known issue
+
+On the development laptop, Windows Smart App Control currently blocks a pandas DLL (`ccalendar`). Until that is resolved, the app, training and tests cannot run there; saved models and reports are unaffected. Details are in `docs/PROJECT_STATUS.md` §4.

@@ -210,14 +210,16 @@ data/          raw/ (dataset, git-ignored), samples/ (labeled sample case files)
 
 ## 9. Phases
 
-| # | Phase | Output | Priority |
-|---|---|---|---|
-| 1 | Dataset audit + EDA | done: `reports/DATASET_AUDIT.md`, 12 figures | Core |
-| 2 | ML pipeline: features, context windows, splits, LR/RF/IF, tuning, ablations | `models/`, `reports/metrics/*.json`, tests | **Core: marks come from here** |
-| 3 | Streamlit app v1: upload a log CSV/JSON → predictions, anomaly scores, charts | working demo | Core |
-| 4 | Ingestion for the other formats + entities + timeline | case pipeline | Bonus |
-| 5 | Relationship engine + graph + research experiment | P@K results | Bonus |
-| 6 | RAG assistant with tools and citations | chat page | Bonus |
-| 7 | Technical report (10+ pages) + viva preparation | PDF | Core |
+| # | Phase | Output | Priority | Status (2026-11-10) |
+|---|---|---|---|---|
+| 1 | Dataset audit + EDA | `reports/DATASET_AUDIT.md`, 12 audit figures, `notebooks/01_eda.ipynb` (9 figures) | Core | ✅ Done |
+| 2 | ML pipeline: features, context windows, splits, LR/RF/IF, tuning, ablations | `models/`, `reports/metrics/*.json`, tests | **Core: marks come from here** | ✅ Done (train-score check pending) |
+| 3 | Streamlit app v1: upload a log CSV/JSON → predictions, anomaly scores, charts | working demo | Core | ✅ Done |
+| 4 | Ingestion for the other formats + entities + timeline | case pipeline | Bonus | ❌ Not started |
+| 5 | Relationship engine + graph + research experiment | P@K results | Bonus | ❌ Not started |
+| 6 | RAG assistant with tools and citations | chat page | Bonus | ❌ Not started |
+| 7 | Technical report (10+ pages) + viva preparation | PDF | Core | ⏳ `reports/ML_REPORT.md` written; PDF not yet |
+
+The current state, with known issues, is in [docs/PROJECT_STATUS.md](PROJECT_STATUS.md).
 
 Phases 1–3 plus 7 already form a complete CCA submission. Phases 4–6 build on it.
