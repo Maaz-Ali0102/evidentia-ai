@@ -1,0 +1,1293 @@
+{
+  "task": "benign (0) vs alert (1) inside a single product (no log-type shortcut)",
+  "product_counts": [
+    {
+      "product_name": "",
+      "is_test": false,
+      "rows": 152897,
+      "alerts": 0,
+      "benign": 152897
+    },
+    {
+      "product_name": "",
+      "is_test": true,
+      "rows": 150332,
+      "alerts": 0,
+      "benign": 150332
+    },
+    {
+      "product_name": "ASA Firewall",
+      "is_test": false,
+      "rows": 50321,
+      "alerts": 50301,
+      "benign": 20
+    },
+    {
+      "product_name": "ASA Firewall",
+      "is_test": true,
+      "rows": 44822,
+      "alerts": 44761,
+      "benign": 61
+    },
+    {
+      "product_name": "AWS Instance Backup",
+      "is_test": false,
+      "rows": 296982,
+      "alerts": 0,
+      "benign": 296982
+    },
+    {
+      "product_name": "AWS Instance Backup",
+      "is_test": true,
+      "rows": 246177,
+      "alerts": 0,
+      "benign": 246177
+    },
+    {
+      "product_name": "AWS VPC Security",
+      "is_test": false,
+      "rows": 5851,
+      "alerts": 5851,
+      "benign": 0
+    },
+    {
+      "product_name": "AWS VPC Security",
+      "is_test": true,
+      "rows": 13368,
+      "alerts": 13368,
+      "benign": 0
+    },
+    {
+      "product_name": "Apache Web Server",
+      "is_test": false,
+      "rows": 115,
+      "alerts": 0,
+      "benign": 115
+    },
+    {
+      "product_name": "Apache Web Server",
+      "is_test": true,
+      "rows": 55,
+      "alerts": 0,
+      "benign": 55
+    },
+    {
+      "product_name": "Barracuda ESS",
+      "is_test": false,
+      "rows": 352,
+      "alerts": 0,
+      "benign": 352
+    },
+    {
+      "product_name": "Barracuda ESS",
+      "is_test": true,
+      "rows": 39,
+      "alerts": 0,
+      "benign": 39
+    },
+    {
+      "product_name": "Barracuda WAF",
+      "is_test": false,
+      "rows": 13950,
+      "alerts": 13,
+      "benign": 13937
+    },
+    {
+      "product_name": "Barracuda WAF",
+      "is_test": true,
+      "rows": 920,
+      "alerts": 16,
+      "benign": 904
+    },
+    {
+      "product_name": "Cisco Network Operating System",
+      "is_test": false,
+      "rows": 94,
+      "alerts": 0,
+      "benign": 94
+    },
+    {
+      "product_name": "Cisco Network Operating System",
+      "is_test": true,
+      "rows": 98,
+      "alerts": 0,
+      "benign": 98
+    },
+    {
+      "product_name": "Duo",
+      "is_test": false,
+      "rows": 62,
+      "alerts": 0,
+      "benign": 62
+    },
+    {
+      "product_name": "Duo",
+      "is_test": true,
+      "rows": 91,
+      "alerts": 0,
+      "benign": 91
+    },
+    {
+      "product_name": "Falcon",
+      "is_test": false,
+      "rows": 209,
+      "alerts": 42,
+      "benign": 167
+    },
+    {
+      "product_name": "Falcon",
+      "is_test": true,
+      "rows": 125,
+      "alerts": 16,
+      "benign": 109
+    },
+    {
+      "product_name": "Graph",
+      "is_test": false,
+      "rows": 244,
+      "alerts": 0,
+      "benign": 244
+    },
+    {
+      "product_name": "Graph",
+      "is_test": true,
+      "rows": 226,
+      "alerts": 0,
+      "benign": 226
+    },
+    {
+      "product_name": "Linux PAM",
+      "is_test": false,
+      "rows": 2618,
+      "alerts": 0,
+      "benign": 2618
+    },
+    {
+      "product_name": "Linux PAM",
+      "is_test": true,
+      "rows": 6067,
+      "alerts": 0,
+      "benign": 6067
+    },
+    {
+      "product_name": "ManageEngine ADManager",
+      "is_test": false,
+      "rows": 934,
+      "alerts": 0,
+      "benign": 934
+    },
+    {
+      "product_name": "ManageEngine ADManager",
+      "is_test": true,
+      "rows": 341,
+      "alerts": 0,
+      "benign": 341
+    },
+    {
+      "product_name": "Precinct",
+      "is_test": false,
+      "rows": 7,
+      "alerts": 7,
+      "benign": 0
+    },
+    {
+      "product_name": "Precinct",
+      "is_test": true,
+      "rows": 3,
+      "alerts": 3,
+      "benign": 0
+    },
+    {
+      "product_name": "SentinelOne",
+      "is_test": false,
+      "rows": 6,
+      "alerts": 0,
+      "benign": 6
+    },
+    {
+      "product_name": "SentinelOne",
+      "is_test": true,
+      "rows": 14,
+      "alerts": 0,
+      "benign": 14
+    },
+    {
+      "product_name": "Symantec Data Loss Prevention",
+      "is_test": false,
+      "rows": 8,
+      "alerts": 8,
+      "benign": 0
+    },
+    {
+      "product_name": "Symantec Data Loss Prevention",
+      "is_test": true,
+      "rows": 6,
+      "alerts": 6,
+      "benign": 0
+    },
+    {
+      "product_name": "Symantec Endpoint Protection",
+      "is_test": false,
+      "rows": 88,
+      "alerts": 0,
+      "benign": 88
+    },
+    {
+      "product_name": "Symantec Endpoint Protection",
+      "is_test": true,
+      "rows": 39,
+      "alerts": 0,
+      "benign": 39
+    },
+    {
+      "product_name": "VMWare VCenter",
+      "is_test": false,
+      "rows": 140636,
+      "alerts": 0,
+      "benign": 140636
+    },
+    {
+      "product_name": "VMWare VCenter",
+      "is_test": true,
+      "rows": 125565,
+      "alerts": 0,
+      "benign": 125565
+    },
+    {
+      "product_name": "Windows Active Directory",
+      "is_test": false,
+      "rows": 136395,
+      "alerts": 62,
+      "benign": 136333
+    },
+    {
+      "product_name": "Windows Active Directory",
+      "is_test": true,
+      "rows": 285192,
+      "alerts": 67,
+      "benign": 285125
+    },
+    {
+      "product_name": "Windows Logs",
+      "is_test": false,
+      "rows": 244049,
+      "alerts": 0,
+      "benign": 244049
+    },
+    {
+      "product_name": "Windows Logs",
+      "is_test": true,
+      "rows": 92376,
+      "alerts": 0,
+      "benign": 92376
+    }
+  ],
+  "products": {
+    "": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 152897, train alerts 0, test benign 150332, test alerts 0; need >= 10)"
+    },
+    "ASA Firewall": {
+      "tested": true,
+      "train_rows": 50185,
+      "train_alerts": 50165,
+      "test_rows": 44822,
+      "test_alerts": 44761,
+      "persisted_all_products_model": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 44822,
+          "n_positive": 44761,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 61
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 44761
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.9986,
+          "confusion_matrix": [
+            [
+              61,
+              0
+            ],
+            [
+              0,
+              44761
+            ]
+          ]
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 44822,
+          "n_positive": 44761,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 61
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 44761
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.9986,
+          "confusion_matrix": [
+            [
+              61,
+              0
+            ],
+            [
+              0,
+              44761
+            ]
+          ]
+        }
+      },
+      "within_product_model": {
+        "full": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 44822,
+            "n_positive": 44761,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 61
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 44761
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.9986,
+            "confusion_matrix": [
+              [
+                61,
+                0
+              ],
+              [
+                0,
+                44761
+              ]
+            ],
+            "seconds": 3.4
+          },
+          "random_forest": {
+            "threshold": 0.5,
+            "n": 44822,
+            "n_positive": 44761,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 61
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 44761
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.9986,
+            "confusion_matrix": [
+              [
+                61,
+                0
+              ],
+              [
+                0,
+                44761
+              ]
+            ],
+            "seconds": 3.8
+          }
+        },
+        "text": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 44822,
+            "n_positive": 44761,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 61
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 44761
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.9986,
+            "confusion_matrix": [
+              [
+                61,
+                0
+              ],
+              [
+                0,
+                44761
+              ]
+            ],
+            "seconds": 2.8
+          }
+        },
+        "context": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 44822,
+            "n_positive": 44761,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 61
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 44761
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.9986,
+            "confusion_matrix": [
+              [
+                61,
+                0
+              ],
+              [
+                0,
+                44761
+              ]
+            ],
+            "seconds": 0.9
+          }
+        }
+      }
+    },
+    "AWS Instance Backup": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 296982, train alerts 0, test benign 246177, test alerts 0; need >= 10)"
+    },
+    "AWS VPC Security": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 0, train alerts 5851, test benign 0, test alerts 13368; need >= 10)"
+    },
+    "Apache Web Server": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 115, train alerts 0, test benign 55, test alerts 0; need >= 10)"
+    },
+    "Barracuda ESS": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 352, train alerts 0, test benign 39, test alerts 0; need >= 10)"
+    },
+    "Barracuda WAF": {
+      "tested": true,
+      "train_rows": 13950,
+      "train_alerts": 13,
+      "test_rows": 920,
+      "test_alerts": 16,
+      "persisted_all_products_model": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 920,
+          "n_positive": 16,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 904
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 16
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.0174,
+          "confusion_matrix": [
+            [
+              904,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 920,
+          "n_positive": 16,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 904
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 16
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.0174,
+          "confusion_matrix": [
+            [
+              904,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        }
+      },
+      "within_product_model": {
+        "full": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 920,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 904
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0174,
+            "confusion_matrix": [
+              [
+                904,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 3.4
+          },
+          "random_forest": {
+            "threshold": 0.5,
+            "n": 920,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 904
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0174,
+            "confusion_matrix": [
+              [
+                904,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 3.4
+          }
+        },
+        "text": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 920,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 904
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0174,
+            "confusion_matrix": [
+              [
+                904,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 3.1
+          }
+        },
+        "context": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 920,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 904
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0174,
+            "confusion_matrix": [
+              [
+                904,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 0.3
+          }
+        }
+      }
+    },
+    "Cisco Network Operating System": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 94, train alerts 0, test benign 98, test alerts 0; need >= 10)"
+    },
+    "Duo": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 62, train alerts 0, test benign 91, test alerts 0; need >= 10)"
+    },
+    "Falcon": {
+      "tested": true,
+      "train_rows": 209,
+      "train_alerts": 42,
+      "test_rows": 125,
+      "test_alerts": 16,
+      "persisted_all_products_model": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 125,
+          "n_positive": 16,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 109
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 16
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.128,
+          "confusion_matrix": [
+            [
+              109,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 125,
+          "n_positive": 16,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 109
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 16
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.128,
+          "confusion_matrix": [
+            [
+              109,
+              0
+            ],
+            [
+              0,
+              16
+            ]
+          ]
+        }
+      },
+      "within_product_model": {
+        "full": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 125,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 109
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.128,
+            "confusion_matrix": [
+              [
+                109,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 0.2
+          },
+          "random_forest": {
+            "threshold": 0.5,
+            "n": 125,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 109
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.128,
+            "confusion_matrix": [
+              [
+                109,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 0.5
+          }
+        },
+        "text": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 125,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 109
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.128,
+            "confusion_matrix": [
+              [
+                109,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 0.2
+          }
+        },
+        "context": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 125,
+            "n_positive": 16,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 109
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 16
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.128,
+            "confusion_matrix": [
+              [
+                109,
+                0
+              ],
+              [
+                0,
+                16
+              ]
+            ],
+            "seconds": 0.0
+          }
+        }
+      }
+    },
+    "Graph": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 244, train alerts 0, test benign 226, test alerts 0; need >= 10)"
+    },
+    "Linux PAM": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 2618, train alerts 0, test benign 6067, test alerts 0; need >= 10)"
+    },
+    "ManageEngine ADManager": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 934, train alerts 0, test benign 341, test alerts 0; need >= 10)"
+    },
+    "Precinct": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 0, train alerts 7, test benign 0, test alerts 3; need >= 10)"
+    },
+    "SentinelOne": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 6, train alerts 0, test benign 14, test alerts 0; need >= 10)"
+    },
+    "Symantec Data Loss Prevention": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 0, train alerts 8, test benign 0, test alerts 6; need >= 10)"
+    },
+    "Symantec Endpoint Protection": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 88, train alerts 0, test benign 39, test alerts 0; need >= 10)"
+    },
+    "VMWare VCenter": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 140636, train alerts 0, test benign 125565, test alerts 0; need >= 10)"
+    },
+    "Windows Active Directory": {
+      "tested": true,
+      "train_rows": 136394,
+      "train_alerts": 61,
+      "test_rows": 285192,
+      "test_alerts": 67,
+      "persisted_all_products_model": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 285192,
+          "n_positive": 67,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 285125
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 67
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.0002,
+          "confusion_matrix": [
+            [
+              285125,
+              0
+            ],
+            [
+              0,
+              67
+            ]
+          ]
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 285192,
+          "n_positive": 67,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "per_class": {
+            "benign": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 285125
+            },
+            "alert": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "support": 67
+            }
+          },
+          "pr_auc_positive": 1.0,
+          "roc_auc": 1.0,
+          "positive_rate_baseline": 0.0002,
+          "confusion_matrix": [
+            [
+              285125,
+              0
+            ],
+            [
+              0,
+              67
+            ]
+          ]
+        }
+      },
+      "within_product_model": {
+        "full": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 285192,
+            "n_positive": 67,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 285125
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 67
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0002,
+            "confusion_matrix": [
+              [
+                285125,
+                0
+              ],
+              [
+                0,
+                67
+              ]
+            ],
+            "seconds": 145.5
+          },
+          "random_forest": {
+            "threshold": 0.5,
+            "n": 285192,
+            "n_positive": 67,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 285125
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 67
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0002,
+            "confusion_matrix": [
+              [
+                285125,
+                0
+              ],
+              [
+                0,
+                67
+              ]
+            ],
+            "seconds": 146.3
+          }
+        },
+        "text": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 285192,
+            "n_positive": 67,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 285125
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 67
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0002,
+            "confusion_matrix": [
+              [
+                285125,
+                0
+              ],
+              [
+                0,
+                67
+              ]
+            ],
+            "seconds": 140.6
+          }
+        },
+        "context": {
+          "logreg": {
+            "threshold": 0.5,
+            "n": 285192,
+            "n_positive": 67,
+            "accuracy": 1.0,
+            "macro_f1": 1.0,
+            "per_class": {
+              "benign": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 285125
+              },
+              "alert": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 67
+              }
+            },
+            "pr_auc_positive": 1.0,
+            "roc_auc": 1.0,
+            "positive_rate_baseline": 0.0002,
+            "confusion_matrix": [
+              [
+                285125,
+                0
+              ],
+              [
+                0,
+                67
+              ]
+            ],
+            "seconds": 2.6
+          }
+        }
+      }
+    },
+    "Windows Logs": {
+      "tested": false,
+      "reason": "too few rows of one class (train benign 244049, train alerts 0, test benign 92376, test alerts 0; need >= 10)"
+    }
+  },
+  "label_is_function_of_event_type": {
+    "distinct_product_message_type_keys": 607,
+    "keys_with_both_benign_and_alert": 0,
+    "rows_in_mixed_keys": 0,
+    "total_rows": 2011674,
+    "lookup_table_baseline_on_test": {
+      "threshold": 0.5,
+      "n": 965856,
+      "n_positive": 58237,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_class": {
+        "benign": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 907619
+        },
+        "alert": {
+          "precision": 1.0,
+          "recall": 0.9999,
+          "f1": 1.0,
+          "support": 58237
+        }
+      },
+      "pr_auc_positive": 0.9999,
+      "roc_auc": 1.0,
+      "positive_rate_baseline": 0.0603,
+      "confusion_matrix": [
+        [
+          907619,
+          0
+        ],
+        [
+          4,
+          58233
+        ]
+      ]
+    },
+    "test_rows_with_key_unseen_in_train": 723,
+    "test_alerts_with_key_unseen_in_train": 4
+  }
+}

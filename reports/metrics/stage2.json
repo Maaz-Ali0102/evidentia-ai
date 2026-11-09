@@ -1,0 +1,3482 @@
+{
+  "task": "suspicious (0) vs malicious (1) among alert rows of ORG-0004/ORG-0005",
+  "split_sizes": {
+    "A_temporal_ORG-0004": {
+      "train": 5901,
+      "train_malicious": 1063,
+      "test": 13390,
+      "test_malicious": 3113
+    },
+    "B_temporal_ORG-0005": {
+      "train": 50178,
+      "train_malicious": 2518,
+      "test": 44777,
+      "test_malicious": 882
+    },
+    "POOLED_temporal": {
+      "train": 56079,
+      "train_malicious": 3581,
+      "test": 58167,
+      "test_malicious": 3995
+    },
+    "C_cross_0004_to_0005": {
+      "train": 19291,
+      "train_malicious": 4176,
+      "test": 95091,
+      "test_malicious": 3536
+    },
+    "C_cross_0005_to_0004": {
+      "train": 95091,
+      "train_malicious": 3536,
+      "test": 19291,
+      "test_malicious": 4176
+    }
+  },
+  "ablation_untuned": {
+    "A_temporal_ORG-0004": {
+      "text": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7605,
+          "macro_f1": 0.432,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7659,
+              "recall": 0.9909,
+              "f1": 0.864,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2215,
+          "roc_auc": 0.3729,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10183,
+              94
+            ],
+            [
+              3113,
+              0
+            ]
+          ],
+          "train_seconds": 0.4,
+          "inference_ms_per_1k_rows": 40.08,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.7605,
+            "macro_f1": 0.432,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7659,
+                "recall": 0.9909,
+                "f1": 0.864,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2215,
+            "roc_auc": 0.3729,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                10183,
+                94
+              ],
+              [
+                3113,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7612,
+          "macro_f1": 0.4322,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.766,
+              "recall": 0.9917,
+              "f1": 0.8644,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2215,
+          "roc_auc": 0.3732,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10192,
+              85
+            ],
+            [
+              3113,
+              0
+            ]
+          ],
+          "train_seconds": 1.7,
+          "inference_ms_per_1k_rows": 49.09,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.7612,
+            "macro_f1": 0.4322,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.766,
+                "recall": 0.9917,
+                "f1": 0.8644,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2215,
+            "roc_auc": 0.3732,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                10192,
+                85
+              ],
+              [
+                3113,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "context": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.5741,
+          "macro_f1": 0.4679,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7515,
+              "recall": 0.665,
+              "f1": 0.7056,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.1986,
+              "recall": 0.274,
+              "f1": 0.2303,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2096,
+          "roc_auc": 0.4446,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              6834,
+              3443
+            ],
+            [
+              2260,
+              853
+            ]
+          ],
+          "train_seconds": 0.3,
+          "inference_ms_per_1k_rows": 8.04,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 31,
+            "recall": 0.7045
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.5741,
+            "macro_f1": 0.4679,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7515,
+                "recall": 0.665,
+                "f1": 0.7056,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.1986,
+                "recall": 0.274,
+                "f1": 0.2303,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2096,
+            "roc_auc": 0.4446,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                6834,
+                3443
+              ],
+              [
+                2260,
+                853
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7645,
+          "macro_f1": 0.4572,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7701,
+              "recall": 0.9881,
+              "f1": 0.8656,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.399,
+              "recall": 0.026,
+              "f1": 0.0489,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2631,
+          "roc_auc": 0.5485,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10155,
+              122
+            ],
+            [
+              3032,
+              81
+            ]
+          ],
+          "train_seconds": 3.0,
+          "inference_ms_per_1k_rows": 18.54,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 16,
+            "recall": 0.3636
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.7645,
+            "macro_f1": 0.4572,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7701,
+                "recall": 0.9881,
+                "f1": 0.8656,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.399,
+                "recall": 0.026,
+                "f1": 0.0489,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2631,
+            "roc_auc": 0.5485,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                10155,
+                122
+              ],
+              [
+                3032,
+                81
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.6709,
+          "macro_f1": 0.4929,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7657,
+              "recall": 0.8231,
+              "f1": 0.7934,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.2241,
+              "recall": 0.1686,
+              "f1": 0.1924,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2337,
+          "roc_auc": 0.5045,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              8459,
+              1818
+            ],
+            [
+              2588,
+              525
+            ]
+          ],
+          "train_seconds": 0.6,
+          "inference_ms_per_1k_rows": 35.65,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 24,
+            "recall": 0.5455
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.6709,
+            "macro_f1": 0.4929,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7657,
+                "recall": 0.8231,
+                "f1": 0.7934,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.2241,
+                "recall": 0.1686,
+                "f1": 0.1924,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2337,
+            "roc_auc": 0.5045,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                8459,
+                1818
+              ],
+              [
+                2588,
+                525
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7663,
+          "macro_f1": 0.4339,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7672,
+              "recall": 0.9984,
+              "f1": 0.8677,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2394,
+          "roc_auc": 0.528,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10261,
+              16
+            ],
+            [
+              3113,
+              0
+            ]
+          ],
+          "train_seconds": 2.9,
+          "inference_ms_per_1k_rows": 47.67,
+          "incident_level": {
+            "incidents": 44,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 13390,
+            "n_positive": 3113,
+            "accuracy": 0.7663,
+            "macro_f1": 0.4339,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7672,
+                "recall": 0.9984,
+                "f1": 0.8677,
+                "support": 10277
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3113
+              }
+            },
+            "pr_auc_positive": 0.2394,
+            "roc_auc": 0.528,
+            "positive_rate_baseline": 0.2325,
+            "confusion_matrix": [
+              [
+                10261,
+                16
+              ],
+              [
+                3113,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      }
+    },
+    "B_temporal_ORG-0005": {
+      "text": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9614,
+          "macro_f1": 0.728,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9977,
+              "recall": 0.9628,
+              "f1": 0.9799,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3248,
+              "recall": 0.8912,
+              "f1": 0.4761,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.2993,
+          "roc_auc": 0.936,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42261,
+              1634
+            ],
+            [
+              96,
+              786
+            ]
+          ],
+          "train_seconds": 3.6,
+          "inference_ms_per_1k_rows": 65.13,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 571,
+            "recall": 0.9879
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.9614,
+            "macro_f1": 0.728,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9977,
+                "recall": 0.9628,
+                "f1": 0.9799,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.3248,
+                "recall": 0.8912,
+                "f1": 0.4761,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.2993,
+            "roc_auc": 0.936,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                42261,
+                1634
+              ],
+              [
+                96,
+                786
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9614,
+          "macro_f1": 0.7267,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9975,
+              "recall": 0.963,
+              "f1": 0.9799,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3236,
+              "recall": 0.8821,
+              "f1": 0.4735,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.2993,
+          "roc_auc": 0.936,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42269,
+              1626
+            ],
+            [
+              104,
+              778
+            ]
+          ],
+          "train_seconds": 7.1,
+          "inference_ms_per_1k_rows": 67.14,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 569,
+            "recall": 0.9844
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.9614,
+            "macro_f1": 0.7267,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9975,
+                "recall": 0.963,
+                "f1": 0.9799,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.3236,
+                "recall": 0.8821,
+                "f1": 0.4735,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.2993,
+            "roc_auc": 0.936,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                42269,
+                1626
+              ],
+              [
+                104,
+                778
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "context": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9597,
+          "macro_f1": 0.7261,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9983,
+              "recall": 0.9605,
+              "f1": 0.979,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3185,
+              "recall": 0.9195,
+              "f1": 0.4732,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3415,
+          "roc_auc": 0.9541,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42160,
+              1735
+            ],
+            [
+              71,
+              811
+            ]
+          ],
+          "train_seconds": 2.4,
+          "inference_ms_per_1k_rows": 3.73,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 573,
+            "recall": 0.9913
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.9597,
+            "macro_f1": 0.7261,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9983,
+                "recall": 0.9605,
+                "f1": 0.979,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.3185,
+                "recall": 0.9195,
+                "f1": 0.4732,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.3415,
+            "roc_auc": 0.9541,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                42160,
+                1735
+              ],
+              [
+                71,
+                811
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9766,
+          "macro_f1": 0.6245,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9842,
+              "recall": 0.992,
+              "f1": 0.9881,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3451,
+              "recall": 0.2098,
+              "f1": 0.2609,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3138,
+          "roc_auc": 0.9508,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              43544,
+              351
+            ],
+            [
+              697,
+              185
+            ]
+          ],
+          "train_seconds": 29.3,
+          "inference_ms_per_1k_rows": 17.22,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 162,
+            "recall": 0.2803
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.9766,
+            "macro_f1": 0.6245,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9842,
+                "recall": 0.992,
+                "f1": 0.9881,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.3451,
+                "recall": 0.2098,
+                "f1": 0.2609,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.3138,
+            "roc_auc": 0.9508,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                43544,
+                351
+              ],
+              [
+                697,
+                185
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9604,
+          "macro_f1": 0.7278,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9982,
+              "recall": 0.9613,
+              "f1": 0.9794,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.322,
+              "recall": 0.9138,
+              "f1": 0.4762,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3393,
+          "roc_auc": 0.9547,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42198,
+              1697
+            ],
+            [
+              76,
+              806
+            ]
+          ],
+          "train_seconds": 8.1,
+          "inference_ms_per_1k_rows": 69.16,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 573,
+            "recall": 0.9913
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.9604,
+            "macro_f1": 0.7278,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9982,
+                "recall": 0.9613,
+                "f1": 0.9794,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.322,
+                "recall": 0.9138,
+                "f1": 0.4762,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.3393,
+            "roc_auc": 0.9547,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                42198,
+                1697
+              ],
+              [
+                76,
+                806
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.976,
+          "macro_f1": 0.6362,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9849,
+              "recall": 0.9907,
+              "f1": 0.9878,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3441,
+              "recall": 0.2426,
+              "f1": 0.2846,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3092,
+          "roc_auc": 0.9455,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              43487,
+              408
+            ],
+            [
+              668,
+              214
+            ]
+          ],
+          "train_seconds": 29.1,
+          "inference_ms_per_1k_rows": 34.61,
+          "incident_level": {
+            "incidents": 578,
+            "detected": 182,
+            "recall": 0.3149
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 44777,
+            "n_positive": 882,
+            "accuracy": 0.976,
+            "macro_f1": 0.6362,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9849,
+                "recall": 0.9907,
+                "f1": 0.9878,
+                "support": 43895
+              },
+              "malicious": {
+                "precision": 0.3441,
+                "recall": 0.2426,
+                "f1": 0.2846,
+                "support": 882
+              }
+            },
+            "pr_auc_positive": 0.3092,
+            "roc_auc": 0.9455,
+            "positive_rate_baseline": 0.0197,
+            "confusion_matrix": [
+              [
+                43487,
+                408
+              ],
+              [
+                668,
+                214
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      }
+    },
+    "POOLED_temporal": {
+      "text": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8743,
+          "macro_f1": 0.5695,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9426,
+              "recall": 0.9211,
+              "f1": 0.9317,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.1828,
+              "recall": 0.2393,
+              "f1": 0.2073,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.1336,
+          "roc_auc": 0.4161,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              49898,
+              4274
+            ],
+            [
+              3039,
+              956
+            ]
+          ],
+          "train_seconds": 1.7,
+          "inference_ms_per_1k_rows": 22.93,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 582,
+            "recall": 0.9357
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.8743,
+            "macro_f1": 0.5695,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9426,
+                "recall": 0.9211,
+                "f1": 0.9317,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.1828,
+                "recall": 0.2393,
+                "f1": 0.2073,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.1336,
+            "roc_auc": 0.4161,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                49898,
+                4274
+              ],
+              [
+                3039,
+                956
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9153,
+          "macro_f1": 0.5976,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9422,
+              "recall": 0.9684,
+              "f1": 0.9551,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.3126,
+              "recall": 0.1947,
+              "f1": 0.24,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.1248,
+          "roc_auc": 0.3016,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              52461,
+              1711
+            ],
+            [
+              3217,
+              778
+            ]
+          ],
+          "train_seconds": 4.4,
+          "inference_ms_per_1k_rows": 26.86,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 569,
+            "recall": 0.9148
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.9153,
+            "macro_f1": 0.5976,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9422,
+                "recall": 0.9684,
+                "f1": 0.9551,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.3126,
+                "recall": 0.1947,
+                "f1": 0.24,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.1248,
+            "roc_auc": 0.3016,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                52461,
+                1711
+              ],
+              [
+                3217,
+                778
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "context": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8109,
+          "macro_f1": 0.633,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9852,
+              "recall": 0.8091,
+              "f1": 0.8885,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2439,
+              "recall": 0.8348,
+              "f1": 0.3775,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2463,
+          "roc_auc": 0.8783,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              43831,
+              10341
+            ],
+            [
+              660,
+              3335
+            ]
+          ],
+          "train_seconds": 2.2,
+          "inference_ms_per_1k_rows": 3.38,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 615,
+            "recall": 0.9887
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.8109,
+            "macro_f1": 0.633,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9852,
+                "recall": 0.8091,
+                "f1": 0.8885,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.2439,
+                "recall": 0.8348,
+                "f1": 0.3775,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.2463,
+            "roc_auc": 0.8783,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                43831,
+                10341
+              ],
+              [
+                660,
+                3335
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9269,
+          "macro_f1": 0.5271,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9343,
+              "recall": 0.9913,
+              "f1": 0.9619,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.3144,
+              "recall": 0.0541,
+              "f1": 0.0923,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2456,
+          "roc_auc": 0.8437,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              53701,
+              471
+            ],
+            [
+              3779,
+              216
+            ]
+          ],
+          "train_seconds": 30.3,
+          "inference_ms_per_1k_rows": 17.41,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 164,
+            "recall": 0.2637
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.9269,
+            "macro_f1": 0.5271,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9343,
+                "recall": 0.9913,
+                "f1": 0.9619,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.3144,
+                "recall": 0.0541,
+                "f1": 0.0923,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.2456,
+            "roc_auc": 0.8437,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                53701,
+                471
+              ],
+              [
+                3779,
+                216
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8871,
+          "macro_f1": 0.5828,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9435,
+              "recall": 0.9348,
+              "f1": 0.9391,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2139,
+              "recall": 0.2406,
+              "f1": 0.2264,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2025,
+          "roc_auc": 0.7914,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              50640,
+              3532
+            ],
+            [
+              3034,
+              961
+            ]
+          ],
+          "train_seconds": 8.3,
+          "inference_ms_per_1k_rows": 30.45,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 584,
+            "recall": 0.9389
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.8871,
+            "macro_f1": 0.5828,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9435,
+                "recall": 0.9348,
+                "f1": 0.9391,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.2139,
+                "recall": 0.2406,
+                "f1": 0.2264,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.2025,
+            "roc_auc": 0.7914,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                50640,
+                3532
+              ],
+              [
+                3034,
+                961
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9286,
+          "macro_f1": 0.5252,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9341,
+              "recall": 0.9934,
+              "f1": 0.9629,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.3586,
+              "recall": 0.0498,
+              "f1": 0.0875,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.1948,
+          "roc_auc": 0.7991,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              53816,
+              356
+            ],
+            [
+              3796,
+              199
+            ]
+          ],
+          "train_seconds": 42.2,
+          "inference_ms_per_1k_rows": 72.03,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 168,
+            "recall": 0.2701
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.9286,
+            "macro_f1": 0.5252,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9341,
+                "recall": 0.9934,
+                "f1": 0.9629,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.3586,
+                "recall": 0.0498,
+                "f1": 0.0875,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.1948,
+            "roc_auc": 0.7991,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                53816,
+                356
+              ],
+              [
+                3796,
+                199
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full+source": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.887,
+          "macro_f1": 0.5827,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9435,
+              "recall": 0.9347,
+              "f1": 0.9391,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2137,
+              "recall": 0.2406,
+              "f1": 0.2263,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2018,
+          "roc_auc": 0.79,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              50635,
+              3537
+            ],
+            [
+              3034,
+              961
+            ]
+          ],
+          "train_seconds": 9.6,
+          "inference_ms_per_1k_rows": 60.17,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 584,
+            "recall": 0.9389
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.887,
+            "macro_f1": 0.5827,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9435,
+                "recall": 0.9347,
+                "f1": 0.9391,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.2137,
+                "recall": 0.2406,
+                "f1": 0.2263,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.2018,
+            "roc_auc": 0.79,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                50635,
+                3537
+              ],
+              [
+                3034,
+                961
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9284,
+          "macro_f1": 0.5228,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9339,
+              "recall": 0.9934,
+              "f1": 0.9628,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.3456,
+              "recall": 0.0471,
+              "f1": 0.0828,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.1937,
+          "roc_auc": 0.7982,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              53816,
+              356
+            ],
+            [
+              3807,
+              188
+            ]
+          ],
+          "train_seconds": 46.4,
+          "inference_ms_per_1k_rows": 81.83,
+          "incident_level": {
+            "incidents": 622,
+            "detected": 161,
+            "recall": 0.2588
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 58167,
+            "n_positive": 3995,
+            "accuracy": 0.9284,
+            "macro_f1": 0.5228,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9339,
+                "recall": 0.9934,
+                "f1": 0.9628,
+                "support": 54172
+              },
+              "malicious": {
+                "precision": 0.3456,
+                "recall": 0.0471,
+                "f1": 0.0828,
+                "support": 3995
+              }
+            },
+            "pr_auc_positive": 0.1937,
+            "roc_auc": 0.7982,
+            "positive_rate_baseline": 0.0687,
+            "confusion_matrix": [
+              [
+                53816,
+                356
+              ],
+              [
+                3807,
+                188
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      }
+    },
+    "C_cross_0004_to_0005": {
+      "text": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.9628,
+          "macro_f1": 0.4905,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9628,
+              "recall": 1.0,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.0384,
+          "roc_auc": 0.5058,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91555,
+              0
+            ],
+            [
+              3536,
+              0
+            ]
+          ],
+          "train_seconds": 0.7,
+          "inference_ms_per_1k_rows": 55.26,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.9628,
+            "macro_f1": 0.4905,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9628,
+                "recall": 1.0,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.0384,
+            "roc_auc": 0.5058,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91555,
+                0
+              ],
+              [
+                3536,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.9628,
+          "macro_f1": 0.4905,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9628,
+              "recall": 1.0,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.0372,
+          "roc_auc": 0.5001,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91555,
+              0
+            ],
+            [
+              3536,
+              0
+            ]
+          ],
+          "train_seconds": 2.3,
+          "inference_ms_per_1k_rows": 52.91,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.9628,
+            "macro_f1": 0.4905,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9628,
+                "recall": 1.0,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.0372,
+            "roc_auc": 0.5001,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91555,
+                0
+              ],
+              [
+                3536,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "context": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.963,
+          "macro_f1": 0.4984,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9631,
+              "recall": 0.9998,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.6512,
+              "recall": 0.0079,
+              "f1": 0.0156,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.1004,
+          "roc_auc": 0.5494,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91540,
+              15
+            ],
+            [
+              3508,
+              28
+            ]
+          ],
+          "train_seconds": 0.5,
+          "inference_ms_per_1k_rows": 3.59,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 8,
+            "recall": 0.006
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.963,
+            "macro_f1": 0.4984,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9631,
+                "recall": 0.9998,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.6512,
+                "recall": 0.0079,
+                "f1": 0.0156,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.1004,
+            "roc_auc": 0.5494,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91540,
+                15
+              ],
+              [
+                3508,
+                28
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.9629,
+          "macro_f1": 0.4928,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9629,
+              "recall": 1.0,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.7273,
+              "recall": 0.0023,
+              "f1": 0.0045,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.0922,
+          "roc_auc": 0.437,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91552,
+              3
+            ],
+            [
+              3528,
+              8
+            ]
+          ],
+          "train_seconds": 17.4,
+          "inference_ms_per_1k_rows": 14.69,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 5,
+            "recall": 0.0037
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.9629,
+            "macro_f1": 0.4928,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9629,
+                "recall": 1.0,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.7273,
+                "recall": 0.0023,
+                "f1": 0.0045,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.0922,
+            "roc_auc": 0.437,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91552,
+                3
+              ],
+              [
+                3528,
+                8
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.9628,
+          "macro_f1": 0.4905,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9628,
+              "recall": 1.0,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.0716,
+          "roc_auc": 0.481,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91555,
+              0
+            ],
+            [
+              3536,
+              0
+            ]
+          ],
+          "train_seconds": 1.9,
+          "inference_ms_per_1k_rows": 65.96,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.9628,
+            "macro_f1": 0.4905,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9628,
+                "recall": 1.0,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.0716,
+            "roc_auc": 0.481,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91555,
+                0
+              ],
+              [
+                3536,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 95091,
+          "n_positive": 3536,
+          "accuracy": 0.9628,
+          "macro_f1": 0.4905,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9628,
+              "recall": 1.0,
+              "f1": 0.9811,
+              "support": 91555
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3536
+            }
+          },
+          "pr_auc_positive": 0.0364,
+          "roc_auc": 0.3081,
+          "positive_rate_baseline": 0.0372,
+          "confusion_matrix": [
+            [
+              91555,
+              0
+            ],
+            [
+              3536,
+              0
+            ]
+          ],
+          "train_seconds": 16.2,
+          "inference_ms_per_1k_rows": 37.79,
+          "incident_level": {
+            "incidents": 1336,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 95091,
+            "n_positive": 3536,
+            "accuracy": 0.9628,
+            "macro_f1": 0.4905,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9628,
+                "recall": 1.0,
+                "f1": 0.9811,
+                "support": 91555
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 3536
+              }
+            },
+            "pr_auc_positive": 0.0364,
+            "roc_auc": 0.3081,
+            "positive_rate_baseline": 0.0372,
+            "confusion_matrix": [
+              [
+                91555,
+                0
+              ],
+              [
+                3536,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      }
+    },
+    "C_cross_0005_to_0004": {
+      "text": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.2172,
+          "macro_f1": 0.179,
+          "per_class": {
+            "suspicious": {
+              "precision": 1.0,
+              "recall": 0.0009,
+              "f1": 0.0019,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.2166,
+              "recall": 1.0,
+              "f1": 0.3561,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2162,
+          "roc_auc": 0.4993,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              14,
+              15101
+            ],
+            [
+              0,
+              4176
+            ]
+          ],
+          "train_seconds": 3.0,
+          "inference_ms_per_1k_rows": 11.84,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 81,
+            "recall": 1.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.2172,
+            "macro_f1": 0.179,
+            "per_class": {
+              "suspicious": {
+                "precision": 1.0,
+                "recall": 0.0009,
+                "f1": 0.0019,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.2166,
+                "recall": 1.0,
+                "f1": 0.3561,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2162,
+            "roc_auc": 0.4993,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                14,
+                15101
+              ],
+              [
+                0,
+                4176
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.7835,
+          "macro_f1": 0.4393,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7835,
+              "recall": 1.0,
+              "f1": 0.8786,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2165,
+          "roc_auc": 0.4998,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              15115,
+              0
+            ],
+            [
+              4176,
+              0
+            ]
+          ],
+          "train_seconds": 8.2,
+          "inference_ms_per_1k_rows": 23.07,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.7835,
+            "macro_f1": 0.4393,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7835,
+                "recall": 1.0,
+                "f1": 0.8786,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2165,
+            "roc_auc": 0.4998,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                15115,
+                0
+              ],
+              [
+                4176,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "context": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.2434,
+          "macro_f1": 0.2164,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9407,
+              "recall": 0.0367,
+              "f1": 0.0707,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.2214,
+              "recall": 0.9916,
+              "f1": 0.362,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2389,
+          "roc_auc": 0.5539,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              555,
+              14560
+            ],
+            [
+              35,
+              4141
+            ]
+          ],
+          "train_seconds": 5.6,
+          "inference_ms_per_1k_rows": 8.79,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 76,
+            "recall": 0.9383
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.2434,
+            "macro_f1": 0.2164,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9407,
+                "recall": 0.0367,
+                "f1": 0.0707,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.2214,
+                "recall": 0.9916,
+                "f1": 0.362,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2389,
+            "roc_auc": 0.5539,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                555,
+                14560
+              ],
+              [
+                35,
+                4141
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.782,
+          "macro_f1": 0.44,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7833,
+              "recall": 0.9978,
+              "f1": 0.8776,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.1282,
+              "recall": 0.0012,
+              "f1": 0.0024,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2293,
+          "roc_auc": 0.5171,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              15081,
+              34
+            ],
+            [
+              4171,
+              5
+            ]
+          ],
+          "train_seconds": 50.5,
+          "inference_ms_per_1k_rows": 11.83,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 2,
+            "recall": 0.0247
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.782,
+            "macro_f1": 0.44,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7833,
+                "recall": 0.9978,
+                "f1": 0.8776,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.1282,
+                "recall": 0.0012,
+                "f1": 0.0024,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2293,
+            "roc_auc": 0.5171,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                15081,
+                34
+              ],
+              [
+                4171,
+                5
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      },
+      "full": {
+        "logreg": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.2584,
+          "macro_f1": 0.2373,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9165,
+              "recall": 0.0588,
+              "f1": 0.1105,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.2235,
+              "recall": 0.9806,
+              "f1": 0.364,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2366,
+          "roc_auc": 0.5471,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              889,
+              14226
+            ],
+            [
+              81,
+              4095
+            ]
+          ],
+          "train_seconds": 11.6,
+          "inference_ms_per_1k_rows": 30.3,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 73,
+            "recall": 0.9012
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.2584,
+            "macro_f1": 0.2373,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.9165,
+                "recall": 0.0588,
+                "f1": 0.1105,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.2235,
+                "recall": 0.9806,
+                "f1": 0.364,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2366,
+            "roc_auc": 0.5471,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                889,
+                14226
+              ],
+              [
+                81,
+                4095
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        },
+        "random_forest": {
+          "threshold": 0.5,
+          "n": 19291,
+          "n_positive": 4176,
+          "accuracy": 0.7835,
+          "macro_f1": 0.4393,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7835,
+              "recall": 1.0,
+              "f1": 0.8786,
+              "support": 15115
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 4176
+            }
+          },
+          "pr_auc_positive": 0.2385,
+          "roc_auc": 0.533,
+          "positive_rate_baseline": 0.2165,
+          "confusion_matrix": [
+            [
+              15115,
+              0
+            ],
+            [
+              4176,
+              0
+            ]
+          ],
+          "train_seconds": 67.6,
+          "inference_ms_per_1k_rows": 27.17,
+          "incident_level": {
+            "incidents": 81,
+            "detected": 0,
+            "recall": 0.0
+          },
+          "novel_text_subset": {
+            "threshold": 0.5,
+            "n": 19291,
+            "n_positive": 4176,
+            "accuracy": 0.7835,
+            "macro_f1": 0.4393,
+            "per_class": {
+              "suspicious": {
+                "precision": 0.7835,
+                "recall": 1.0,
+                "f1": 0.8786,
+                "support": 15115
+              },
+              "malicious": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 4176
+              }
+            },
+            "pr_auc_positive": 0.2385,
+            "roc_auc": 0.533,
+            "positive_rate_baseline": 0.2165,
+            "confusion_matrix": [
+              [
+                15115,
+                0
+              ],
+              [
+                4176,
+                0
+              ]
+            ]
+          },
+          "novel_text_share_of_test": 1.0
+        }
+      }
+    }
+  },
+  "tuned": {
+    "POOLED_temporal": {
+      "logreg": {
+        "selected_feature_set": "context",
+        "selected_params": {
+          "clf__C": 0.1
+        },
+        "cv_pr_auc_mean": 0.4633,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__C": 0.1,
+            "pr_auc": 0.4633
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 0.1,
+            "pr_auc": 0.4461
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 1.0,
+            "pr_auc": 0.4373
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 1.0,
+            "pr_auc": 0.3735
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 10.0,
+            "pr_auc": 0.4195
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 10.0,
+            "pr_auc": 0.3462
+          }
+        ],
+        "threshold_from_train_oof": 0.8539,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.799,
+          "macro_f1": 0.6335,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.993,
+              "recall": 0.7897,
+              "f1": 0.8798,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2449,
+              "recall": 0.9249,
+              "f1": 0.3873,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2502,
+          "roc_auc": 0.8798,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              42781,
+              11391
+            ],
+            [
+              300,
+              3695
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.8539,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8831,
+          "macro_f1": 0.6188,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9518,
+              "recall": 0.9212,
+              "f1": 0.9362,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2557,
+              "recall": 0.3672,
+              "f1": 0.3014,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2502,
+          "roc_auc": 0.8798,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              49901,
+              4271
+            ],
+            [
+              2528,
+              1467
+            ]
+          ]
+        },
+        "tuning_seconds": 59.2,
+        "inference_ms_per_1k_rows": 3.64,
+        "model_size_mb": 0.01,
+        "incident_level": {
+          "incidents": 622,
+          "detected": 514,
+          "recall": 0.8264
+        },
+        "novel_text_subset": {
+          "threshold": 0.8539,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8831,
+          "macro_f1": 0.6188,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9518,
+              "recall": 0.9212,
+              "f1": 0.9362,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2557,
+              "recall": 0.3672,
+              "f1": 0.3014,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2502,
+          "roc_auc": 0.8798,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              49901,
+              4271
+            ],
+            [
+              2528,
+              1467
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      },
+      "random_forest": {
+        "selected_feature_set": "context",
+        "selected_params": {
+          "clf__max_depth": 20,
+          "clf__min_samples_leaf": 5
+        },
+        "cv_pr_auc_mean": 0.4076,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.2072
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.1816
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.3885
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4036
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.2983
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.2954
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4076
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.3999
+          }
+        ],
+        "threshold_from_train_oof": 0.8399,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.8908,
+          "macro_f1": 0.643,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9558,
+              "recall": 0.9255,
+              "f1": 0.9404,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.2936,
+              "recall": 0.4198,
+              "f1": 0.3455,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2571,
+          "roc_auc": 0.8458,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              50137,
+              4035
+            ],
+            [
+              2318,
+              1677
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.8399,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9201,
+          "macro_f1": 0.5973,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9416,
+              "recall": 0.9746,
+              "f1": 0.9578,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.344,
+              "recall": 0.1805,
+              "f1": 0.2367,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2571,
+          "roc_auc": 0.8458,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              52797,
+              1375
+            ],
+            [
+              3274,
+              721
+            ]
+          ]
+        },
+        "tuning_seconds": 173.9,
+        "inference_ms_per_1k_rows": 14.73,
+        "model_size_mb": 2.72,
+        "incident_level": {
+          "incidents": 622,
+          "detected": 545,
+          "recall": 0.8762
+        },
+        "novel_text_subset": {
+          "threshold": 0.8399,
+          "n": 58167,
+          "n_positive": 3995,
+          "accuracy": 0.9201,
+          "macro_f1": 0.5973,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9416,
+              "recall": 0.9746,
+              "f1": 0.9578,
+              "support": 54172
+            },
+            "malicious": {
+              "precision": 0.344,
+              "recall": 0.1805,
+              "f1": 0.2367,
+              "support": 3995
+            }
+          },
+          "pr_auc_positive": 0.2571,
+          "roc_auc": 0.8458,
+          "positive_rate_baseline": 0.0687,
+          "confusion_matrix": [
+            [
+              52797,
+              1375
+            ],
+            [
+              3274,
+              721
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      }
+    },
+    "B_temporal_ORG-0005": {
+      "logreg": {
+        "selected_feature_set": "full",
+        "selected_params": {
+          "clf__C": 0.1
+        },
+        "cv_pr_auc_mean": 0.5296,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__C": 0.1,
+            "pr_auc": 0.5146
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 0.1,
+            "pr_auc": 0.5296
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 1.0,
+            "pr_auc": 0.4753
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 1.0,
+            "pr_auc": 0.4861
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 10.0,
+            "pr_auc": 0.4496
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 10.0,
+            "pr_auc": 0.4587
+          }
+        ],
+        "threshold_from_train_oof": 0.9331,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9601,
+          "macro_f1": 0.7277,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9983,
+              "recall": 0.961,
+              "f1": 0.9793,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3212,
+              "recall": 0.9195,
+              "f1": 0.4761,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3428,
+          "roc_auc": 0.955,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42181,
+              1714
+            ],
+            [
+              71,
+              811
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.9331,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9738,
+          "macro_f1": 0.6863,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9883,
+              "recall": 0.985,
+              "f1": 0.9866,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.359,
+              "recall": 0.4172,
+              "f1": 0.3859,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3428,
+          "roc_auc": 0.955,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              43238,
+              657
+            ],
+            [
+              514,
+              368
+            ]
+          ]
+        },
+        "tuning_seconds": 46.9,
+        "inference_ms_per_1k_rows": 31.98,
+        "model_size_mb": 0.02,
+        "incident_level": {
+          "incidents": 578,
+          "detected": 301,
+          "recall": 0.5208
+        },
+        "novel_text_subset": {
+          "threshold": 0.9331,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9738,
+          "macro_f1": 0.6863,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9883,
+              "recall": 0.985,
+              "f1": 0.9866,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.359,
+              "recall": 0.4172,
+              "f1": 0.3859,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3428,
+          "roc_auc": 0.955,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              43238,
+              657
+            ],
+            [
+              514,
+              368
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      },
+      "random_forest": {
+        "selected_feature_set": "context",
+        "selected_params": {
+          "clf__max_depth": null,
+          "clf__min_samples_leaf": 5
+        },
+        "cv_pr_auc_mean": 0.4814,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.2818
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.2882
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4814
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4781
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.3571
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.3958
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4699
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.4793
+          }
+        ],
+        "threshold_from_train_oof": 0.8775,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9611,
+          "macro_f1": 0.7282,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9979,
+              "recall": 0.9623,
+              "f1": 0.9798,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3242,
+              "recall": 0.8991,
+              "f1": 0.4766,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3181,
+          "roc_auc": 0.9598,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42242,
+              1653
+            ],
+            [
+              89,
+              793
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.8775,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9674,
+          "macro_f1": 0.7312,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9951,
+              "recall": 0.9715,
+              "f1": 0.9832,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3496,
+              "recall": 0.7619,
+              "f1": 0.4793,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3181,
+          "roc_auc": 0.9598,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42645,
+              1250
+            ],
+            [
+              210,
+              672
+            ]
+          ]
+        },
+        "tuning_seconds": 129.5,
+        "inference_ms_per_1k_rows": 6.77,
+        "model_size_mb": 1.9,
+        "incident_level": {
+          "incidents": 578,
+          "detected": 520,
+          "recall": 0.8997
+        },
+        "novel_text_subset": {
+          "threshold": 0.8775,
+          "n": 44777,
+          "n_positive": 882,
+          "accuracy": 0.9674,
+          "macro_f1": 0.7312,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.9951,
+              "recall": 0.9715,
+              "f1": 0.9832,
+              "support": 43895
+            },
+            "malicious": {
+              "precision": 0.3496,
+              "recall": 0.7619,
+              "f1": 0.4793,
+              "support": 882
+            }
+          },
+          "pr_auc_positive": 0.3181,
+          "roc_auc": 0.9598,
+          "positive_rate_baseline": 0.0197,
+          "confusion_matrix": [
+            [
+              42645,
+              1250
+            ],
+            [
+              210,
+              672
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      }
+    },
+    "A_temporal_ORG-0004": {
+      "logreg": {
+        "selected_feature_set": "context",
+        "selected_params": {
+          "clf__C": 0.1
+        },
+        "cv_pr_auc_mean": 0.156,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__C": 0.1,
+            "pr_auc": 0.156
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 0.1,
+            "pr_auc": 0.1267
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 1.0,
+            "pr_auc": 0.141
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 1.0,
+            "pr_auc": 0.1226
+          },
+          {
+            "feature_set": "context",
+            "clf__C": 10.0,
+            "pr_auc": 0.1287
+          },
+          {
+            "feature_set": "full",
+            "clf__C": 10.0,
+            "pr_auc": 0.1207
+          }
+        ],
+        "threshold_from_train_oof": 0.9636,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.5266,
+          "macro_f1": 0.4644,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7566,
+              "recall": 0.565,
+              "f1": 0.6469,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.2178,
+              "recall": 0.3999,
+              "f1": 0.282,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2233,
+          "roc_auc": 0.4648,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              5806,
+              4471
+            ],
+            [
+              1868,
+              1245
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.9636,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7674,
+          "macro_f1": 0.4342,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7675,
+              "recall": 0.9999,
+              "f1": 0.8684,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2233,
+          "roc_auc": 0.4648,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10276,
+              1
+            ],
+            [
+              3113,
+              0
+            ]
+          ]
+        },
+        "tuning_seconds": 4.3,
+        "inference_ms_per_1k_rows": 3.83,
+        "model_size_mb": 0.0,
+        "incident_level": {
+          "incidents": 44,
+          "detected": 0,
+          "recall": 0.0
+        },
+        "novel_text_subset": {
+          "threshold": 0.9636,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7674,
+          "macro_f1": 0.4342,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7675,
+              "recall": 0.9999,
+              "f1": 0.8684,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2233,
+          "roc_auc": 0.4648,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10276,
+              1
+            ],
+            [
+              3113,
+              0
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      },
+      "random_forest": {
+        "selected_feature_set": "context",
+        "selected_params": {
+          "clf__max_depth": null,
+          "clf__min_samples_leaf": 5
+        },
+        "cv_pr_auc_mean": 0.1678,
+        "cv_results": [
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.159
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.1496
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.1678
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": null,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.1507
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.1612
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 1,
+            "pr_auc": 0.1492
+          },
+          {
+            "feature_set": "context",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.1654
+          },
+          {
+            "feature_set": "full",
+            "clf__max_depth": 20,
+            "clf__min_samples_leaf": 5,
+            "pr_auc": 0.1529
+          }
+        ],
+        "threshold_from_train_oof": 0.9057,
+        "test_at_0.5": {
+          "threshold": 0.5,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7359,
+          "macro_f1": 0.512,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7767,
+              "recall": 0.9207,
+              "f1": 0.8426,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.3248,
+              "recall": 0.1259,
+              "f1": 0.1815,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2754,
+          "roc_auc": 0.5561,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              9462,
+              815
+            ],
+            [
+              2721,
+              392
+            ]
+          ]
+        },
+        "test_at_tuned_threshold": {
+          "threshold": 0.9057,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7674,
+          "macro_f1": 0.4342,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7675,
+              "recall": 0.9999,
+              "f1": 0.8684,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2754,
+          "roc_auc": 0.5561,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10276,
+              1
+            ],
+            [
+              3113,
+              0
+            ]
+          ]
+        },
+        "tuning_seconds": 20.8,
+        "inference_ms_per_1k_rows": 8.22,
+        "model_size_mb": 1.51,
+        "incident_level": {
+          "incidents": 44,
+          "detected": 0,
+          "recall": 0.0
+        },
+        "novel_text_subset": {
+          "threshold": 0.9057,
+          "n": 13390,
+          "n_positive": 3113,
+          "accuracy": 0.7674,
+          "macro_f1": 0.4342,
+          "per_class": {
+            "suspicious": {
+              "precision": 0.7675,
+              "recall": 0.9999,
+              "f1": 0.8684,
+              "support": 10277
+            },
+            "malicious": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 3113
+            }
+          },
+          "pr_auc_positive": 0.2754,
+          "roc_auc": 0.5561,
+          "positive_rate_baseline": 0.2325,
+          "confusion_matrix": [
+            [
+              10276,
+              1
+            ],
+            [
+              3113,
+              0
+            ]
+          ]
+        },
+        "novel_text_share_of_test": 1.0
+      }
+    }
+  }
+}

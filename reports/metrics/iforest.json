@@ -1,0 +1,128 @@
+{
+  "note": "Anomaly scores are reported separately from class probabilities. Higher score = more anomalous (negated sklearn score_samples).",
+  "experiments": {
+    "alerts_malicious_vs_suspicious": {
+      "threshold": 0.3966,
+      "n": 58167,
+      "n_positive": 3995,
+      "accuracy": 0.9061,
+      "macro_f1": 0.6077,
+      "per_class": {
+        "suspicious": {
+          "precision": 0.945,
+          "recall": 0.9547,
+          "f1": 0.9499,
+          "support": 54172
+        },
+        "malicious": {
+          "precision": 0.287,
+          "recall": 0.2471,
+          "f1": 0.2655,
+          "support": 3995
+        }
+      },
+      "pr_auc_positive": 0.2594,
+      "roc_auc": 0.8787,
+      "positive_rate_baseline": 0.0687,
+      "confusion_matrix": [
+        [
+          51720,
+          2452
+        ],
+        [
+          3008,
+          987
+        ]
+      ],
+      "fit_on": "POOLED_temporal training alerts (labels unused)",
+      "threshold_rule": "99th percentile of training anomaly scores",
+      "train_seconds": 3.5,
+      "model_size_mb": 1.17,
+      "flag_rate_test": 0.0591
+    },
+    "disagreement_with_random_forest": {
+      "rows": {
+        "malicious": {
+          "RF:malicious & IF:anomaly": 0,
+          "RF:malicious & IF:normal": 721,
+          "RF:suspicious & IF:anomaly": 987,
+          "RF:suspicious & IF:normal": 2287
+        },
+        "suspicious": {
+          "RF:malicious & IF:anomaly": 9,
+          "RF:malicious & IF:normal": 1366,
+          "RF:suspicious & IF:anomaly": 2443,
+          "RF:suspicious & IF:normal": 50354
+        }
+      }
+    },
+    "benign_reference_alert_vs_benign": {
+      "threshold": 0.4768,
+      "n": 965856,
+      "n_positive": 58237,
+      "accuracy": 0.9953,
+      "macro_f1": 0.9787,
+      "per_class": {
+        "benign": {
+          "precision": 0.9952,
+          "recall": 0.9999,
+          "f1": 0.9975,
+          "support": 907619
+        },
+        "alert": {
+          "precision": 0.9983,
+          "recall": 0.9241,
+          "f1": 0.9598,
+          "support": 58237
+        }
+      },
+      "pr_auc_positive": 0.9986,
+      "roc_auc": 0.9998,
+      "positive_rate_baseline": 0.0603,
+      "confusion_matrix": [
+        [
+          907528,
+          91
+        ],
+        [
+          4418,
+          53819
+        ]
+      ]
+    },
+    "benign_reference_malicious_vs_rest": {
+      "threshold": 0.4768,
+      "n": 965856,
+      "n_positive": 4008,
+      "accuracy": 0.9464,
+      "macro_f1": 0.5393,
+      "per_class": {
+        "rest": {
+          "precision": 0.999,
+          "recall": 0.9471,
+          "f1": 0.9724,
+          "support": 961848
+        },
+        "malicious": {
+          "precision": 0.057,
+          "recall": 0.7672,
+          "f1": 0.1062,
+          "support": 4008
+        }
+      },
+      "pr_auc_positive": 0.1552,
+      "roc_auc": 0.9765,
+      "positive_rate_baseline": 0.0041,
+      "confusion_matrix": [
+        [
+          911013,
+          50835
+        ],
+        [
+          933,
+          3075
+        ]
+      ]
+    }
+  }
+}

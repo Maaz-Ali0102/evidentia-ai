@@ -1,0 +1,5 @@
+SYNTHETIC SAMPLE - not real evidence
+2024-07-27T02:05:11Z User visited https://example.org/recipes in Chrome
+2024-07-27T02:06:40Z Downloaded holiday_photos.zip from https://example.net/share
+2024-07-27T02:07:02Z Meeting notes: discuss quarterly budget with finance team
+screenshot_ocr: Invoice total due 400 USD

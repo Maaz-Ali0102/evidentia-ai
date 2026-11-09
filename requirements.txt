@@ -1,0 +1,17 @@
+# Versions used for the reported results (Python 3.14, Windows 11)
+pandas==3.1.1
+numpy==2.5.4
+scipy==1.18.1
+pyarrow==26.0.1
+duckdb==2.0.0
+scikit-learn==1.9.1
+joblib==1.6.0
+matplotlib==3.11.2
+seaborn==0.13.2
+huggingface_hub==2.4.0
+streamlit==1.67.0
+altair==6.3.0
+pytest==9.2.0
+nbformat==5.11.1
+nbconvert==7.17.2
+ipykernel==7.4.0

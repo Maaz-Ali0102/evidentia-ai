@@ -1,0 +1,71 @@
+03:38:19 loading dataset
+03:38:42 dataset (2011674, 44)
+03:38:43 stage2 A_temporal_ORG-0004 text logreg PR-AUC 0.2215 ROC 0.3729
+03:38:46 stage2 A_temporal_ORG-0004 text random_forest PR-AUC 0.2215 ROC 0.3732
+03:38:46 stage2 A_temporal_ORG-0004 context logreg PR-AUC 0.2096 ROC 0.4446
+03:38:50 stage2 A_temporal_ORG-0004 context random_forest PR-AUC 0.2631 ROC 0.5485
+03:38:51 stage2 A_temporal_ORG-0004 full logreg PR-AUC 0.2337 ROC 0.5045
+03:38:54 stage2 A_temporal_ORG-0004 full random_forest PR-AUC 0.2394 ROC 0.528
+03:38:55 wrote stage2
+03:39:02 stage2 B_temporal_ORG-0005 text logreg PR-AUC 0.2993 ROC 0.936
+03:39:14 stage2 B_temporal_ORG-0005 text random_forest PR-AUC 0.2993 ROC 0.936
+03:39:18 stage2 B_temporal_ORG-0005 context logreg PR-AUC 0.3415 ROC 0.9541
+03:39:49 stage2 B_temporal_ORG-0005 context random_forest PR-AUC 0.3138 ROC 0.9508
+03:40:02 stage2 B_temporal_ORG-0005 full logreg PR-AUC 0.3393 ROC 0.9547
+03:40:33 stage2 B_temporal_ORG-0005 full random_forest PR-AUC 0.3092 ROC 0.9455
+03:40:33 wrote stage2
+03:40:37 stage2 POOLED_temporal text logreg PR-AUC 0.1336 ROC 0.4161
+03:40:43 stage2 POOLED_temporal text random_forest PR-AUC 0.1248 ROC 0.3016
+03:40:46 stage2 POOLED_temporal context logreg PR-AUC 0.2463 ROC 0.8783
+03:41:19 stage2 POOLED_temporal context random_forest PR-AUC 0.2456 ROC 0.8437
+03:41:30 stage2 POOLED_temporal full logreg PR-AUC 0.2025 ROC 0.7914
+03:42:17 stage2 POOLED_temporal full random_forest PR-AUC 0.1948 ROC 0.7991
+03:42:31 stage2 POOLED_temporal full+source logreg PR-AUC 0.2018 ROC 0.79
+03:43:24 stage2 POOLED_temporal full+source random_forest PR-AUC 0.1937 ROC 0.7982
+03:43:24 wrote stage2
+03:43:30 stage2 C_cross_0004_to_0005 text logreg PR-AUC 0.0384 ROC 0.5058
+03:43:38 stage2 C_cross_0004_to_0005 text random_forest PR-AUC 0.0372 ROC 0.5001
+03:43:39 stage2 C_cross_0004_to_0005 context logreg PR-AUC 0.1004 ROC 0.5494
+03:43:58 stage2 C_cross_0004_to_0005 context random_forest PR-AUC 0.0922 ROC 0.437
+03:44:06 stage2 C_cross_0004_to_0005 full logreg PR-AUC 0.0716 ROC 0.481
+03:44:26 stage2 C_cross_0004_to_0005 full random_forest PR-AUC 0.0364 ROC 0.3081
+03:44:26 wrote stage2
+03:44:31 stage2 C_cross_0005_to_0004 text logreg PR-AUC 0.2162 ROC 0.4993
+03:44:40 stage2 C_cross_0005_to_0004 text random_forest PR-AUC 0.2165 ROC 0.4998
+03:44:48 stage2 C_cross_0005_to_0004 context logreg PR-AUC 0.2389 ROC 0.5539
+03:45:40 stage2 C_cross_0005_to_0004 context random_forest PR-AUC 0.2293 ROC 0.5171
+03:45:54 stage2 C_cross_0005_to_0004 full logreg PR-AUC 0.2366 ROC 0.5471
+03:47:03 stage2 C_cross_0005_to_0004 full random_forest PR-AUC 0.2385 ROC 0.533
+03:47:03 wrote stage2
+03:48:03 stage2 tuned POOLED_temporal logreg context {'clf__C': 0.1} CV 0.4633 test PR-AUC 0.2502
+03:48:03 wrote stage2
+03:50:59 stage2 tuned POOLED_temporal random_forest context {'clf__max_depth': 20, 'clf__min_samples_leaf': 5} CV 0.4076 test PR-AUC 0.2571
+03:50:59 wrote stage2
+03:51:48 stage2 tuned B_temporal_ORG-0005 logreg full {'clf__C': 0.1} CV 0.5296 test PR-AUC 0.3428
+03:51:48 wrote stage2
+03:53:59 stage2 tuned B_temporal_ORG-0005 random_forest context {'clf__max_depth': None, 'clf__min_samples_leaf': 5} CV 0.4814 test PR-AUC 0.3181
+03:53:59 wrote stage2
+03:54:03 stage2 tuned A_temporal_ORG-0004 logreg context {'clf__C': 0.1} CV 0.156 test PR-AUC 0.2233
+03:54:03 wrote stage2
+03:54:25 stage2 tuned A_temporal_ORG-0004 random_forest context {'clf__max_depth': None, 'clf__min_samples_leaf': 5} CV 0.1678 test PR-AUC 0.2754
+03:54:25 wrote stage2
+03:59:01 stage1 full logreg macroF1 1.0 PR-AUC 1.0
+03:59:03 wrote stage1
+04:07:31 stage1 full random_forest macroF1 1.0 PR-AUC 1.0
+04:07:32 wrote stage1
+04:15:00 stage1 text logreg macroF1 0.9999 PR-AUC 1.0
+04:15:00 wrote stage1
+04:15:21 stage1 context logreg macroF1 1.0 PR-AUC 1.0
+04:15:21 wrote stage1
+04:22:59 stage1 full+source logreg macroF1 1.0 PR-AUC 1.0
+04:22:59 wrote stage1
+04:24:37 3class hierarchical logreg 0.7458
+04:25:40 3class hierarchical random_forest 0.7313
+04:40:47 3class flat logreg 0.7254
+04:40:47 wrote three_class
+04:52:49 3class flat random_forest 0.7317
+04:52:49 wrote three_class
+04:53:18 iforest alerts PR-AUC 0.2594 ROC 0.8787
+04:55:37 iforest benign-ref alert PR-AUC 0.9986
+04:55:37 wrote iforest
+04:55:37 done

@@ -1,0 +1,2055 @@
+{
+  "schemas": {
+    "sig": {
+      "rows": 2011674,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "event_time",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "timestamp_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "origin",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "artifact_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "message_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stream_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pipeline",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_ip",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_ip",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_port",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_port",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protocol",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "action",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "severity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vendor_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "message_sanitized",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_binary",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "attack_techniques",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "attack_tactics",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "defense_techniques",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mo_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "suspicion_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lifecycle_stage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "disposition",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "disposition_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "is_false_positive",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "status_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "incident_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "matched_rules",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "set_roles",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "product_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vendor_name",
+          "type": "VARCHAR"
+        }
+      ]
+    },
+    "inc": {
+      "rows": 238511,
+      "columns": [
+        {
+          "name": "timestamp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "event_time",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "timestamp_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "origin",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "artifact_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "message_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stream_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pipeline",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_ip",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_ip",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_port",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_port",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protocol",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "action",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "severity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vendor_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "message_sanitized",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_binary",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "attack_techniques",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "attack_tactics",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "defense_techniques",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mo_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "suspicion_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lifecycle_stage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "disposition",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "disposition_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "is_false_positive",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "status_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "incident_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "matched_rules",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "set_roles",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "product_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vendor_name",
+          "type": "VARCHAR"
+        }
+      ]
+    },
+    "rep": {
+      "rows": 51371,
+      "columns": [
+        {
+          "name": "incident_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "report_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "report_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mo_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "suspicion_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "duplicate_incident_ids",
+          "type": "VARCHAR[]"
+        }
+      ]
+    },
+    "edg": {
+      "rows": 1740438,
+      "columns": [
+        {
+          "name": "src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "timestamp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "attrs",
+          "type": "STRUCT(message_type VARCHAR, \"action\" VARCHAR, protocol VARCHAR, src_port VARCHAR, dst_port VARCHAR, stream VARCHAR, origin VARCHAR, org_id VARCHAR, artifact_id VARCHAR, sender_host VARCHAR, event_edge_type VARCHAR, host_role VARCHAR, incident_id VARCHAR, mo_name VARCHAR, status VARCHAR, edge_subtype VARCHAR, edge_kind VARCHAR, started DOUBLE, ended DOUBLE, count BIGINT, bytes BIGINT, precinct_edge_id VARCHAR)"
+        },
+        {
+          "name": "labels",
+          "type": "STRUCT(label_binary VARCHAR, label_confidence DOUBLE, suspicion_score DOUBLE, mo_name VARCHAR, attack_techniques VARCHAR[], attack_tactics VARCHAR[], set_roles VARCHAR[], lifecycle_stage VARCHAR, disposition VARCHAR, disposition_category VARCHAR, status_name VARCHAR, incident_ids VARCHAR[], matched_rules VARCHAR[], incident_id VARCHAR)"
+        },
+        {
+          "name": "edge_id",
+          "type": "VARCHAR"
+        }
+      ]
+    },
+    "nod": {
+      "rows": 47585,
+      "columns": [
+        {
+          "name": "node_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "attrs",
+          "type": "STRUCT(ip VARCHAR, hostname VARCHAR, username VARCHAR, credential VARCHAR, org_id VARCHAR, first_seen DOUBLE, last_seen DOUBLE, signal_count BIGINT, set_roles VARCHAR[], products VARCHAR[], suspicion_score DOUBLE, incident_ids VARCHAR[], precinct_node_ids VARCHAR[], internal BOOLEAN, managed BOOLEAN, incident_first_observed DOUBLE, incident_last_observed DOUBLE)"
+        }
+      ]
+    }
+  },
+  "labels_signals": [
+    {
+      "label_binary": "benign",
+      "n": 1897153
+    },
+    {
+      "label_binary": "suspicious",
+      "n": 106793
+    },
+    {
+      "label_binary": "malicious",
+      "n": 7728
+    }
+  ],
+  "labels_incident_signals": [
+    {
+      "label_binary": "malicious",
+      "n": 238511
+    }
+  ],
+  "labels_by_org": [
+    {
+      "org_id": "ORG-0004",
+      "n": 995985,
+      "benign": 976694,
+      "suspicious": 15115,
+      "malicious": 4176
+    },
+    {
+      "org_id": "ORG-0005",
+      "n": 576817,
+      "benign": 481726,
+      "suspicious": 91555,
+      "malicious": 3536
+    },
+    {
+      "org_id": "ORG-0003",
+      "n": 433904,
+      "benign": 433775,
+      "suspicious": 113,
+      "malicious": 16
+    },
+    {
+      "org_id": "ORG-0001",
+      "n": 4968,
+      "benign": 4958,
+      "suspicious": 10,
+      "malicious": 0
+    }
+  ],
+  "labels_by_day": [
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0001",
+      "label_binary": "benign",
+      "n": 2116
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0001",
+      "label_binary": "suspicious",
+      "n": 6
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0003",
+      "label_binary": "benign",
+      "n": 134290
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0003",
+      "label_binary": "malicious",
+      "n": 3
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0003",
+      "label_binary": "suspicious",
+      "n": 56
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 151466
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0004",
+      "label_binary": "malicious",
+      "n": 603
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 2393
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0005",
+      "label_binary": "benign",
+      "n": 201461
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0005",
+      "label_binary": "malicious",
+      "n": 2395
+    },
+    {
+      "dt": "2024-07-26",
+      "org_id": "ORG-0005",
+      "label_binary": "suspicious",
+      "n": 37292
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0001",
+      "label_binary": "benign",
+      "n": 2842
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0001",
+      "label_binary": "suspicious",
+      "n": 4
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0003",
+      "label_binary": "benign",
+      "n": 299485
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0003",
+      "label_binary": "malicious",
+      "n": 13
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0003",
+      "label_binary": "suspicious",
+      "n": 57
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 80926
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 178
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0005",
+      "label_binary": "benign",
+      "n": 280265
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0005",
+      "label_binary": "malicious",
+      "n": 1141
+    },
+    {
+      "dt": "2024-07-27",
+      "org_id": "ORG-0005",
+      "label_binary": "suspicious",
+      "n": 54263
+    },
+    {
+      "dt": "2024-07-28",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 74425
+    },
+    {
+      "dt": "2024-07-28",
+      "org_id": "ORG-0004",
+      "label_binary": "malicious",
+      "n": 21
+    },
+    {
+      "dt": "2024-07-28",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 782
+    },
+    {
+      "dt": "2024-07-29",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 220402
+    },
+    {
+      "dt": "2024-07-29",
+      "org_id": "ORG-0004",
+      "label_binary": "malicious",
+      "n": 432
+    },
+    {
+      "dt": "2024-07-29",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 1482
+    },
+    {
+      "dt": "2024-07-30",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 323777
+    },
+    {
+      "dt": "2024-07-30",
+      "org_id": "ORG-0004",
+      "label_binary": "malicious",
+      "n": 3120
+    },
+    {
+      "dt": "2024-07-30",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 10068
+    },
+    {
+      "dt": "2024-07-31",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 82568
+    },
+    {
+      "dt": "2024-07-31",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 59
+    },
+    {
+      "dt": "2024-08-01",
+      "org_id": "ORG-0004",
+      "label_binary": "benign",
+      "n": 43130
+    },
+    {
+      "dt": "2024-08-01",
+      "org_id": "ORG-0004",
+      "label_binary": "suspicious",
+      "n": 153
+    }
+  ],
+  "missing_rate_signals": [
+    {
+      "column": "timestamp",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "event_time",
+      "all_rows": 0.7545,
+      "benign": 0.7397,
+      "suspicious": 0.9998,
+      "malicious": 0.9986
+    },
+    {
+      "column": "timestamp_source",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "origin",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "org_id",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "artifact_id",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "message_type",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "stream_name",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "pipeline",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "src_ip",
+      "all_rows": 0.6032,
+      "benign": 0.6395,
+      "suspicious": 0.0002,
+      "malicious": 0.0
+    },
+    {
+      "column": "dst_ip",
+      "all_rows": 0.9316,
+      "benign": 0.9877,
+      "suspicious": 0.0016,
+      "malicious": 0.0047
+    },
+    {
+      "column": "src_port",
+      "all_rows": 0.8968,
+      "benign": 0.9499,
+      "suspicious": 0.0172,
+      "malicious": 0.007
+    },
+    {
+      "column": "dst_port",
+      "all_rows": 0.9363,
+      "benign": 0.9917,
+      "suspicious": 0.0183,
+      "malicious": 0.0091
+    },
+    {
+      "column": "protocol",
+      "all_rows": 0.9428,
+      "benign": 0.9995,
+      "suspicious": 0.0018,
+      "malicious": 0.0061
+    },
+    {
+      "column": "src_host",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "dst_host",
+      "all_rows": 0.8254,
+      "benign": 0.8148,
+      "suspicious": 1.0,
+      "malicious": 1.0
+    },
+    {
+      "column": "username",
+      "all_rows": 0.6413,
+      "benign": 0.6197,
+      "suspicious": 0.999,
+      "malicious": 0.9939
+    },
+    {
+      "column": "action",
+      "all_rows": 0.7281,
+      "benign": 0.772,
+      "suspicious": 0.0006,
+      "malicious": 0.0026
+    },
+    {
+      "column": "severity",
+      "all_rows": 0.4928,
+      "benign": 0.5123,
+      "suspicious": 0.1415,
+      "malicious": 0.5404
+    },
+    {
+      "column": "vendor_code",
+      "all_rows": 0.4424,
+      "benign": 0.459,
+      "suspicious": 0.1416,
+      "malicious": 0.5404
+    },
+    {
+      "column": "message_sanitized",
+      "all_rows": 0.2704,
+      "benign": 0.2868,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "label_binary",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "label_confidence",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "attack_techniques",
+      "all_rows": 0.9431,
+      "benign": 1.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "attack_tactics",
+      "all_rows": 0.9431,
+      "benign": 1.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "defense_techniques",
+      "all_rows": 1.0,
+      "benign": 1.0,
+      "suspicious": 1.0,
+      "malicious": 1.0
+    },
+    {
+      "column": "mo_name",
+      "all_rows": 0.9962,
+      "benign": 1.0,
+      "suspicious": 1.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "suspicion_score",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "lifecycle_stage",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "disposition",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "disposition_category",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "is_false_positive",
+      "all_rows": 0.0,
+      "benign": 0.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "status_name",
+      "all_rows": 0.9962,
+      "benign": 1.0,
+      "suspicious": 1.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "incident_ids",
+      "all_rows": 0.9962,
+      "benign": 1.0,
+      "suspicious": 1.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "matched_rules",
+      "all_rows": 0.9431,
+      "benign": 1.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "set_roles",
+      "all_rows": 0.9431,
+      "benign": 1.0,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "product_name",
+      "all_rows": 0.1507,
+      "benign": 0.1598,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    },
+    {
+      "column": "vendor_name",
+      "all_rows": 0.1507,
+      "benign": 0.1598,
+      "suspicious": 0.0,
+      "malicious": 0.0
+    }
+  ],
+  "single_column_lookup": [
+    {
+      "column": "label_confidence",
+      "group": "post_label",
+      "purity": 0.9989,
+      "rec_benign": 1.0,
+      "rec_susp": 1.0,
+      "rec_mal": 0.7013,
+      "n_distinct": 18.0
+    },
+    {
+      "column": "attack_techniques",
+      "group": "post_label",
+      "purity": 1.0,
+      "rec_benign": 1.0,
+      "rec_susp": 1.0,
+      "rec_mal": 1.0,
+      "n_distinct": 5.0
+    },
+    {
+      "column": "attack_tactics",
+      "group": "post_label",
+      "purity": 1.0,
+      "rec_benign": 1.0,
+      "rec_susp": 1.0,
+      "rec_mal": 1.0,
+      "n_distinct": 5.0
+    },
+    {
+      "column": "defense_techniques",
+      "group": "post_label",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 1.0
+    },
+    {
+      "column": "mo_name",
+      "group": "post_label",
+      "purity": 0.9469,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": 1.0,
+      "n_distinct": 2.0
+    },
+    {
+      "column": "suspicion_score",
+      "group": "post_label",
+      "purity": 0.9469,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": 1.0,
+      "n_distinct": 23.0
+    },
+    {
+      "column": "lifecycle_stage",
+      "group": "post_label",
+      "purity": 1.0,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9999,
+      "rec_mal": 1.0,
+      "n_distinct": 3.0
+    },
+    {
+      "column": "disposition",
+      "group": "post_label",
+      "purity": 0.946,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": 0.7501,
+      "n_distinct": 4.0
+    },
+    {
+      "column": "disposition_category",
+      "group": "post_label",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 1.0
+    },
+    {
+      "column": "is_false_positive",
+      "group": "post_label",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 1.0
+    },
+    {
+      "column": "status_name",
+      "group": "post_label",
+      "purity": 0.9469,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": 1.0,
+      "n_distinct": 5.0
+    },
+    {
+      "column": "incident_ids",
+      "group": "post_label",
+      "purity": 0.9469,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": 1.0,
+      "n_distinct": 1576.0
+    },
+    {
+      "column": "matched_rules",
+      "group": "post_label",
+      "purity": 0.9962,
+      "rec_benign": 1.0,
+      "rec_susp": 1.0,
+      "rec_mal": null,
+      "n_distinct": 5.0
+    },
+    {
+      "column": "set_roles",
+      "group": "post_label",
+      "purity": 0.9976,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9996,
+      "rec_mal": 0.3888,
+      "n_distinct": 10.0
+    },
+    {
+      "column": "origin",
+      "group": "source_meta",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 1.0
+    },
+    {
+      "column": "org_id",
+      "group": "source_meta",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 4.0
+    },
+    {
+      "column": "timestamp_source",
+      "group": "source_meta",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 1.0
+    },
+    {
+      "column": "stream_name",
+      "group": "source_meta",
+      "purity": 0.9961,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9988,
+      "rec_mal": null,
+      "n_distinct": 82.0
+    },
+    {
+      "column": "pipeline",
+      "group": "source_meta",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 3.0
+    },
+    {
+      "column": "product_name",
+      "group": "source_meta",
+      "purity": 0.996,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9984,
+      "rec_mal": null,
+      "n_distinct": 20.0
+    },
+    {
+      "column": "vendor_name",
+      "group": "source_meta",
+      "purity": 0.9884,
+      "rec_benign": 0.9998,
+      "rec_susp": 0.8572,
+      "rec_mal": null,
+      "n_distinct": 13.0
+    },
+    {
+      "column": "message_type",
+      "group": "event",
+      "purity": 0.9962,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9999,
+      "rec_mal": 0.0014,
+      "n_distinct": 595.0
+    },
+    {
+      "column": "src_ip",
+      "group": "event",
+      "purity": 0.9967,
+      "rec_benign": 0.9999,
+      "rec_susp": 0.9901,
+      "rec_mal": 0.2913,
+      "n_distinct": 3917.0
+    },
+    {
+      "column": "dst_ip",
+      "group": "event",
+      "purity": 0.9961,
+      "rec_benign": 1.0,
+      "rec_susp": 0.998,
+      "rec_mal": 0.0175,
+      "n_distinct": 530.0
+    },
+    {
+      "column": "src_port",
+      "group": "event",
+      "purity": 0.9834,
+      "rec_benign": 0.9934,
+      "rec_susp": 0.8632,
+      "rec_mal": 0.2122,
+      "n_distinct": 31137.0
+    },
+    {
+      "column": "dst_port",
+      "group": "event",
+      "purity": 0.9953,
+      "rec_benign": 0.9996,
+      "rec_susp": 0.972,
+      "rec_mal": 0.2583,
+      "n_distinct": 2253.0
+    },
+    {
+      "column": "protocol",
+      "group": "event",
+      "purity": 0.9956,
+      "rec_benign": 0.9995,
+      "rec_susp": 0.9982,
+      "rec_mal": null,
+      "n_distinct": 6.0
+    },
+    {
+      "column": "src_host",
+      "group": "event",
+      "purity": 0.996,
+      "rec_benign": 0.9999,
+      "rec_susp": 0.9974,
+      "rec_mal": null,
+      "n_distinct": 748.0
+    },
+    {
+      "column": "dst_host",
+      "group": "event",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": null,
+      "rec_mal": null,
+      "n_distinct": 20.0
+    },
+    {
+      "column": "username",
+      "group": "event",
+      "purity": 0.9431,
+      "rec_benign": 1.0,
+      "rec_susp": 0.0008,
+      "rec_mal": null,
+      "n_distinct": 10275.0
+    },
+    {
+      "column": "action",
+      "group": "event",
+      "purity": 0.9961,
+      "rec_benign": 1.0,
+      "rec_susp": 0.9984,
+      "rec_mal": null,
+      "n_distinct": 44.0
+    },
+    {
+      "column": "severity",
+      "group": "event",
+      "purity": 0.9885,
+      "rec_benign": 1.0,
+      "rec_susp": 0.8573,
+      "rec_mal": null,
+      "n_distinct": 10.0
+    },
+    {
+      "column": "vendor_code",
+      "group": "event",
+      "purity": 0.9887,
+      "rec_benign": 1.0,
+      "rec_susp": 0.8583,
+      "rec_mal": 0.0032,
+      "n_distinct": 463831.0
+    }
+  ],
+  "post_label_nonempty_by_label": [
+    {
+      "label_binary": "suspicious",
+      "label_confidence": 1.0,
+      "attack_techniques": 1.0,
+      "attack_tactics": 1.0,
+      "defense_techniques": 0.0,
+      "mo_name": 0.0,
+      "suspicion_score": 0.0,
+      "lifecycle_stage": 1.0,
+      "disposition": 1.0,
+      "disposition_category": 1.0,
+      "is_false_positive": 0.0,
+      "status_name": 0.0,
+      "incident_ids": 0.0,
+      "matched_rules": 1.0,
+      "set_roles": 1.0
+    },
+    {
+      "label_binary": "benign",
+      "label_confidence": 1.0,
+      "attack_techniques": 0.0,
+      "attack_tactics": 0.0,
+      "defense_techniques": 0.0,
+      "mo_name": 0.0,
+      "suspicion_score": 0.0,
+      "lifecycle_stage": 1.0,
+      "disposition": 1.0,
+      "disposition_category": 1.0,
+      "is_false_positive": 0.0,
+      "status_name": 0.0,
+      "incident_ids": 0.0,
+      "matched_rules": 0.0,
+      "set_roles": 0.0
+    },
+    {
+      "label_binary": "malicious",
+      "label_confidence": 1.0,
+      "attack_techniques": 1.0,
+      "attack_tactics": 1.0,
+      "defense_techniques": 0.0,
+      "mo_name": 1.0,
+      "suspicion_score": 1.0,
+      "lifecycle_stage": 1.0,
+      "disposition": 1.0,
+      "disposition_category": 1.0,
+      "is_false_positive": 0.0,
+      "status_name": 1.0,
+      "incident_ids": 1.0,
+      "matched_rules": 1.0,
+      "set_roles": 1.0
+    }
+  ],
+  "exact_duplicate_messages": {
+    "total_rows": 2011674,
+    "distinct_messages": 913954,
+    "dup_share": 0.5456748956341833
+  },
+  "duplicate_share_by_label": [
+    {
+      "label_binary": "suspicious",
+      "share_rows_with_duplicate_text": 0.34009719738185085
+    },
+    {
+      "label_binary": "benign",
+      "share_rows_with_duplicate_text": 0.61997793535893
+    },
+    {
+      "label_binary": "malicious",
+      "share_rows_with_duplicate_text": 0.7210144927536232
+    }
+  ],
+  "conflicting_labels_same_message": {
+    "messages_with_conflict": 852,
+    "rows_in_conflict": 20022,
+    "malicious_rows_whose_text_also_appears_with_other_label": 4804,
+    "malicious_total": 7728
+  },
+  "near_duplicate_templates": {
+    "distinct_templates": 186567,
+    "malicious_templates": 48,
+    "suspicious_templates": 102
+  },
+  "cross_org_shared_messages": 4,
+  "malicious_incident_groups": [
+    {
+      "org_id": "ORG-0005",
+      "incidents": 1490,
+      "memberships": 4163,
+      "largest_incident": 501,
+      "median_incident_size": 14.0
+    },
+    {
+      "org_id": "ORG-0004",
+      "incidents": 81,
+      "memberships": 4177,
+      "largest_incident": 100,
+      "median_incident_size": 98.0
+    },
+    {
+      "org_id": "ORG-0003",
+      "incidents": 13,
+      "memberships": 16,
+      "largest_incident": 2,
+      "median_incident_size": 1.0
+    }
+  ],
+  "incidents_spanning_orgs": 0,
+  "malicious_multi_incident_rows": 600,
+  "mo_name_malicious_signals": [
+    {
+      "org_id": "ORG-0004",
+      "mo_name": "Data Theft",
+      "n": 4176
+    },
+    {
+      "org_id": "ORG-0005",
+      "mo_name": "Data Theft",
+      "n": 3536
+    },
+    {
+      "org_id": "ORG-0003",
+      "mo_name": "Data Theft",
+      "n": 16
+    }
+  ],
+  "stream_by_org_label": [
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "crond",
+      "label_binary": "benign",
+      "n": 1511
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "filebeat_diagnostic",
+      "label_binary": "benign",
+      "n": 905
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "network_communication",
+      "label_binary": "benign",
+      "n": 881
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "systemd_logind",
+      "label_binary": "benign",
+      "n": 465
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "sshd",
+      "label_binary": "benign",
+      "n": 376
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "no_useful_info",
+      "label_binary": "benign",
+      "n": 280
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "cisco_os",
+      "label_binary": "benign",
+      "n": 192
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "symantec_sep",
+      "label_binary": "benign",
+      "n": 127
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "pam",
+      "label_binary": "benign",
+      "n": 108
+    },
+    {
+      "org_id": "ORG-0001",
+      "stream_name": "systemd",
+      "label_binary": "benign",
+      "n": 95
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "microsoft-windows-security-auditing",
+      "label_binary": "benign",
+      "n": 408969
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "pam",
+      "label_binary": "benign",
+      "n": 8577
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "sshd",
+      "label_binary": "benign",
+      "n": 6202
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "linux_audit",
+      "label_binary": "benign",
+      "n": 3887
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "security",
+      "label_binary": "benign",
+      "n": 1775
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "ad_audit_plus",
+      "label_binary": "benign",
+      "n": 1275
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "ad fs auditing",
+      "label_binary": "benign",
+      "n": 1193
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "service control manager",
+      "label_binary": "benign",
+      "n": 797
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "unknown",
+      "label_binary": "benign",
+      "n": 263
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "directory synchronization",
+      "label_binary": "benign",
+      "n": 203
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "esent",
+      "label_binary": "benign",
+      "n": 130
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "DUO Asset Inventory",
+      "label_binary": "benign",
+      "n": 125
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "microsoft-windows-security-auditing",
+      "label_binary": "suspicious",
+      "n": 113
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "schannel",
+      "label_binary": "benign",
+      "n": 91
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "microsoft-windows-security-spp",
+      "label_binary": "benign",
+      "n": 90
+    },
+    {
+      "org_id": "ORG-0003",
+      "stream_name": "Integrations Status",
+      "label_binary": "benign",
+      "n": 52
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "aws_cloudtrail_events",
+      "label_binary": "benign",
+      "n": 543159
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "windows_security_audit",
+      "label_binary": "benign",
+      "n": 336425
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "no_useful_info",
+      "label_binary": "benign",
+      "n": 47966
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "aws_cloud_trail",
+      "label_binary": "benign",
+      "n": 34484
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "aws_vpc_flow_log",
+      "label_binary": "suspicious",
+      "n": 15063
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "microsoft-windows-security-auditing",
+      "label_binary": "benign",
+      "n": 6835
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "mssql$HOST-1053",
+      "label_binary": "benign",
+      "n": 6376
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "aws_vpc_flow_log",
+      "label_binary": "malicious",
+      "n": 4156
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "unknown",
+      "label_binary": "benign",
+      "n": 713
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "Crowdstrike Asset Inventory",
+      "label_binary": "benign",
+      "n": 276
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "microsoft-windows-distributedcom",
+      "label_binary": "benign",
+      "n": 231
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "service control manager",
+      "label_binary": "benign",
+      "n": 113
+    },
+    {
+      "org_id": "ORG-0004",
+      "stream_name": "Integrations Status",
+      "label_binary": "benign",
+      "n": 53
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "vcenter",
+      "label_binary": "benign",
+      "n": 266201
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "java_stack_trace",
+      "label_binary": "benign",
+      "n": 154465
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "cisco_asa",
+      "label_binary": "suspicious",
+      "n": 91537
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "dnsmasq",
+      "label_binary": "benign",
+      "n": 34110
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "barracuda_waf",
+      "label_binary": "benign",
+      "n": 14841
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "microsoft-windows-security-auditing",
+      "label_binary": "benign",
+      "n": 5654
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "cisco_asa",
+      "label_binary": "malicious",
+      "n": 3525
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "unknown",
+      "label_binary": "benign",
+      "n": 2714
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "service control manager",
+      "label_binary": "benign",
+      "n": 1158
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "crond",
+      "label_binary": "benign",
+      "n": 797
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "Microsoft Graph Asset Inventory",
+      "label_binary": "benign",
+      "n": 470
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "barracuda_ess",
+      "label_binary": "benign",
+      "n": 391
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "Integrations Status",
+      "label_binary": "benign",
+      "n": 288
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "rsyslogd",
+      "label_binary": "benign",
+      "n": 208
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "apache_access_log",
+      "label_binary": "benign",
+      "n": 170
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "cisco_asa",
+      "label_binary": "benign",
+      "n": 81
+    },
+    {
+      "org_id": "ORG-0005",
+      "stream_name": "systemd",
+      "label_binary": "benign",
+      "n": 62
+    }
+  ],
+  "message_type_overlap_0004_0005": {
+    "types_0004": 453,
+    "types_0005": 48,
+    "shared": 11
+  },
+  "malicious_message_types_by_org": [
+    {
+      "org_id": "ORG-0003",
+      "message_type": "auth_failure",
+      "stream_name": "microsoft-windows-security-auditing",
+      "n": 16
+    },
+    {
+      "org_id": "ORG-0004",
+      "message_type": "network_flow_data",
+      "stream_name": "aws_vpc_flow_log",
+      "n": 4156
+    },
+    {
+      "org_id": "ORG-0004",
+      "message_type": "endpoint_protection_event",
+      "stream_name": "Crowdstrike Detection",
+      "n": 20
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "firewall_action",
+      "stream_name": "cisco_asa",
+      "n": 3525
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "GEO_IP_BLOCK",
+      "stream_name": "barracuda_waf",
+      "n": 4
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "SLASH_DOT_IN_URL",
+      "stream_name": "barracuda_waf",
+      "n": 2
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "GRIP_IP_BLACKLISTED",
+      "stream_name": "barracuda_waf",
+      "n": 2
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "MALFORMED_VERSION",
+      "stream_name": "barracuda_waf",
+      "n": 2
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "UNKNOWN_CONTENT_TYPE",
+      "stream_name": "barracuda_waf",
+      "n": 1
+    }
+  ],
+  "suspicious_message_types_by_org": [
+    {
+      "org_id": "ORG-0001",
+      "message_type": "auth_failure",
+      "stream_name": "generic_log",
+      "n": 10
+    },
+    {
+      "org_id": "ORG-0003",
+      "message_type": "auth_failure",
+      "stream_name": "microsoft-windows-security-auditing",
+      "n": 113
+    },
+    {
+      "org_id": "ORG-0004",
+      "message_type": "network_flow_data",
+      "stream_name": "aws_vpc_flow_log",
+      "n": 15063
+    },
+    {
+      "org_id": "ORG-0004",
+      "message_type": "endpoint_protection_event",
+      "stream_name": "Crowdstrike Detection",
+      "n": 38
+    },
+    {
+      "org_id": "ORG-0004",
+      "message_type": "data_loss",
+      "stream_name": "symantec_dlp",
+      "n": 14
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "firewall_action",
+      "stream_name": "cisco_asa",
+      "n": 91537
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "REMOTE_FILE_INCLUSION",
+      "stream_name": "barracuda_waf",
+      "n": 10
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "GEO_IP_BLOCK",
+      "stream_name": "barracuda_waf",
+      "n": 3
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "MALFORMED_VERSION",
+      "stream_name": "barracuda_waf",
+      "n": 2
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "INVALID_METHOD",
+      "stream_name": "barracuda_waf",
+      "n": 2
+    },
+    {
+      "org_id": "ORG-0005",
+      "message_type": "UNKNOWN_CONTENT_TYPE",
+      "stream_name": "barracuda_waf",
+      "n": 1
+    }
+  ],
+  "timestamp_source_by_table": [
+    {
+      "t": "signals",
+      "timestamp_source": "artifact.timeuuid",
+      "n": 2011674
+    },
+    {
+      "t": "incident_signals",
+      "timestamp_source": "artifact.timeuuid",
+      "n": 26
+    },
+    {
+      "t": "incident_signals",
+      "timestamp_source": "lead.observed_at.year_repaired",
+      "n": 835
+    },
+    {
+      "t": "incident_signals",
+      "timestamp_source": "lead.observed_at",
+      "n": 237650
+    }
+  ],
+  "stream_top_incident_signals": [
+    {
+      "stream_name": "cisco_asa",
+      "n": 221381
+    },
+    {
+      "stream_name": "meraki",
+      "n": 7077
+    },
+    {
+      "stream_name": "aws_vpc_flow_log",
+      "n": 6436
+    },
+    {
+      "stream_name": "pan_firewall",
+      "n": 3164
+    },
+    {
+      "stream_name": "barracuda_waf",
+      "n": 302
+    },
+    {
+      "stream_name": "microsoft-windows-security-auditing",
+      "n": 63
+    },
+    {
+      "stream_name": "meraki_l7_firewall",
+      "n": 46
+    },
+    {
+      "stream_name": "Crowdstrike Detection",
+      "n": 25
+    },
+    {
+      "stream_name": "DUO",
+      "n": 7
+    },
+    {
+      "stream_name": "HOST-0325 Detection",
+      "n": 6
+    }
+  ],
+  "stream_top_signals_malicious": [
+    {
+      "stream_name": "aws_vpc_flow_log",
+      "n": 4156
+    },
+    {
+      "stream_name": "cisco_asa",
+      "n": 3525
+    },
+    {
+      "stream_name": "Crowdstrike Detection",
+      "n": 20
+    },
+    {
+      "stream_name": "microsoft-windows-security-auditing",
+      "n": 16
+    },
+    {
+      "stream_name": "barracuda_waf",
+      "n": 11
+    }
+  ],
+  "incident_signals_by_org": [
+    {
+      "org_id": "ORG-0001",
+      "n": 138865
+    },
+    {
+      "org_id": "ORG-0005",
+      "n": 82851
+    },
+    {
+      "org_id": "ORG-0003",
+      "n": 7162
+    },
+    {
+      "org_id": "ORG-0004",
+      "n": 6463
+    },
+    {
+      "org_id": "ORG-0002",
+      "n": 3170
+    }
+  ],
+  "incident_signals_year": [
+    {
+      "yr": 2022,
+      "n": 6431
+    },
+    {
+      "yr": 2023,
+      "n": 22264
+    },
+    {
+      "yr": 2024,
+      "n": 209816
+    }
+  ],
+  "time_range_signals": [
+    {
+      "label_binary": "benign",
+      "t_first": "2024-07-26 16:10:23.729255+05",
+      "t_last": "2024-08-01 11:00:03.239709+05",
+      "event_time_present": 0.2602958222136011
+    },
+    {
+      "label_binary": "malicious",
+      "t_first": "2024-07-26 16:15:48.522378+05",
+      "t_last": "2024-07-30 09:56:35.093917+05",
+      "event_time_present": 0.0014233954451345755
+    },
+    {
+      "label_binary": "suspicious",
+      "t_first": "2024-07-26 16:10:48.749697+05",
+      "t_last": "2024-08-01 07:56:24.476477+05",
+      "event_time_present": 0.00016855037315179834
+    }
+  ],
+  "ingest_vs_event_lag_seconds": [
+    {
+      "label_binary": "suspicious",
+      "median_lag": 7.542998552322388,
+      "p95": 10.986977076530454
+    },
+    {
+      "label_binary": "benign",
+      "median_lag": 9.76197361946106,
+      "p95": 14.122331619262695
+    },
+    {
+      "label_binary": "malicious",
+      "median_lag": 9.591209888458252,
+      "p95": 11.02606737613678
+    }
+  ],
+  "message_length": [
+    {
+      "label_binary": "suspicious",
+      "median_len": 157.0,
+      "max_len": 11553
+    },
+    {
+      "label_binary": "benign",
+      "median_len": 234.0,
+      "max_len": 65116
+    },
+    {
+      "label_binary": "malicious",
+      "median_len": 115.0,
+      "max_len": 6255
+    }
+  ],
+  "attack_reports": {
+    "n": 51371,
+    "incidents": 51371,
+    "median_chars": 1136.0,
+    "max_chars": 1390
+  },
+  "attack_reports_mo": [
+    {
+      "mo_name": "Data Theft",
+      "n": 51370
+    },
+    {
+      "mo_name": "Phishing",
+      "n": 1
+    }
+  ],
+  "attack_report_example": "Incident `97d12b00-a932-11ed-a973-7df772fdd65e` (`Bitter Reindeer 230971`) was classified by WitFoo Precinct as **Data Theft** with a suspicion score of 0.25 and a final disposition of **Unprocessed** (`disposition_category=automated`). The attack chain began at `2023-02-10T11:03:46Z` and was last observed at `2023-02-10T11:03:46Z`. The incident graph contains 8 triggering signals, 2 nodes, 1 edge. WitFoo classification roles assigned: Exploiting Host, Exploiting Target. Detection rules triggered: \"ASA Deny\", \"Blocked Action\". Security products that observed activity: ASA Firewall. Mapped MITRE ATT&CK tactics: TA0001, TA0002, TA0009, TA0010. Mapped MITRE ATT&CK techniques: T1190, T1041, T1567. Inferred kill-chain stage: `complete-mission`. Sample triggering signal: `<164>Feb 10 2023 03:28:21: %ASA-4-106023: Deny tcp src outside:100.64.39.155/40666 dst dmz-1:10.187.253.125/3870 by access-group \"outside_access_in\" [0x0, 0x0]`. This report was generated deterministically from Precinct's structured incident metadata; it reflects Precinct's automated correlation engine output, not an independent threat-hunting investigation.",
+  "edge_types": [
+    {
+      "type": "USER_ACTION",
+      "n": 692375
+    },
+    {
+      "type": "AUDIT_EVENT",
+      "n": 336425
+    },
+    {
+      "type": "INCIDENT_LINK",
+      "n": 335645
+    },
+    {
+      "type": "NETWORK_FLOW",
+      "n": 323376
+    },
+    {
+      "type": "EVENT",
+      "n": 45063
+    },
+    {
+      "type": "DNS_RESOLVE",
+      "n": 7554
+    }
+  ],
+  "node_types": [
+    {
+      "type": "HOST",
+      "n": 36974
+    },
+    {
+      "type": "CREDENTIAL",
+      "n": 10575
+    },
+    {
+      "type": "FILE",
+      "n": 29
+    },
+    {
+      "type": "SERVICE",
+      "n": 6
+    },
+    {
+      "type": "ACTOR",
+      "n": 1
+    }
+  ],
+  "_runtime_seconds": 62.5
+}
