@@ -1,0 +1,143 @@
+{
+  "definitions": {
+    "train": "persisted model scored on its own training rows",
+    "validation": "out-of-fold predictions, StratifiedGroupKFold(3) on the training window, same groups as tuning",
+    "test": "held-out future window"
+  },
+  "stage2_pooled": {
+    "logreg": {
+      "threshold": 0.8539,
+      "feature_set": "context",
+      "train": {
+        "accuracy": 0.9343,
+        "macro_f1": 0.7616,
+        "pr_auc_positive": 0.5601,
+        "roc_auc": 0.9495,
+        "positive_rate_baseline": 0.0639,
+        "n": 56079,
+        "n_positive": 3581,
+        "malicious_precision": 0.4892,
+        "malicious_recall": 0.6509,
+        "malicious_f1": 0.5586
+      },
+      "validation": {
+        "accuracy": 0.8639,
+        "macro_f1": 0.6529,
+        "pr_auc_positive": 0.2942,
+        "roc_auc": 0.8837,
+        "positive_rate_baseline": 0.0639,
+        "n": 56079,
+        "n_positive": 3581,
+        "malicious_precision": 0.2692,
+        "malicious_recall": 0.6596,
+        "malicious_f1": 0.3823
+      },
+      "test": {
+        "accuracy": 0.8831,
+        "macro_f1": 0.6188,
+        "pr_auc_positive": 0.2502,
+        "roc_auc": 0.8798,
+        "positive_rate_baseline": 0.0687,
+        "n": 58167,
+        "n_positive": 3995,
+        "malicious_precision": 0.2557,
+        "malicious_recall": 0.3672,
+        "malicious_f1": 0.3014
+      }
+    },
+    "random_forest": {
+      "threshold": 0.8399,
+      "feature_set": "context",
+      "train": {
+        "accuracy": 0.9587,
+        "macro_f1": 0.8448,
+        "pr_auc_positive": 0.7889,
+        "roc_auc": 0.9839,
+        "positive_rate_baseline": 0.0639,
+        "n": 56079,
+        "n_positive": 3581,
+        "malicious_precision": 0.6422,
+        "malicious_recall": 0.7981,
+        "malicious_f1": 0.7117
+      },
+      "validation": {
+        "accuracy": 0.9093,
+        "macro_f1": 0.6964,
+        "pr_auc_positive": 0.2881,
+        "roc_auc": 0.8425,
+        "positive_rate_baseline": 0.0639,
+        "n": 56079,
+        "n_positive": 3581,
+        "malicious_precision": 0.364,
+        "malicious_recall": 0.5633,
+        "malicious_f1": 0.4422
+      },
+      "test": {
+        "accuracy": 0.9201,
+        "macro_f1": 0.5973,
+        "pr_auc_positive": 0.2571,
+        "roc_auc": 0.8458,
+        "positive_rate_baseline": 0.0687,
+        "n": 58167,
+        "n_positive": 3995,
+        "malicious_precision": 0.344,
+        "malicious_recall": 0.1805,
+        "malicious_f1": 0.2367
+      }
+    }
+  },
+  "stage1": {
+    "logreg": {
+      "train": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "pr_auc_positive": 1.0,
+        "roc_auc": 1.0,
+        "positive_rate_baseline": 0.1834,
+        "n": 306147,
+        "n_positive": 56147,
+        "alert_precision": 1.0,
+        "alert_recall": 1.0,
+        "alert_f1": 1.0
+      },
+      "test": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "pr_auc_positive": 1.0,
+        "roc_auc": 1.0,
+        "positive_rate_baseline": 0.0603,
+        "n": 965856,
+        "n_positive": 58237,
+        "alert_precision": 1.0,
+        "alert_recall": 1.0,
+        "alert_f1": 1.0
+      }
+    },
+    "random_forest": {
+      "train": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "pr_auc_positive": 1.0,
+        "roc_auc": 1.0,
+        "positive_rate_baseline": 0.1834,
+        "n": 306147,
+        "n_positive": 56147,
+        "alert_precision": 1.0,
+        "alert_recall": 1.0,
+        "alert_f1": 1.0
+      },
+      "test": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "pr_auc_positive": 1.0,
+        "roc_auc": 1.0,
+        "positive_rate_baseline": 0.0603,
+        "n": 965856,
+        "n_positive": 58237,
+        "alert_precision": 1.0,
+        "alert_recall": 0.9999,
+        "alert_f1": 1.0
+      }
+    }
+  }
+}

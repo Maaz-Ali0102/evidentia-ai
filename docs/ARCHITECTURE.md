@@ -160,11 +160,11 @@ Each edge stores its type, score, the per-signal breakdown and its source artifa
   - `artifact_metadata(id)`
 - **Grounding:** every case fact in an answer must cite an event or chunk ID. The answer separates evidence, model prediction, inferred relationship and unknown. If nothing relevant is retrieved, it says so.
 - **Case isolation:** every query is filtered by `case_id`.
-- **LLM:** local through Ollama (`qwen2.5:3b` or `llama3.2:3b`) so evidence never leaves the machine. The provider interface is configurable.
+- **LLM (as built):** Google Gemini (`GEMINI_MODEL`, default `gemini-3.8-flash`) when `GEMINI_API_KEY` is set. Only the retrieved records for a question are sent, and the UI says so. Without a key, a built-in answerer assembles the same sections from the retrieved records. The original plan was local Ollama; Ollama is not installed on the development laptop.
 
 ## 7. Stack and layout
 
-Python 3.12, plus:
+Planned stack (as built: Python 3.14, FastAPI, React + Vite, SQLite per case, fastembed, Gemini; see README):
 
 - pandas, DuckDB/Parquet
 - scikit-learn, joblib
@@ -181,17 +181,18 @@ FastAPI and React are *future work*. They are not needed for the CCA.
 
 ```
 evidentia/
-  core/        schema.py (Evidence, Event, Entity), entities.py
-  ingestion/   hashing.py, parsers/{json,csv,txt,log,html}.py, normalize.py
-  ml/          data.py, features.py, context.py, train.py, evaluate.py, orchestrator.py
-  relations/   scoring.py, graph.py, timeline.py, evaluate.py
-  retrieval/   chunking.py, embed.py, index.py
-  assistant/   llm.py, tools.py, answer.py
-app/           streamlit_app.py (pages: Case, Evidence, ML, Graph, Timeline, Chat, Results)
-scripts/       audit_dataset.py, eda_figures.py, train_*.py
-reports/       DATASET_AUDIT.md, figures/, metrics/
-tests/
-data/          raw/ (dataset, git-ignored), samples/ (labeled sample case files)
+  ingestion/   upload.py (CSV/JSON/log/text/HTML, SHA-256, provenance, column mapping), entities.py
+  ml/          config, data, features, context, models, evaluate, orchestrator
+  cases/       store.py (cases/<id>: read-only originals + SQLite), pipeline.py (per-file processing)
+  relations/   mapper.py (candidates, signals, learned non-negative weights, evidence gate)
+  rag/         embed.py (fastembed MiniLM), retrieve.py (facts, filters, BM25 + dense, links, knowledge),
+               llm.py (Gemini / built-in), answer.py (sections, citations, check)
+  api/         main.py (FastAPI; serves frontend/dist)
+frontend/      React + TypeScript (Vite): Cases, Overview, Evidence, Records, Connections, Ask, Model, Data, About
+scripts/       audit, EDA, training, results figures, stage1_within_product, train_relations, report appendix
+reports/       DATASET_AUDIT.md, ML_RESULTS.md, ML_REPORT.md, figures/, metrics/
+tests/         test_ml.py, test_api.py
+data/          raw/ (dataset, git-ignored), samples/ (labelled sample case files), models_cache/ (embeddings, git-ignored)
 ```
 
 ## 8. Mapping to the CT-264 rubric
@@ -214,10 +215,10 @@ data/          raw/ (dataset, git-ignored), samples/ (labeled sample case files)
 |---|---|---|---|---|
 | 1 | Dataset audit + EDA | `reports/DATASET_AUDIT.md`, 12 audit figures, `notebooks/01_eda.ipynb` (9 figures) | Core | ✅ Done |
 | 2 | ML pipeline: features, context windows, splits, LR/RF/IF, tuning, ablations | `models/`, `reports/metrics/*.json`, tests | **Core: marks come from here** | ✅ Done (train-score check pending) |
-| 3 | Streamlit app v1: upload a log CSV/JSON → predictions, anomaly scores, charts | working demo | Core | ✅ Done |
-| 4 | Ingestion for the other formats + entities + timeline | case pipeline | Bonus | ❌ Not started |
-| 5 | Relationship engine + graph + research experiment | P@K results | Bonus | ❌ Not started |
-| 6 | RAG assistant with tools and citations | chat page | Bonus | ❌ Not started |
+| 3 | App v1 (Streamlit), replaced in v2 by React + FastAPI | working demo | Core | ✅ Done (v2) |
+| 4 | Ingestion for the other formats + entities + timeline | case pipeline | Bonus | ✅ Cases, CSV/JSON/log/text/HTML, indicators, case-wide activity chart (no OCR) |
+| 5 | Relationship engine + graph + research experiment | P@K results | Bonus | ✅ `evidentia/relations/`, `reports/metrics/relations.json` |
+| 6 | RAG assistant with tools and citations | chat page | Bonus | ✅ `evidentia/rag/` (Gemini or built-in; no evaluation set yet) |
 | 7 | Technical report (10+ pages) + viva preparation | PDF | Core | ⏳ `reports/ML_REPORT.md` written; PDF not yet |
 
 The current state, with known issues, is in [docs/PROJECT_STATUS.md](PROJECT_STATUS.md).

@@ -166,6 +166,24 @@ def appendix() -> str:
               "`reports/metrics/train_val_test.json` does not exist yet: `scripts/train_val_test_scores.py` "
               "could not run (Windows Application Control blocked a pandas DLL). See §9.", ""]
 
+    rel_path = MET / "relations.json"
+    if rel_path.exists():
+        rel = json.loads(rel_path.read_text(encoding="utf-8"))
+        rows = []
+        for org, sides in rel["results"].items():
+            for side, d in sides.items():
+                for sc, r in d.items():
+                    if isinstance(r, dict):
+                        rows.append([org, side, sc, r["queries"], r["mrr"], r["p_at_5"], r["recall_at_10"], r["candidate_recall"]])
+        w = rel["weights"]
+        L += ["### A.11 Relationship mapper (`reports/metrics/relations.json`)", "",
+              f"Ground truth: {rel['ground_truth']}. Candidates: {rel['candidates']}.", "",
+              f"Used weights: mix {w.get('mix')} over {w['features']}, calibrated coef {w['coef']}, intercept {w['intercept']}, "
+              f"tau {w['tau']} s; {w.get('selection', '')}; train pairs {w['train_pairs']:,} ({w['train_positive']:,} related). "
+              f"Unconstrained LR (diagnostic): {rel.get('unconstrained_lr_diagnostic')}.", "",
+              table(["Org", "Window", "Scorer", "Queries", "MRR", "P@5", "Recall@10", "Candidate recall"], rows), "",
+              f"_{rel['caveat']}_", ""]
+
     # ---------------------------------------------------------------- raw data
     L += ["## Appendix B. Raw data examples", "",
           "Rows are copied unchanged from `data/samples/` (messages cut at 220 characters). "

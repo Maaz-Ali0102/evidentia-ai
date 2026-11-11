@@ -45,9 +45,9 @@ def prepare_frame(df: pd.DataFrame) -> pd.DataFrame:
         if c == "src_port_bucket":
             out[c] = df["src_port"].map(src_port_bucket) if "src_port" in df else "none"
         else:
-            out[c] = df[c].fillna("none").astype(str) if c in df else "none"
+            out[c] = df[c].astype(object).fillna("none").astype(str) if c in df else "none"
     for c in SOURCE_FIELDS:
-        out[c] = df[c].fillna("none").astype(str) if c in df else "none"
+        out[c] = df[c].astype(object).fillna("none").astype(str) if c in df else "none"
     return out
 
 

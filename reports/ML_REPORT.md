@@ -73,15 +73,21 @@ flowchart LR
     S --> M3[Isolation Forest<br/>alert rows, labels unused]
     M1 & M2 & M3 --> R[(models/*.joblib<br/>metrics/*.json)]
   end
-  subgraph Online["Online use (Streamlit app, localhost)"]
-    U[Uploaded log file] --> H[SHA-256 + provenance]
-    H --> PA[Parse CSV / JSON / ASA / VPC lines]
+  subgraph Online["Online use (React + FastAPI app, localhost)"]
+    U[Evidence files of a case] --> H[SHA-256, read-only original, provenance]
+    H --> PA[Parse CSV / JSON / ASA / VPC / text / HTML]
     PA --> G{Applicability gate}
-    G -- not a security log --> NA[not applicable]
+    G -- not a security log --> NA[not scored, still indexed]
     G -- security log --> C[Context features within the file]
-    C --> O[ML orchestrator]
+    C --> O[ML orchestrator, once at upload]
     R --> O
-    O --> V[Timeline · table · inspector · CSV export]
+    PA --> EN[Indicators: IP, domain, URL, user, hash, path]
+    EN --> RM[Relationship mapper]
+    O --> DB[(Case database)]
+    RM --> DB
+    DB --> RT[Retrieval: facts, filters, BM25 + embeddings, links, knowledge]
+    RT --> LLM[Gemini or built-in answer, cited]
+    DB --> UI[Overview · Records · Connections graph]
   end
 ```
 
@@ -115,9 +121,14 @@ Here p₁ = P(alert) and p₂ = P(malicious | alert).
 | `evidentia/ml/evaluate.py` | Metric functions (every reported number) |
 | `evidentia/ml/orchestrator.py` | Runs all models on new events |
 | `evidentia/ingestion/upload.py` | File parsing, hashing, provenance |
-| `scripts/` | Audit, EDA figures, training, results figures, checks |
-| `app/` | Streamlit interface |
-| `tests/test_ml.py` | 15 tests: leakage guards, split integrity, context correctness, persistence, orchestrator |
+| `evidentia/ingestion/entities.py` | Indicator extraction (IPs, domains, URLs, emails, users, hosts, hashes, paths) |
+| `evidentia/cases/` | Case store (read-only originals + SQLite) and the per-file pipeline |
+| `evidentia/relations/mapper.py` | Relationship mapper |
+| `evidentia/rag/` | Embeddings, retrieval, Gemini / built-in answers with checked citations |
+| `evidentia/api/main.py` | FastAPI backend, serves the frontend |
+| `frontend/` | React + TypeScript interface |
+| `scripts/` | Audit, EDA figures, training, results figures, checks, `train_relations.py` |
+| `tests/` | 24 tests: leakage guards, split integrity, context correctness, persistence, orchestrator, case workflow, assistant grounding, mapper |
 
 ---
 
@@ -446,58 +457,137 @@ Test set: 965,856 rows (907,619 benign, 54,229 suspicious, 4,008 malicious).
 
 ### 9.5 Training vs validation vs test (over-fitting check)
 
-| Model (POOLED) | Validation PR-AUC (CV) | Test PR-AUC | Chance |
-|---|---|---|---|
-| LR | 0.4633 | 0.2502 | 0.0687 |
-| RF | 0.4076 | 0.2571 | 0.0687 |
+Script: `scripts/train_val_test_scores.py`. Output: `reports/metrics/train_val_test.json`. Raw numbers are in Appendix A.10.
 
-**Training score: pending.** `scripts/train_val_test_scores.py` measures train, validation and test the same way, but it could not run on 10 Nov 2026: Windows Application Control blocked a pandas DLL. The result will appear in Appendix A.10 once it runs.
+Each saved model is measured three ways, at its own decision threshold:
 
-**Interpretation of the validation → test drop:**
+- **Train:** the model scored on the rows it was fitted on.
+- **Validation:** pooled out-of-fold predictions, from the same incident-grouped 3-fold CV used for tuning.
+- **Test:** the later window.
 
-- **Over-fitting is unlikely to be the main cause:**
-  - CV picked the *simplest* options: 23 context features instead of 20,000 text features, the strongest regularisation (C = 0.1), and min_samples_leaf 5.
-  - Folds are grouped by incident, so memorising an attack cannot inflate validation.
-- **The drop is mainly temporal drift:**
-  - Validation folds come from the same period as training, while the test is a *later* period with new incidents.
-  - The malicious share is similar in both (6.4% vs 6.9%), so class mix does not explain the drop.
-  - Picking the best of several grid candidates also makes the CV number slightly optimistic.
-- **Rule for the pending check:** train ≫ validation would mean over-fitting; train ≈ validation would mean the drop is drift.
+| Model (Stage 2, POOLED) | Train PR-AUC | Validation PR-AUC (pooled OOF) | Test PR-AUC | Chance | Train / val / test ROC-AUC |
+|---|---|---|---|---|---|
+| Logistic Regression | 0.560 | 0.294 | 0.250 | 0.069 | 0.950 / 0.884 / 0.880 |
+| Random Forest | 0.789 | 0.288 | 0.257 | 0.069 | 0.984 / 0.843 / 0.846 |
+
+Stage 1 scores 1.0 on train and test for both models (§9.1).
+
+**Interpretation.**
+
+- **There is over-fitting, mostly in the Random Forest.** Train PR-AUC is about 2–3× the validation score: 0.789 → 0.288 for RF, and 0.560 → 0.294 for LR. The models learn patterns of the training window's incidents that do not carry over to *new* incidents, even though CV chose the most regularised settings (C = 0.1; min_samples_leaf 5). The cause is the data more than the model: there are few distinct malicious templates, and incidents come in bursts.
+- **Validation predicts the test well.** Validation and test are close (0.294 → 0.250 and 0.288 → 0.257; ROC-AUC 0.88 → 0.88 and 0.84 → 0.85), so the drift from the training window to the later window is small. The incident-grouped validation is therefore an honest estimate of performance on new incidents.
+- **Correction to an earlier explanation.** §9.2 lists CV PR-AUC 0.463 (LR). That is the *mean of per-fold* average precision chosen by GridSearchCV, and it is optimistic: each fold is ranked separately, and the best of the grid is reported. Comparing 0.463 with the test score suggested a large drift. Before the training score was measured, that drop was explained as "mostly temporal drift". The pooled out-of-fold number (0.294) is the like-for-like comparison, and it shows the main gap is **train → new incidents**, not **past → future**.
+- **What would reduce it:** more distinct incidents (more days and organisations), per-incident sample weights so a few large bursts do not dominate, and incident- or session-level features (`docs/PROJECT_STATUS.md` §6).
+
+### 9.6 Relationship mapper
+
+**Task.** Rank, for a malicious record, the other records most likely to belong to the same incident. A WitFoo incident id serves as ground truth; it is used only as a label, never as an input.
+
+**Signals for a pair of records:**
+
+| Signal | Definition |
+|---|---|
+| **time** | exp(−Δt / 300 s) |
+| **shared indicators** | IDF-weighted Jaccard of their IPs, domains, users, hashes… |
+| **content** | Cosine similarity of all-MiniLM-L6-v2 embeddings of the digit-masked text |
+
+**Candidates.** For each query, the nearest-in-time records sharing an indicator (10 per indicator), taken from the alert records of the same organisation and the same side of the temporal cut-off.
+
+**Weights.** The weights were chosen on training-window queries; the test-window queries are reported below.
+
+Script: `scripts/train_relations.py`. Output: `reports/metrics/relations.json`, `models/relations.joblib`.
+
+| Test window | Queries | time only | indicators only | content only | equal average | unconstrained LR |
+|---|---|---|---|---|---|---|
+| ORG-0005, MRR | 458 | **0.577** | 0.316 | 0.240 | 0.460 | 0.622 |
+| ORG-0004, MRR | 1,500 | **0.997** | 0.264 | 0.282 | 0.580 | 0.940 |
+
+**Findings:**
+
+- **Time ranks same-incident records best.** The non-negative mix chosen on the training window (simplex grid, mean train MRR) is *time 1.0, indicators 0, content 0*.
+- **The unconstrained logistic regression gives shared indicators and content negative weights** (−1.16, −1.61). Inside the candidate set every pair already shares an indicator, and bursts of near-identical lines often come from different incidents. Such weights would rank strong shared evidence *lower* in a case, so they are reported only as a diagnostic. It also scores below time alone on ORG-0004.
+- **Circularity.** WitFoo built its incidents partly from shared hosts and time, so this ground truth favours time and indicators.
+- **Candidate recall is low** (0.23 on ORG-0005, 0.08 on ORG-0004). Incidents are large, and the candidate generator looks only at near neighbours.
+
+**Design consequence.** A case mixes artifacts such as browser history, notes and logs, and the WitFoo data cannot teach cross-artifact weights. So in the app, **time alone never creates a link**:
+
+- A link needs a shared indicator, or content similarity of at least 0.6.
+- Links that pass are ranked by the learned time score.
+- Each link shows its signals (shared values, time gap, content similarity).
+- A unit test checks the rule.
+
+### 9.7 Investigation assistant (RAG)
+
+**Retrieval.** For a question, the assistant gathers material from **one case only**:
+
+1. Case facts: counts per class and file, top IPs in malicious records, time span.
+2. Records matching the question's indicators, class words ("malicious"), "anomaly", "disagree", or a UTC time window ("after 21:05"). The most severe come first.
+3. Hybrid search over all records: BM25 for exact tokens such as IPs and hashes, plus sentence embeddings for meaning, fused by reciprocal rank.
+4. The mapper's strongest links from the top hits.
+5. Knowledge notes: the models' measured limits, plus WitFoo lead rules when the dataset reference file is present.
+
+**Answer.**
+
+- Gemini writes it when `GEMINI_API_KEY` is set (model `gemini-3.8-flash` by default). Only the retrieved records are sent, and the app says so.
+- Otherwise a built-in answerer assembles the same sections from the same material.
+- Sections: **Answer, Evidence, ML assessment, Possible links, Unknown**.
+- Every claim cites `[E<record>]`, `[K<note>]` or `[S]` (case facts). Citations that are not in the retrieved material are removed and reported.
+
+**Tests.** A question about an IP returns only records containing that IP in the filtered set, and every cited record is in the retrieved set. The answers on the 20,357-record sample took 0.1–1.5 s with the built-in answerer.
+
+**Not yet done.** A RAG evaluation set (retrieval hit@5, citation correctness, refusal rate). Gemini answers were not tested end to end because no API key was available during development.
 
 ---
 
 ## 10. The application (interface)
 
-A local **Streamlit** app (`app/`), run with `.venv/Scripts/python -m streamlit run app/streamlit_app.py`, on http://localhost:8501. Nothing is sent to external services.
+**Stack.** React + TypeScript (Vite) frontend served by a FastAPI backend: `.venv/Scripts/python -m uvicorn evidentia.api.main:app --port 8000`, then open http://localhost:8000. It replaced the earlier Streamlit app.
+
+**Design.** The look was dealt with the `design-taste-frontend` skill:
+
+- palette *stone-blueprint*;
+- Albert Sans + DM Mono, bundled locally;
+- sharp corners.
+
+Class colours are a status set, always shown with an icon and a word.
 
 | Page | Content |
 |---|---|
-| **Analyze logs** | Upload a CSV / JSON / JSONL / LOG / TXT file, or pick a sample from the "…or load a SAMPLE file" drop-down. Shows: <br>• the file's SHA-256 and the columns that were mapped<br>• an LR / RF switch and 6 summary metrics<br>• an alert timeline (UTC) with anomaly rings<br>• filters and an event table<br>• an event inspector with the full JSON output<br>• a WitFoo reference-label comparison (samples only)<br>• CSV download |
-| **Model evaluation** | The tables and charts of §9, read live from `reports/metrics/*.json` |
-| **Dataset & EDA** | The 9 EDA charts and the EDA summary |
-| **About & limitations** | Pipeline, label meaning, measured limits, privacy |
+| **Cases** | Create a case, or open the sample case (20,357 records) in one click |
+| **Overview** | Class counts, anomalies, disagreements and links (each opens the filtered list), activity over time (UTC, click a bar to list its records), the indicators to look at first, evidence files |
+| **Evidence** | Multi-file drag-and-drop upload; SHA-256, re-verify, parser details, warnings; **Map columns** when a field is missing (the original is parsed again, never changed) |
+| **Records** | Filters (class, anomaly, disagreement, file, text, indicator, time), LR / RF switch, sort by risk |
+| **Event inspector** | Raw record, file:row, file hash, both models' stage probabilities against their thresholds, anomaly score, indicators, linked records with their reasons |
+| **Connections** | Evidence graph of the riskiest indicators and the files they appear in; focus on one indicator to see its records, the linked records and co-indicators |
+| **Ask the case** | The assistant of §9.7, with clickable citations and the provider status |
+| **Model evaluation · Training data · How it works** | §9 tables and figures from the metric files; the EDA charts and summary; the pipeline, limits and privacy |
 
 ### What happens on upload
 
-1. The file is hashed (SHA-256) for chain of custody.
-2. Each row or line becomes an event that keeps its file name and row number.
-3. **Applicability gate.** An event is scored only if it has a timestamp and at least 30% of its word bigrams are in the training vocabulary (records without text need a known `message_type`). Notes, browser history and OCR text are marked *not applicable* instead of guessed.
-4. Past-only context features are computed **within the uploaded file**.
-5. LR and RF run through both stages, and the Isolation Forest scores the rows routed to the alert stage.
+1. The file is hashed (SHA-256) and stored read-only under `cases/<id>/original/`. It can be re-hashed at any time.
+2. Each row or line becomes a record that keeps its file and row.
+3. **Applicability gate.** A record is scored only if it has a timestamp and at least 30% of its word bigrams are in the training vocabulary (records without text need a known `message_type`). Other records are *not scored*, but they are still indexed and linked.
+4. ML runs once: past-only context features within the file, then LR and RF through both stages, then the Isolation Forest on alert-routed records.
+5. Indicators are extracted, embeddings are computed, and the case's links are rebuilt. The 20,357-record sample takes about 100 s in the background.
 
 **Checks on the bundled samples.**
 
 | Sample | Result |
 |---|---|
 | `witfoo_sample_ORG-0005_test_20min.csv` (17,363 test-window rows) | LR flagged 50 of 57 malicious rows, with 114 false positives |
-| ASA `.log` file | 2,987 lines parsed as Cisco ASA |
-| 5 non-security lines | All refused |
+| ASA `.log` file | 2,987 of 2,989 lines parsed as Cisco ASA |
+| 5 non-security lines | All refused by the models, still searchable |
+| Browser-history CSV sharing an IP with the ASA log (test) | Linked across files through the IP |
+
+**ASA clock.** The ASA log's device time is about 5 h behind WitFoo's UTC ingest time for the same lines. The upload warning ("ASA timestamps carry no time zone; read as UTC") is therefore real.
 
 ### Bugs found by testing and fixed
 
 - The Isolation Forest first scored every row and flagged 14,378 of 17,363 sample rows. It now scores only alert-routed rows, and flags 2.
 - The first applicability gate used single words and accepted a browser-history line. It now uses bigrams; a unit test covers this.
 - The chart axis showed local time labelled as UTC. It is now a true UTC scale.
+- Missing input columns used to give "not applicable" everywhere with no explanation. The app now names the missing column, lists the accepted names and offers manual column mapping.
+- The case list counted only "processing" files as busy, not "linking" ones.
 
 ---
 
@@ -540,18 +630,21 @@ A local **Streamlit** app (`app/`), run with `.venv/Scripts/python -m streamlit 
 - **Model behaviour:**
   - Malicious precision is about 0.3: most flags need human review.
   - Probabilities are not calibrated (class-balanced training).
-  - Validation PR-AUC is consistently above test PR-AUC (§9.5).
+  - The models over-fit the training window's incidents: train PR-AUC 0.56–0.79 against 0.29 on validation and 0.25–0.26 on test (§9.5).
 - **Method gaps:**
   - The cut-offs used label timing (disclosed).
   - Template overlap between train and test was not measured.
-  - The training-score check is pending (§9.5).
   - The ablation that adds `incident_signals` was not run.
-- **App:** in the app, context features only see the uploaded file's history, so the first minutes of a file have weaker scores.
+- **App:**
+  - Context features only see the uploaded file's history, so the first minutes of a file have weaker scores.
+  - Links are leads, not proof.
+  - The assistant has no evaluation set yet.
 
 **Ethics and privacy:**
 
 - The dataset is published already pseudonymised.
-- The app runs on `localhost`, keeps uploads in memory, does not store them and calls no external API.
+- The app runs on `localhost` and keeps evidence in the local `cases/` folder.
+- The only outbound call is the optional Gemini answer: the retrieved records for a question are sent to Google, and the app says so. Without a key, nothing leaves the machine.
 - The limits above are shown inside the app (About page) so users do not over-trust the output.
 
 ---
@@ -568,13 +661,14 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download('wit
 .venv/Scripts/python scripts/train_models.py            # ~77 min, 4-core i7-8550U, 16 GB RAM, no GPU
 .venv/Scripts/python scripts/results_figures.py
 .venv/Scripts/python scripts/stage1_within_product.py
+.venv/Scripts/python scripts/train_relations.py          # relationship mapper (~2 min)
 .venv/Scripts/python scripts/train_val_test_scores.py
 .venv/Scripts/python scripts/make_samples.py
-.venv/Scripts/python -m pytest -q tests                 # 15 passed
+.venv/Scripts/python -m pytest -q tests                 # 24 passed
 .venv/Scripts/python scripts/build_report_appendix.py   # refreshes the appendix below
 ```
 
-Fixed random seed: 42. Pinned package versions: `requirements.txt` (Python 3.14, pandas 3.1.1, numpy 2.5.4, scikit-learn 1.9.1, streamlit 1.67.0).
+Fixed random seed: 42. Pinned package versions: `requirements.txt` (Python 3.14, pandas 3.1.1, numpy 2.5.4, scikit-learn 1.9.1, fastapi 0.162.2, google-genai 3.0.0, fastembed 0.9.1); frontend `frontend/package.json` (React 18.3, Vite 5.4).
 
 ---
 
@@ -588,7 +682,8 @@ Fixed random seed: 42. Pinned package versions: `requirements.txt` (Python 3.14,
 | EDA with visualisations | §5 (9 charts + 12 audit charts in `reports/figures/`) |
 | Class imbalance handling | §6, §7.3 |
 | Model + evaluation + tuning / ensembling | §7, §8, §9 (GridSearchCV, Random Forest ensemble, Isolation Forest, LR vs RF vs IF, hierarchical vs flat) |
-| Visualisation / interface | §10 (Streamlit app) |
+| Visualisation / interface | §10 (React + FastAPI app: charts, graph, inspector, assistant) |
+| Extra: RAG + relationship mapping | §9.6, §9.7 |
 | Diagram | §2 (two diagrams) |
 | Code explanation | §2 code layout, §6, §8, and docstrings in `evidentia/` |
 
@@ -884,9 +979,51 @@ Disagreement with the tuned RF (POOLED test alerts):
 | stage2_logreg | stage2_logreg.joblib | 0.01 | fv1 | 2026-11-09 03:48 |
 | stage2_random_forest | stage2_random_forest.joblib | 2.72 | fv1 | 2026-11-09 03:50 |
 
-### A.10 Train / validation / test
+### A.10 Train / validation / test (Stage 2 POOLED)
 
-`reports/metrics/train_val_test.json` does not exist yet: `scripts/train_val_test_scores.py` could not run (Windows Application Control blocked a pandas DLL). See §9.
+| Model | Part | Accuracy | Macro-F1 | PR-AUC | ROC-AUC |
+|---|---|---|---|---|---|
+| logreg | train | 0.9343 | 0.7616 | 0.5601 | 0.9495 |
+| logreg | validation | 0.8639 | 0.6529 | 0.2942 | 0.8837 |
+| logreg | test | 0.8831 | 0.6188 | 0.2502 | 0.8798 |
+| random_forest | train | 0.9587 | 0.8448 | 0.7889 | 0.9839 |
+| random_forest | validation | 0.9093 | 0.6964 | 0.2881 | 0.8425 |
+| random_forest | test | 0.9201 | 0.5973 | 0.2571 | 0.8458 |
+
+### A.11 Relationship mapper (`reports/metrics/relations.json`)
+
+Ground truth: two alert events share a WitFoo incident id (labels only; never an input). Candidates: nearest-in-time events sharing an indicator (k=10 per indicator), alert rows of the same organisation and side of the temporal cut-off.
+
+Used weights: mix [1.0, 0.0, 0.0] over ['temporal', 'entity', 'semantic'], calibrated coef [7.4595, 0.0, 0.0], intercept -7.1265, tau 300.0 s; non-negative mix maximising mean train MRR (simplex grid, step 0.05) + 1-D logistic calibration; train pairs 31,487 (8,018 related). Unconstrained LR (diagnostic): {'coef': [8.4638, -1.158, -1.6073], 'intercept': -5.8165}.
+
+| Org | Window | Scorer | Queries | MRR | P@5 | Recall@10 | Candidate recall |
+|---|---|---|---|---|---|---|---|
+| ORG-0005 | train | temporal_only | 1,196 | 0.7047 | 0.5431 | 0.5375 | 0.0222 |
+| ORG-0005 | train | entity_only | 1,196 | 0.3554 | 0.2177 | 0.3326 | 0.0222 |
+| ORG-0005 | train | semantic_only | 1,196 | 0.3709 | 0.2487 | 0.4392 | 0.0222 |
+| ORG-0005 | train | equal_average | 1,196 | 0.5057 | 0.2445 | 0.337 | 0.0222 |
+| ORG-0005 | train | combined_learned | 1,196 | 0.7047 | 0.543 | 0.5376 | 0.0222 |
+| ORG-0005 | train | unconstrained_lr_diagnostic | 1,196 | 0.7183 | 0.4666 | 0.5132 | 0.0222 |
+| ORG-0005 | test | temporal_only | 458 | 0.5765 | 0.2188 | 0.5725 | 0.228 |
+| ORG-0005 | test | entity_only | 458 | 0.316 | 0.1236 | 0.591 | 0.228 |
+| ORG-0005 | test | semantic_only | 458 | 0.2395 | 0.1013 | 0.5901 | 0.228 |
+| ORG-0005 | test | equal_average | 458 | 0.4598 | 0.1638 | 0.5474 | 0.228 |
+| ORG-0005 | test | combined_learned | 458 | 0.5765 | 0.2188 | 0.5725 | 0.228 |
+| ORG-0005 | test | unconstrained_lr_diagnostic | 458 | 0.6218 | 0.2148 | 0.5626 | 0.228 |
+| ORG-0004 | train | temporal_only | 1,063 | 0.9907 | 0.9289 | 0.6864 | 0.1138 |
+| ORG-0004 | train | entity_only | 1,063 | 0.3804 | 0.3037 | 0.3248 | 0.1138 |
+| ORG-0004 | train | semantic_only | 1,063 | 0.3891 | 0.3018 | 0.5098 | 0.1138 |
+| ORG-0004 | train | equal_average | 1,063 | 0.6188 | 0.4476 | 0.3377 | 0.1138 |
+| ORG-0004 | train | combined_learned | 1,063 | 0.9907 | 0.9289 | 0.6864 | 0.1138 |
+| ORG-0004 | train | unconstrained_lr_diagnostic | 1,063 | 0.9726 | 0.8506 | 0.6817 | 0.1138 |
+| ORG-0004 | test | temporal_only | 1,500 | 0.9971 | 0.9871 | 0.7339 | 0.0815 |
+| ORG-0004 | test | entity_only | 1,500 | 0.2638 | 0.2601 | 0.2616 | 0.0815 |
+| ORG-0004 | test | semantic_only | 1,500 | 0.2817 | 0.2483 | 0.4943 | 0.0815 |
+| ORG-0004 | test | equal_average | 1,500 | 0.5804 | 0.4495 | 0.2665 | 0.0815 |
+| ORG-0004 | test | combined_learned | 1,500 | 0.9971 | 0.9871 | 0.7339 | 0.0815 |
+| ORG-0004 | test | unconstrained_lr_diagnostic | 1,500 | 0.9396 | 0.7632 | 0.7261 | 0.0815 |
+
+_WitFoo built incidents partly from shared hosts and time, so entity and temporal signals are favoured by this ground truth._
 
 ## Appendix B. Raw data examples
 

@@ -23,7 +23,8 @@ EVENT_COLS = ["timestamp", "message_sanitized", "message_type", "action", "proto
               "src_ip", "dst_ip", "src_port", "dst_port"]
 
 ALIASES = {
-    "timestamp": ["timestamp", "time", "ts", "@timestamp", "datetime", "date", "event_time", "eventtime"],
+    "timestamp": ["timestamp", "time", "ts", "@timestamp", "datetime", "date", "event_time", "eventtime",
+                  "visit_time", "last_visit_time", "created", "created_at", "time_generated", "timecreated"],
     "message_sanitized": ["message_sanitized", "message", "msg", "raw", "log", "line", "text"],
     "message_type": ["message_type", "event_type", "type", "category"],
     "action": ["action", "disposition_action", "act"],
@@ -99,15 +100,30 @@ def _parse_line(line: str) -> tuple[dict, str]:
     return out, "generic_text"
 
 
-def _from_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+def _from_table(df: pd.DataFrame, column_map: dict | None = None) -> tuple[pd.DataFrame, dict]:
     lower = {c.lower(): c for c in df.columns}
     out = pd.DataFrame(index=df.index)
     mapping = {}
+    for target, src in (column_map or {}).items():
+        if target in ALIASES and src in df.columns:
+            out[target] = df[src]
+            mapping[target] = src
     for target, names in ALIASES.items():
-        src = next((lower[n] for n in names if n in lower), None)
+        if target in mapping:
+            continue
+        src = next((lower[n] for n in names if n in lower and lower[n] not in mapping.values()), None)
         if src is not None:
             out[target] = df[src]
             mapping[target] = src
+    # No message column (e.g. a browser-history export): build a searchable message from the
+    # other text columns, "column=value | ...". It is marked as composed, never as the raw log line.
+    if "message_sanitized" not in out:
+        rest = [c for c in df.columns if c not in mapping.values()]
+        if rest:
+            def compose(r):
+                return " | ".join(f"{c}={r[c]}" for c in rest if isinstance(r[c], str) and r[c].strip())
+            out["message_sanitized"] = df.apply(compose, axis=1).replace("", np.nan)
+            mapping["message_sanitized"] = "composed from: " + ", ".join(rest)
     # If a table only has a raw message column, try line parsing on it to recover fields.
     if "message_sanitized" in out:
         parsed = [_parse_line(str(m)) if isinstance(m, str) else ({}, "empty") for m in out["message_sanitized"]]
@@ -120,7 +136,19 @@ def _from_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     return out, mapping
 
 
-def parse_upload(file_name: str, data: bytes) -> ParsedUpload:
+_RE_TAGS = re.compile(r"<[^>]+>")
+_RE_DROP = re.compile(r"<(script|style|noscript)\b.*?</\1>", re.I | re.S)
+
+
+def _html_lines(text: str) -> list[str]:
+    import html as _html
+    body = _RE_DROP.sub(" ", text)
+    body = re.sub(r"<(br|p|div|li|tr|h\d)\b[^>]*>", "\n", body, flags=re.I)
+    body = _html.unescape(_RE_TAGS.sub(" ", body))
+    return [re.sub(r"\s+", " ", ln).strip() for ln in body.splitlines() if ln.strip()]
+
+
+def parse_upload(file_name: str, data: bytes, column_map: dict | None = None) -> ParsedUpload:
     sha = hashlib.sha256(data).hexdigest()
     ext = file_name.rsplit(".", 1)[-1].lower() if "." in file_name else ""
     warnings: list[str] = []
@@ -134,8 +162,9 @@ def parse_upload(file_name: str, data: bytes) -> ParsedUpload:
 
     if ext == "csv":
         raw = pd.read_csv(io.StringIO(text), dtype=str, keep_default_na=False, na_values=[""])
-        ev, mapping = _from_table(raw)
+        ev, mapping = _from_table(raw, column_map)
         counts["columns_mapped"] = mapping
+        counts["columns_available"] = list(raw.columns)
         extra = raw[[c for c in raw.columns if c not in mapping.values()]]
     elif ext in ("json", "jsonl", "ndjson"):
         try:
@@ -152,12 +181,14 @@ def parse_upload(file_name: str, data: bytes) -> ParsedUpload:
             if bad:
                 warnings.append(f"{bad} JSON lines could not be parsed and were skipped.")
         raw = pd.json_normalize(records).astype(str).replace({"nan": np.nan, "None": np.nan})
-        ev, mapping = _from_table(raw)
+        ev, mapping = _from_table(raw, column_map)
         counts["columns_mapped"] = mapping
+        counts["columns_available"] = list(raw.columns)
         extra = raw[[c for c in raw.columns if c not in mapping.values()]]
-    elif ext in ("log", "txt", ""):
+    elif ext in ("log", "txt", "", "html", "htm"):
         rows, kinds = [], []
-        for ln in text.splitlines():
+        lines = _html_lines(text) if ext in ("html", "htm") else text.splitlines()
+        for ln in lines:
             if not ln.strip():
                 continue
             fields, kind = _parse_line(ln)
@@ -171,14 +202,18 @@ def parse_upload(file_name: str, data: bytes) -> ParsedUpload:
         extra = pd.DataFrame(index=ev.index)
     else:
         return ParsedUpload(file_name, sha, len(data), ext, pd.DataFrame(columns=EVENT_COLS),
-                            [f"Unsupported file type '.{ext}'. Supported: csv, json, jsonl, log, txt."], {})
+                            [f"Unsupported file type '.{ext}'. Supported: csv, json, jsonl, ndjson, log, txt, html."], {})
 
     for c in EVENT_COLS:
         if c not in ev:
             ev[c] = np.nan
     ev["timestamp"] = _to_epoch(ev["timestamp"])
     missing_ts = int(ev["timestamp"].isna().sum())
-    if missing_ts:
+    if "columns_mapped" in counts and "timestamp" not in counts["columns_mapped"]:
+        warnings.append("No timestamp column was found, so no event can be scored. Accepted names: "
+                        + ", ".join(ALIASES["timestamp"]) + ". Map a column by hand to fix this.")
+        counts["missing_required"] = ["timestamp"]
+    elif missing_ts:
         warnings.append(f"{missing_ts} of {len(ev)} events have no readable timestamp; they are kept but not scored.")
     ev = ev[EVENT_COLS].copy()
     ev.insert(0, "source_row", np.arange(1, len(ev) + 1))

@@ -1,0 +1,231 @@
+{
+  "ground_truth": "two alert events share a WitFoo incident id (labels only; never an input)",
+  "caveat": "WitFoo built incidents partly from shared hosts and time, so entity and temporal signals are favoured by this ground truth.",
+  "candidates": "nearest-in-time events sharing an indicator (k=10 per indicator), alert rows of the same organisation and side of the temporal cut-off",
+  "weights": {
+    "coef": [
+      7.4595,
+      0.0,
+      0.0
+    ],
+    "intercept": -7.1265,
+    "mix": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "tau": 300.0,
+    "features": [
+      "temporal",
+      "entity",
+      "semantic"
+    ],
+    "trained": "2026-11-10 05:48",
+    "train_pairs": 31487,
+    "train_positive": 8018,
+    "selection": "non-negative mix maximising mean train MRR (simplex grid, step 0.05) + 1-D logistic calibration",
+    "train_mrr": 0.8477
+  },
+  "unconstrained_lr_diagnostic": {
+    "coef": [
+      8.4638,
+      -1.158,
+      -1.6073
+    ],
+    "intercept": -5.8165
+  },
+  "results": {
+    "ORG-0005": {
+      "train": {
+        "queries_sampled": 1500,
+        "pairs": 19273,
+        "positive_pairs": 4354,
+        "temporal_only": {
+          "queries": 1196,
+          "p_at_5": 0.5431,
+          "mrr": 0.7047,
+          "recall_at_10": 0.5375,
+          "candidate_recall": 0.0222
+        },
+        "entity_only": {
+          "queries": 1196,
+          "p_at_5": 0.2177,
+          "mrr": 0.3554,
+          "recall_at_10": 0.3326,
+          "candidate_recall": 0.0222
+        },
+        "semantic_only": {
+          "queries": 1196,
+          "p_at_5": 0.2487,
+          "mrr": 0.3709,
+          "recall_at_10": 0.4392,
+          "candidate_recall": 0.0222
+        },
+        "equal_average": {
+          "queries": 1196,
+          "p_at_5": 0.2445,
+          "mrr": 0.5057,
+          "recall_at_10": 0.337,
+          "candidate_recall": 0.0222
+        },
+        "combined_learned": {
+          "queries": 1196,
+          "p_at_5": 0.543,
+          "mrr": 0.7047,
+          "recall_at_10": 0.5376,
+          "candidate_recall": 0.0222
+        },
+        "unconstrained_lr_diagnostic": {
+          "queries": 1196,
+          "p_at_5": 0.4666,
+          "mrr": 0.7183,
+          "recall_at_10": 0.5132,
+          "candidate_recall": 0.0222
+        }
+      },
+      "test": {
+        "queries_sampled": 882,
+        "pairs": 9182,
+        "positive_pairs": 418,
+        "temporal_only": {
+          "queries": 458,
+          "p_at_5": 0.2188,
+          "mrr": 0.5765,
+          "recall_at_10": 0.5725,
+          "candidate_recall": 0.228
+        },
+        "entity_only": {
+          "queries": 458,
+          "p_at_5": 0.1236,
+          "mrr": 0.316,
+          "recall_at_10": 0.591,
+          "candidate_recall": 0.228
+        },
+        "semantic_only": {
+          "queries": 458,
+          "p_at_5": 0.1013,
+          "mrr": 0.2395,
+          "recall_at_10": 0.5901,
+          "candidate_recall": 0.228
+        },
+        "equal_average": {
+          "queries": 458,
+          "p_at_5": 0.1638,
+          "mrr": 0.4598,
+          "recall_at_10": 0.5474,
+          "candidate_recall": 0.228
+        },
+        "combined_learned": {
+          "queries": 458,
+          "p_at_5": 0.2188,
+          "mrr": 0.5765,
+          "recall_at_10": 0.5725,
+          "candidate_recall": 0.228
+        },
+        "unconstrained_lr_diagnostic": {
+          "queries": 458,
+          "p_at_5": 0.2148,
+          "mrr": 0.6218,
+          "recall_at_10": 0.5626,
+          "candidate_recall": 0.228
+        }
+      }
+    },
+    "ORG-0004": {
+      "train": {
+        "queries_sampled": 1063,
+        "pairs": 12214,
+        "positive_pairs": 3664,
+        "temporal_only": {
+          "queries": 1063,
+          "p_at_5": 0.9289,
+          "mrr": 0.9907,
+          "recall_at_10": 0.6864,
+          "candidate_recall": 0.1138
+        },
+        "entity_only": {
+          "queries": 1063,
+          "p_at_5": 0.3037,
+          "mrr": 0.3804,
+          "recall_at_10": 0.3248,
+          "candidate_recall": 0.1138
+        },
+        "semantic_only": {
+          "queries": 1063,
+          "p_at_5": 0.3018,
+          "mrr": 0.3891,
+          "recall_at_10": 0.5098,
+          "candidate_recall": 0.1138
+        },
+        "equal_average": {
+          "queries": 1063,
+          "p_at_5": 0.4476,
+          "mrr": 0.6188,
+          "recall_at_10": 0.3377,
+          "candidate_recall": 0.1138
+        },
+        "combined_learned": {
+          "queries": 1063,
+          "p_at_5": 0.9289,
+          "mrr": 0.9907,
+          "recall_at_10": 0.6864,
+          "candidate_recall": 0.1138
+        },
+        "unconstrained_lr_diagnostic": {
+          "queries": 1063,
+          "p_at_5": 0.8506,
+          "mrr": 0.9726,
+          "recall_at_10": 0.6817,
+          "candidate_recall": 0.1138
+        }
+      },
+      "test": {
+        "queries_sampled": 1500,
+        "pairs": 21867,
+        "positive_pairs": 8394,
+        "temporal_only": {
+          "queries": 1500,
+          "p_at_5": 0.9871,
+          "mrr": 0.9971,
+          "recall_at_10": 0.7339,
+          "candidate_recall": 0.0815
+        },
+        "entity_only": {
+          "queries": 1500,
+          "p_at_5": 0.2601,
+          "mrr": 0.2638,
+          "recall_at_10": 0.2616,
+          "candidate_recall": 0.0815
+        },
+        "semantic_only": {
+          "queries": 1500,
+          "p_at_5": 0.2483,
+          "mrr": 0.2817,
+          "recall_at_10": 0.4943,
+          "candidate_recall": 0.0815
+        },
+        "equal_average": {
+          "queries": 1500,
+          "p_at_5": 0.4495,
+          "mrr": 0.5804,
+          "recall_at_10": 0.2665,
+          "candidate_recall": 0.0815
+        },
+        "combined_learned": {
+          "queries": 1500,
+          "p_at_5": 0.9871,
+          "mrr": 0.9971,
+          "recall_at_10": 0.7339,
+          "candidate_recall": 0.0815
+        },
+        "unconstrained_lr_diagnostic": {
+          "queries": 1500,
+          "p_at_5": 0.7632,
+          "mrr": 0.9396,
+          "recall_at_10": 0.7261,
+          "candidate_recall": 0.0815
+        }
+      }
+    }
+  }
+}

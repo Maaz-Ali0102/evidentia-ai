@@ -3,7 +3,14 @@ data/raw/
 __pycache__/
 *.pyc
 models/
-cases/
+/cases/
 data/processed/
 .ipynb_checkpoints/
 .pytest_cache/
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+data/models_cache/
+.taste-skill/
+frontend/node_modules/
+frontend/dist/
+.env
