@@ -1,8 +1,9 @@
 .venv/
+# signals.parquet is 117 MB, over GitHub's 100 MB file limit
 data/raw/
 __pycache__/
 *.pyc
-models/
+# runtime case data; the sample case is rebuilt from the app
 /cases/
 data/processed/
 .ipynb_checkpoints/
@@ -12,5 +13,10 @@ data/processed/
 data/models_cache/
 .taste-skill/
 frontend/node_modules/
-frontend/dist/
 .env
+
+# Local-only: AI assistant skills and tool state (not project code)
+.agents/
+.claude/skills/
+skills-lock.json
+.gstack/

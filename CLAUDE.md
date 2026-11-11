@@ -44,7 +44,6 @@ cd frontend && npm run build                                         # rebuild t
 ```
 
 ## 6. Pending
-- **Repo:** commit the current work, and decide where `models/` lives (it is git-ignored now; the app needs it).
 - **Evaluation gaps:**
   - per-org scores;
   - a random baseline;

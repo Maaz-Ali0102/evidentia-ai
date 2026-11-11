@@ -1,0 +1,32 @@
+{
+  "iforest": {
+    "file": "iforest.joblib",
+    "size_mb": 1.17,
+    "feature_version": "fv1",
+    "trained": "2026-11-09 04:53"
+  },
+  "stage1_logreg": {
+    "file": "stage1_logreg.joblib",
+    "size_mb": 0.35,
+    "feature_version": "fv1",
+    "trained": "2026-11-09 03:59"
+  },
+  "stage1_random_forest": {
+    "file": "stage1_random_forest.joblib",
+    "size_mb": 0.58,
+    "feature_version": "fv1",
+    "trained": "2026-11-09 04:07"
+  },
+  "stage2_logreg": {
+    "file": "stage2_logreg.joblib",
+    "size_mb": 0.01,
+    "feature_version": "fv1",
+    "trained": "2026-11-09 03:48"
+  },
+  "stage2_random_forest": {
+    "file": "stage2_random_forest.joblib",
+    "size_mb": 2.72,
+    "feature_version": "fv1",
+    "trained": "2026-11-09 03:50"
+  }
+}
