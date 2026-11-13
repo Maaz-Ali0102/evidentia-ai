@@ -1,0 +1,4 @@
+SYNTHETIC DEMO NOTES
+2024-07-26T22:15:00Z Helpdesk ticket 4471: user deploy reports their password was changed without their knowledge on web01 (10.187.253.125). Asked to reset it.
+2024-07-26T22:20:00Z Threat intel check: 198.51.100.7 is listed as a malware distribution server. Seen in our logs: http://198.51.100.7/x.sh
+2024-07-26T22:30:00Z Note: 100.64.37.4 also appears in earlier firewall denies against the DMZ.

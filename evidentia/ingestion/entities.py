@@ -19,13 +19,17 @@ _WINPATH = re.compile(r"\b[A-Za-z]:\\[^\s\"'<>|]+|\\Device\\[^\s\"'<>|]+")
 _UNIXPATH = re.compile(r"(?<![\w/])/(?:etc|var|usr|home|tmp|opt|bin|root|srv)/[^\s\"'<>|]*")
 _PSEUDO_USER = re.compile(r"\bUSER-\d{2,6}\b")
 _PSEUDO_HOST = re.compile(r"\bHOST-\d{2,6}\b", re.I)
+# Unix auth logs (sshd, sudo, PAM): "Failed password for invalid user admin from", "Accepted publickey for
+# alice from", "sudo:   deploy : TTY=", "session opened for user root".
+_AUTH_USER = re.compile(r"\b(?:(?:Failed|Accepted) \w+ for (?:invalid user )?|Invalid user |session (?:opened|closed) "
+                        r"for user |sudo: +)([A-Za-z0-9._-]{2,32})\b")
 _KV_USER = re.compile(r"\b(?:user(?:name)?|duser|suser|account)\s*[=:]\s*\"?([A-Za-z0-9._\\-]{2,64})", re.I)
 
 # Words that look like domains but are file names or code in log text.
 _NOT_TLD = {"java", "jar", "py", "js", "exe", "dll", "log", "txt", "zip", "json", "xml", "html", "htm", "php",
             "csv", "sys", "png", "jpg", "jpeg", "gif", "pdf", "doc", "docx", "xls", "xlsx", "tmp", "bak", "ini",
             "cfg", "conf", "sh", "bat", "ps1", "msi", "class", "go", "rb", "ts", "md", "yml", "yaml", "lock"}
-_SKIP_USERS = {"-", "none", "null", "n/a", "na", "unknown", "system"}
+_SKIP_USERS = {"-", "none", "null", "n/a", "na", "unknown", "system", "invalid", "illegal"}
 
 
 def _valid_ip(s: str) -> bool:
@@ -67,7 +71,7 @@ def extract(text: str | None, fields: dict | None = None) -> list[tuple[str, str
             found.add(("path", p.rstrip(".,;)")))
         for u in _PSEUDO_USER.findall(t):
             found.add(("user", u))
-        for m in _KV_USER.finditer(t):
+        for m in list(_KV_USER.finditer(t)) + list(_AUTH_USER.finditer(t)):
             u = m.group(1)
             if u.lower() not in _SKIP_USERS:
                 found.add(("user", u))

@@ -1,7 +1,8 @@
 """Turn an uploaded file into normalised security-log events for the ML orchestrator.
 
 Supported now: CSV, JSON (array or JSON-lines), and plain-text logs (.log/.txt), with
-format-specific parsing for Cisco ASA syslog and AWS VPC flow-log lines.
+format-specific parsing for Cisco ASA syslog and AWS VPC flow-log lines. Other text lines get their
+time from ISO 8601, Apache/nginx, YYYY/MM/DD or classic syslog stamps (_line_time).
 Rules:
   * the original bytes are never modified; their SHA-256 is recorded;
   * every event keeps provenance (file name + row/line number);
@@ -47,6 +48,11 @@ RE_FLOW = re.compile(
     r"^\s*2 \S+ (?P<eni>eni-\S+) (?P<src>[\d.]+) (?P<dst>[\d.]+) (?P<sport>\d+) (?P<dport>\d+) "
     r"(?P<proto>\d+) \d+ \d+ (?P<start>\d{10}) (?P<end>\d{10}) (?P<act>ACCEPT|REJECT)")
 RE_ISO = re.compile(r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?")
+# Other common log time formats, tried in this order when a line has no ISO time:
+RE_APACHE = re.compile(r"\[?(?P<d>\d{2}/[A-Z][a-z]{2}/\d{4}:\d{2}:\d{2}:\d{2})(?: (?P<z>[+-]\d{4}))?")  # 10/Nov/2026:02:14:00 +0000
+RE_SLASH = re.compile(r"\b(?P<d>\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2})")                              # 2026/11/10 02:14:00
+RE_SYSLOG_Y = re.compile(r"^(?:<\d+>)?(?P<d>[A-Z][a-z]{2} +\d{1,2} \d{4} \d{2}:\d{2}:\d{2})")         # Nov 10 2026 02:14:00
+RE_SYSLOG = re.compile(r"^(?:<\d+>)?(?P<d>[A-Z][a-z]{2} +\d{1,2} \d{2}:\d{2}:\d{2})\b")              # Nov 10 02:14:00 (no year)
 RE_IP = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 
 
@@ -72,7 +78,41 @@ def _to_epoch(series: pd.Series) -> pd.Series:
     return out.astype(float)
 
 
-def _parse_line(line: str) -> tuple[dict, str]:
+def _line_time(line: str, now: pd.Timestamp | None = None) -> tuple[float, bool] | None:
+    """Epoch seconds of the first recognised time in a free-text line, and whether its year was assumed.
+
+    Classic syslog (RFC 3164) writes no year. Like rsyslog and journalctl, the year is taken as the
+    current one, or the previous one when that would put the line more than a day in the future;
+    parse_upload reports how many times were read this way.
+    """
+    m = RE_ISO.search(line)
+    if m:
+        t = pd.to_datetime(m.group(0), utc=True, errors="coerce")
+        return (t.timestamp(), False) if pd.notna(t) else None
+    m = RE_APACHE.search(line)
+    if m:
+        t = pd.to_datetime(m["d"] + (" " + m["z"] if m["z"] else " +0000"), format="%d/%b/%Y:%H:%M:%S %z", errors="coerce")
+        return (t.timestamp(), False) if pd.notna(t) else None
+    m = RE_SLASH.search(line)
+    if m:
+        t = pd.to_datetime(m["d"], format="%Y/%m/%d %H:%M:%S", utc=True, errors="coerce")
+        return (t.timestamp(), False) if pd.notna(t) else None
+    m = RE_SYSLOG_Y.search(line)
+    if m:
+        t = pd.to_datetime(re.sub(r" +", " ", m["d"]), format="%b %d %Y %H:%M:%S", utc=True, errors="coerce")
+        return (t.timestamp(), False) if pd.notna(t) else None
+    m = RE_SYSLOG.search(line)
+    if m:
+        now = now if now is not None else pd.Timestamp.now(tz="UTC")
+        d = re.sub(r" +", " ", m["d"])
+        t = pd.to_datetime(f"{now.year} {d}", format="%Y %b %d %H:%M:%S", utc=True, errors="coerce")
+        if pd.notna(t) and t > now + pd.Timedelta(days=1):
+            t = pd.to_datetime(f"{now.year - 1} {d}", format="%Y %b %d %H:%M:%S", utc=True, errors="coerce")
+        return (t.timestamp(), True) if pd.notna(t) else None
+    return None
+
+
+def _parse_line(line: str, now: pd.Timestamp | None = None) -> tuple[dict, str]:
     m = RE_ASA.search(line)
     if m:
         ts = pd.to_datetime(m["ts"], format="%b %d %Y %H:%M:%S", utc=True)
@@ -87,11 +127,11 @@ def _parse_line(line: str) -> tuple[dict, str]:
                 "action": "block" if m["act"] == "REJECT" else "permit", "protocol": m["proto"],
                 "src_ip": m["src"], "dst_ip": m["dst"], "src_port": m["sport"], "dst_port": m["dport"]}, "aws_vpc_flow"
     out = {}
-    iso = RE_ISO.search(line)
-    if iso:
-        t = pd.to_datetime(iso.group(0), utc=True, errors="coerce")
-        if pd.notna(t):
-            out["timestamp"] = t.timestamp()
+    t = _line_time(line, now)
+    if t is not None:
+        out["timestamp"], assumed = t
+        if assumed:
+            out["_year_assumed"] = True
     ips = RE_IP.findall(line)
     if ips:
         out["src_ip"] = ips[0]
@@ -127,7 +167,7 @@ def _from_table(df: pd.DataFrame, column_map: dict | None = None) -> tuple[pd.Da
     # If a table only has a raw message column, try line parsing on it to recover fields.
     if "message_sanitized" in out:
         parsed = [_parse_line(str(m)) if isinstance(m, str) else ({}, "empty") for m in out["message_sanitized"]]
-        fill = pd.DataFrame([p[0] for p in parsed], index=out.index)
+        fill = pd.DataFrame([p[0] for p in parsed], index=out.index).drop(columns="_year_assumed", errors="ignore")
         for c in fill.columns:
             if c not in out:
                 out[c] = fill[c]
@@ -196,6 +236,12 @@ def parse_upload(file_name: str, data: bytes, column_map: dict | None = None) ->
             kinds.append(kind)
         ev = pd.DataFrame(rows)
         counts["line_formats"] = pd.Series(kinds).value_counts().to_dict()
+        if "_year_assumed" in ev:
+            n_assumed = int(ev.pop("_year_assumed").fillna(False).astype(bool).sum())
+            if n_assumed:
+                counts["year_assumed"] = n_assumed
+                warnings.append(f"{n_assumed} syslog times carry no year; the current year was assumed "
+                                "(the previous one where that would be in the future), as syslog tools do.")
         if "cisco_asa" in counts["line_formats"]:
             warnings.append("Cisco ASA syslog timestamps carry no time zone; they are the device's own clock and "
                             "are interpreted as UTC. Times may be offset from other sources.")

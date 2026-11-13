@@ -37,7 +37,13 @@ export function Ask() {
   const cite = (r: AskResult) => (id: string) => {
     const e = r.citations.events.find((x) => x.id === id);
     if (e) openEvent(e.event_id);
-    else if (id.startsWith("K")) {
+    else if (id.startsWith("F")) {
+      const f = r.citations.findings?.find((x) => x.id === id);
+      if (f) {
+        const go = window.confirm(`${f.id} · ${f.severity.toUpperCase()} · ${f.title}\n\n${f.summary}\n\nPossible ATT&CK: ${f.tactic} (${f.technique})\n\nSuggested actions:\n- ${f.actions.join("\n- ")}\n\nOpen its first record?`);
+        if (go && f.event_ids.length) openEvent(f.event_ids[0]);
+      }
+    } else if (id.startsWith("K")) {
       const k = r.citations.knowledge.find((x) => x.id === id);
       if (k) alert(`${k.title}\n\n${k.text}`);
     }
