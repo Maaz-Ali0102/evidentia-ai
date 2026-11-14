@@ -1,16 +1,20 @@
 import { AlertOctagon, AlertTriangle, CircleDashed, GitFork, Shuffle, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api, fmtNum } from "../api";
+import { api, fmtNum, type Finding } from "../api";
 import { TimelineChart } from "../components/TimelineChart";
 import { CLASS_FILL, ErrorNote, Spinner, Stat } from "../components/ui";
 import { useCase } from "./CaseLayout";
 
+const builtinCount = 6;
+
 export function Overview() {
-  const { caseId, summary, files } = useCase();
+  const { caseId, summary, files, openEvent } = useCase();
   const nav = useNavigate();
   const [tl, setTl] = useState<Awaited<ReturnType<typeof api.timeline>> | null>(null);
   const [ents, setEnts] = useState<Awaited<ReturnType<typeof api.entities>> | null>(null);
+  const [finds, setFinds] = useState<Finding[] | null>(null);
+  const [nSigma, setNSigma] = useState<number | null>(null);
   const [err, setErr] = useState<unknown>(null);
   const [benign, setBenign] = useState(false);
   const span = summary.time_span[0] != null ? (summary.time_span[1]! - summary.time_span[0]) : 0;
@@ -19,6 +23,8 @@ export function Overview() {
   useEffect(() => {
     api.timeline(caseId, "lr", bucket).then(setTl).catch(setErr);
     api.entities(caseId, "", 12).then(setEnts).catch(setErr);
+    api.findings(caseId).then(setFinds).catch(() => setFinds([]));
+    api.detectionRules().then((r) => setNSigma(r.sigma.loaded - r.sigma.unsupported.length)).catch(() => setNSigma(null));
   }, [caseId, summary.events, summary.links, bucket]);
 
   const go = (q: string) => nav(`/cases/${caseId}/events?${q}`);
@@ -45,6 +51,28 @@ export function Overview() {
         <Stat label="Links between records" icon={<GitFork size={14} />} value={fmtNum(summary.links)} onClick={() => nav(`/cases/${caseId}/graph`)} />
       </div>
       <ErrorNote error={err} />
+      {finds && finds.length > 0 && (
+        <section className="panel">
+          <div className="panel-head"><div><h2>Detections</h2>
+            <p>{builtinCount} built-in rules whose thresholds are learned from this case{nSigma ? `, plus ${nSigma} community Sigma rules (SigmaHQ)` : ""}.
+              They work on any log, including types the models were never trained on. Each finding is an inference from the
+              records, not a confirmed incident; ATT&amp;CK tactics are possible labels.</p></div></div>
+          <div className="table-wrap"><table>
+            <thead><tr><th>Severity</th><th>What the rule found</th><th>Possible ATT&amp;CK</th><th>When (UTC)</th><th className="num">Records</th></tr></thead>
+            <tbody>{finds.map((f) => (
+              <tr key={f.id} className="click" onClick={() => f.event_ids.length && openEvent(f.event_ids[0])}>
+                <td><span className={`badge ${f.severity === "high" ? "b-malicious" : "b-suspicious"}`}>{f.severity}</span></td>
+                <td><b>{f.title}</b>{f.rule.startsWith("sigma:") && <span className="tag" style={{ marginLeft: 6 }}>Sigma</span>}
+                  <div className="small muted">{f.summary}</div>
+                  <div className="small" style={{ marginTop: 4 }}>Next: {f.actions[0]}</div></td>
+                <td className="small">{f.tactic}<div className="muted">{f.technique}</div></td>
+                <td className="mono small">{f.first_utc?.slice(11)}{f.last_utc && f.last_utc !== f.first_utc ? ` → ${f.last_utc.slice(11)}` : ""}</td>
+                <td className="num">{fmtNum(f.n_events)}</td>
+              </tr>))}
+            </tbody>
+          </table></div>
+        </section>
+      )}
       <div className="grid cols-2">
         <section className="panel">
           <div className="panel-head">

@@ -387,6 +387,21 @@ class Ask(BaseModel):
     question: str = Field(min_length=2, max_length=1000)
 
 
+@app.get("/api/detection-rules")
+def detection_rules():
+    """The built-in rules and the Sigma rules the engine has loaded (and any it could not run)."""
+    from ..detect.sigma import rules_status
+    return {"builtin": ["brute_force", "slow_brute_force", "brute_force_success", "privilege_after_login",
+                        "tool_download", "host_scan"], "sigma": rules_status()}
+
+
+@app.get("/api/cases/{cid}/findings")
+def findings(cid: str):
+    """Detection-rule findings for the whole case (evidentia/detect/rules.py), most severe first."""
+    from ..rag.retrieve import case_index
+    return case_index(store, cid).findings
+
+
 @app.post("/api/cases/{cid}/ask")
 def ask(cid: str, body: Ask):
     store.meta(cid)

@@ -1,0 +1,750 @@
+<134>1 2024-07-26T19:55:25.890770-05:00 HOST-1055 sps - - - 2024-07-26T19:55:25.888-05:00 [pool-29-thread-1] INFO  opId=sps-SHPoller-405451-645 host-4486.example.internal - OperationID present in invoker thread, adding suffix and re-using it sps-SHPoller-405451-645-41725
+<134>1 2024-07-26T19:55:36.245222-05:00 vcenter eam-main - - - 	at host-4437.example.internal(ThreadPoolExecutor.java:1149)
+WitFoo-WinLogBeat ::: {"@metadata":{"beat":"winlogbeat","type":"_doc","version":"8.2.2"},"@timestamp":"2024-07-27T00:48:47.141Z","agent":{"ephemeral_id":"560ff567-a3d5-4557-8b6c-45687da4c8d6","id":"76eb9f91-c210-4b95-9288-5a2c5f4e1a67","name":"HOST-1027","type":"winlogbeat","version":"8.2.2"},"ecs":{"version":"8.0.0"},"event":{"action":"None","code":"5186","created":"2024-07-27T00:48:47.622Z","kind":"event","provider":"Microsoft-Windows-WAS"},"host":{"name":"host-4511.example.internal"},"log":{"level":"information"},"message":"A worker process with process id of '26356' serving application pool 'USER-0698' was shutdown due to inactivity.  Application Pool timeout configuration was set to 20 minutes.  A new worker process will be started when needed.","organization":"ORG-0005","senderHost":"10.165.166.232","sensitivity":"normal","winlog":{"api":"wineventlog","channel":"System","computer_name":"host-4511.example.internal","event_data":{"AppPoolID":"USER-0698","Minutes":"20","ProcessID":"26356"},"event_id":"5186","keywords":["Classic"],"opcode":"Info","provider_guid":"{524B5D04-133C-4A62-8362-64E8EDB9CE40}","provider_name":"Microsoft-Windows-WAS","record_id":680454,"task":"None"}}
+<134>1 2024-07-26T19:56:05.325242-05:00 HOST-1055 procstate - - - vpostgr+ 24888  0.0  0.0  37680  5804 ?        Ss   Jul20   4:41 postgres: stats collector
+WitFoo-WinLogBeat ::: {"@metadata":{"beat":"winlogbeat","type":"_doc","version":"8.2.2"},"@timestamp":"2024-07-27T00:56:55.095Z","agent":{"ephemeral_id":"560ff567-a3d5-4557-8b6c-45687da4c8d6","id":"76eb9f91-c210-4b95-9288-5a2c5f4e1a67","name":"HOST-1027","type":"winlogbeat","version":"8.2.2"},"ecs":{"version":"8.0.0"},"event":{"action":"Security Group Management","code":"4799","created":"2024-07-27T00:56:55.787Z","kind":"event","outcome":"success","provider":"Microsoft-Windows-Security-Auditing"},"host":{"name":"host-4511.example.internal"},"log":{"level":"information"},"message":"A security-enabled local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tMACHINE-0868$\n\tAccount Domain:\t\tDMZ\n\tLogon ID:\t\t0x3E7\n\nGroup:\n\tSecurity ID:\t\tS-1-5-21-1000000000-2000000000-3000000000-0001\n\tGroup Name:\t\tBackup Operators\n\tGroup Domain:\t\tUSER-17961\n\nProcess Information:\n\tProcess ID:\t\t0xb2c\n\tProcess Name:\t\tC:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","organization":"ORG-0005","senderHost":"10.165.166.232","sensitivity":"normal","winlog":{"activity_id":"{abe45876-dbef-4bff-9997-b4a564126454}","api":"wineventlog","channel":"Security","computer_name":"host-4511.example.internal","event_data":{"CallerProcessId":"0xb2c","CallerProcessName":"C:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","SubjectDomainName":"DMZ","SubjectLogonId":"0x3e7","SubjectUserName":"MACHINE-0868$","SubjectUserSid":"S-1-5-18","TargetDomainName":"USER-17961","TargetSid":"S-1-5-21-1000000000-2000000000-3000000000-0001","TargetUserName":"USER-20650"},"event_id":"4799","keywords":["Audit Success"],"opcode":"Info","process":{"pid":708,"thread":{"id":23780}},"provider_guid":"{54849625-5478-4994-a5ba-3e3b0328c30d}","provider_name":"Microsoft-Windows-Security-Auditing","record_id":5835746,"task":"Security Group Management"}}
+<134>1 2024-07-26T19:57:23.604865-05:00 vcenter dnsmasq - - - Jul 26 19:57:23 dnsmasq[1808]: reply host-5065.example.internal is 192.0.2.159
+<134>1 2024-07-26T19:57:27.562535-05:00 HOST-1055 vpxd-main - - - 2024-07-26T19:57:27.560-05:00 info vpxd[29337] [Originator@6876 sub=vpxLro opID=sps-Main-405368-350-41847-70] [VpxLRO] -- FINISH session[52616e2c-8978-5fb0-20e2-0171faea4ed6]52ecdcc8-40eb-7c2a-2ff4-12f22594655b
+<134>1 2024-07-26T19:57:33.811486-05:00 vcenter dnsmasq - - - Jul 26 19:57:33 dnsmasq[1808]: query[A] host-0167.example.internal from 100.64.160.85
+<164>Jul 26 2024 19:47:32: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/59815 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:47:49: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/47740 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:48:06: %ASA-4-106023: Deny udp src dmz-2:10.44.146.210/32927 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:48:28: %ASA-4-106023: Deny udp src dmz-2:10.69.210.251/41048 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T19:59:26.016312-05:00 HOST-1055 envoy-access - - - 2024-07-27T00:59:24.394Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T00:59:15.989Z POST /sdk HTTP/1.1 200 via_upstream - 614 1422 1 0 0 100.64.160.85:47348 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<190>Jul 26 19:59:56 HOST-0102 CEF:0|Barracuda|WAF|1220|1000|GET|5|cat=TR dvc=10.71.234.214 duser="-" in=296 out=199225 suser="-" src=100.64.36.76 spt=64417 requestCookies="-" dhost=host-0173.example.internal outcome=200 suid="-" requestMethod=GET app=TLSv1.3 msg="-" requestContext="-" dst=10.239.131.52 dpt=443 rt=1722041996498  start=Jul 26 2024 19:59:56  request=/servlet/eAndar.WebFileLibrary/3433/313031323030/profile-complete_no%20ribbon.png requestClientApplication="Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)" dvchost=HOST-0102 externalId=190f1b3944f-3602d4f2 cs1Label=ClientType cs1="-" cs2Label=Protected cs2=PROTECTED cs3Label=ProxyIP cs3=100.64.36.76 cs4Label=ProfileMatched cs4=DEFAULT cs6Label=WFMatched cs6=VALID cn1Label=ServicePort cn1=443 cn2Label=CacheHit cn2=0 cn3Label=ProxyPort cn3=64417 flexNumber1Label=ServerTime(ms) flexNumber1=104 flexNumber2Label=USER-20657) flexNumber2=131 flexString1Label=ProtocolVersion flexString1=HTTP/1.1 BarracudaWafCustomHeader1="-" BarracudaWafCustomHeader2="-" BarracudaWafCustomHeader3="-" BarracudaWafResponseType=SERVER BarracudaWafSessionID="-"
+<134>1 2024-07-26T20:01:16.151847-05:00 vcenter eam-main - - - 	at host-4436.example.internal$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_345]
+<134>1 2024-07-26T20:01:52.988371-05:00 HOST-1055 vpxd-main - - - 2024-07-26T20:01:52.966-05:00 info vpxd[29449] [Originator@6876 sub=vpxLro opID=sps-Main-405368-350-42112-10] [VpxLRO] -- BEGIN session[52616e2c-8978-5fb0-20e2-0171faea4ed6]5226d8e6-73c4-ce9c-05a7-514af7176cc1 -- CatalogSyncManager -- host-4576.example.internal -- 52616e2c-8978-5fb0-20e2-0171faea4ed6(5274a24a-f980-89bd-32f7-ddfee31e9fc1)
+<134>1 2024-07-26T20:02:30.417832-05:00 vcenter eam-main - - - 	at host-4455.example.internal(SoapFaultStackContext.java:41)
+<164>Jul 26 2024 19:52:02: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/65372 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:52:09: %ASA-4-106023: Deny tcp src outside:100.64.34.235/55415 dst dmz-1:10.0.139.216/46909 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 19:52:14: %ASA-4-106023: Deny tcp src outside:100.64.30.218/52957 dst dmz-1:10.0.139.216/8586 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 19:52:25: %ASA-4-106023: Deny udp src outside:100.64.36.94/47669 dst dmz-1:10.71.234.214/4000 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 19:52:27: %ASA-4-106023: Deny tcp src outside:100.64.36.92/50915 dst dmz-1:10.127.41.182/9341 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 19:52:59: %ASA-4-106023: Deny tcp src outside:100.64.34.143/51214 dst dmz-1:10.0.139.216/4433 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 19:53:05: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/55268 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:53:28: %ASA-4-106023: Deny udp src dmz-2:10.65.107.121/51480 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:04:16.791913-05:00 vcenter analytics - - - 	at host-4977.example.internal(LogTelemetryDrainer.java:90)
+<164>Jul 26 2024 19:53:57: %ASA-4-106023: Deny udp src dmz-2:10.53.90.172/40306 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:54:00: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/53954 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:54:22: %ASA-4-106023: Deny udp src dmz-2:10.196.29.57/36928 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:05:03.035961-05:00 vcenter eam-main - - - 	at host-4464.example.internal(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_345]
+<164>Jul 26 2024 19:54:32: %ASA-4-106023: Deny udp src dmz-2:10.23.31.218/49600 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:55:16: %ASA-4-106023: Deny udp src dmz-2:10.215.130.199/39024 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:06:26.843689-05:00 vcenter analytics - - - 	at host-4435.example.internal(Thread.java:750)
+<134>1 2024-07-26T20:06:51.985111-05:00 vcenter eam-main - - - 	at host-4469.example.internal(VcListener.java:140)
+<134>1 2024-07-26T20:07:12.630563-05:00 HOST-1055 envoy-access - - - 2024-07-27T01:07:11.053Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T01:07:02.737Z POST /sdk HTTP/1.1 200 via_upstream - 614 611 3 2 0 100.64.160.85:47348 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<134>1 2024-07-26T20:07:25.928746-05:00 HOST-1055 sps - - - 2024-07-26T20:07:25.928-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-5059.example.internal - Synchronizing datastore ds:///vmfs/volumes/5f08cd10-fde9e1e0-e844-48df37123220/ forceFullSync = false
+<134>1 2024-07-26T20:08:13.864501-05:00 vcenter eam-main - - - 	at host-4436.example.internal$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_345]
+<164>Jul 26 2024 19:57:46: %ASA-4-106023: Deny udp src dmz-2:10.185.50.93/34198 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:08:23.997445-05:00 HOST-1055 sso-tomcat - - - [27/Jul/2024:01:08:19 +0000] tomcat-http--28 [Request] 100.64.160.85:52348 to local 80 - HTTP/1.1 POST /sts/STSService/ORG-0396.local    [Response] 200 - 10028 bytes    [Perf] process 17ms / commit 17ms / conn [+]
+<164>Jul 26 2024 19:58:27: %ASA-4-106023: Deny udp src dmz-2:10.69.210.251/48383 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 19:58:52: %ASA-4-106023: Deny udp src dmz-2:10.148.183.254/50514 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:10:08.465234-05:00 HOST-1055 procstate - - - root       108  0.0  0.0      0     0 ?        I<   Jul20   0:14 [kworker/1:1H-events_highpri]
+<164>Jul 26 2024 19:59:49: %ASA-4-106023: Deny tcp src outside:100.64.36.128/50776 dst dmz-1:10.127.41.182/993 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:11:09.125041-05:00 HOST-1055 lookupsvc-localhost_access - - - [26/Jul/2024:20:11:07 -0500] tomcat-http--13 [Request] 100.64.160.85:47480 to local 1080 - HTTP/1.1 POST /lookupservice/sdk    [Response] 200 - 3859 bytes    [Perf] process 9ms / commit 9ms / conn [+]
+<164>Jul 26 2024 20:01:21: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/40910 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:02:20: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/49651 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:02:41: %ASA-4-106023: Deny tcp src outside:100.64.36.139/52809 dst dmz-1:10.127.41.182/9474 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:02:48: %ASA-4-106023: Deny tcp src outside:100.64.29.145/57841 dst dmz-1:10.0.139.216/8027 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:03:38: %ASA-4-106023: Deny tcp src outside:100.64.36.141/52163 dst dmz-1:10.187.253.125/51005 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:03:42: %ASA-4-106023: Deny tcp src outside:100.64.29.147/33359 dst dmz-1:10.187.253.125/3058 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:04:19: %ASA-4-106023: Deny tcp src outside:100.64.29.22/33359 dst dmz-1:10.187.253.125/2423 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:05:07: %ASA-4-106023: Deny tcp src outside:100.64.29.213/59256 dst dmz-1:10.187.253.125/8063 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:05:08: %ASA-4-106023: Deny tcp src outside:100.64.36.142/53392 dst dmz-1:10.187.253.125/9444 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:06:31: %ASA-4-106023: Deny udp src dmz-2:10.69.210.251/39378 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:07:16: %ASA-4-106023: Deny udp src dmz-2:10.120.249.161/55156 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+WitFoo-WinLogBeat ::: {"@metadata":{"beat":"winlogbeat","type":"_doc","version":"8.2.2"},"@timestamp":"2024-07-27T01:17:58.906Z","agent":{"ephemeral_id":"b79c7c1c-0967-4917-a7db-9f93e350cd3c","id":"52172d09-b951-4f28-89ec-73acf30ac1bc","name":"HOST-1026","type":"winlogbeat","version":"8.2.2"},"ecs":{"version":"8.0.0"},"event":{"action":"Security Group Management","code":"4799","created":"2024-07-27T01:18:00.638Z","kind":"event","outcome":"success","provider":"Microsoft-Windows-Security-Auditing"},"host":{"name":"host-4507.example.internal"},"log":{"level":"information"},"message":"A security-enabled local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tMACHINE-0867$\n\tAccount Domain:\t\tDMZ\n\tLogon ID:\t\t0x3E7\n\nGroup:\n\tSecurity ID:\t\tS-1-5-21-1000000000-2000000000-3000000000-0029\n\tGroup Name:\t\tAdministrators\n\tGroup Domain:\t\tUSER-17961\n\nProcess Information:\n\tProcess ID:\t\t0xb78\n\tProcess Name:\t\tC:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","organization":"ORG-0005","senderHost":"10.76.133.90","sensitivity":"normal","winlog":{"activity_id":"{60d74720-3b2f-4197-a4cf-09f383a4fc91}","api":"wineventlog","channel":"Security","computer_name":"host-4507.example.internal","event_data":{"CallerProcessId":"0xb78","CallerProcessName":"C:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","SubjectDomainName":"DMZ","SubjectLogonId":"0x3e7","SubjectUserName":"MACHINE-0867$","SubjectUserSid":"S-1-5-18","TargetDomainName":"USER-17961","TargetSid":"S-1-5-21-1000000000-2000000000-3000000000-0029","TargetUserName":"Administrators"},"event_id":"4799","keywords":["Audit Success"],"opcode":"Info","process":{"pid":708,"thread":{"id":764}},"provider_guid":"{54849625-5478-4994-a5ba-3e3b0328c30d}","provider_name":"Microsoft-Windows-Security-Auditing","record_id":7294264,"task":"Security Group Management"}}
+<164>Jul 26 2024 20:07:26: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/44891 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:09:01: %ASA-4-106023: Deny tcp src outside:100.64.35.36/55154 dst dmz-1:10.187.253.125/8015 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:19:57.964637-05:00 vcenter eam-main - - - 	at host-4441.example.internal$CallExecutor.sendCall(MethodInvocationHandlerImpl.java:693)
+<164>Jul 26 2024 20:09:27: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/52450 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:20:14.593015-05:00 vcenter eam-main - - - 	at host-4456.example.internal.<init>(ComplexStackContext.java:30)
+<134>1 2024-07-26T20:20:51.384916-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T20:20:51.384-05:00 [tomcat-exec-9 [] INFO  host-4505.example.internal  opId=] User ORG-0396.local\machine-dd8068b1-ab78-4195-b294-c9caf480904f who belongs to group ORG-0396.local\Administrators has top-level Admin privileges to invoke API host-4506.example.internal.vc_trusts.list
+<164>Jul 26 2024 20:10:31: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/48732 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<185>Jul 26 20:22:01 HOST-0102 CEF:0|Barracuda|WAF|1220|342|GEO_IP_BLOCK|1|cat=WF dst=10.71.234.214 dpt=443 act=DENY msg=[GeoIP Policy Match] duser="-" src=100.64.36.167 spt=53149 requestMethod=GET app=TLSv1.3 requestContext="-" start=Jul 26 2024 20:22:01  rt=1722043321145  request=/servlet/eAndar.WebFileLibrary/39/3535333134/United%20Way%20logoUpdated.png requestClientApplication="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0" dvchost=HOST-0102 externalId=190f1c7cb0e-48c8e2d7 cn2=53149 cn2Label=ProxyPort cs1=global cs1Label=RuleID cs2=NONE cs2Label=FollowUpAction cs3=GLOBAL cs3Label=RuleType cs4=Forceful Browsing cs4Label=AttackGroup cs5=100.64.36.167 cs5Label=ProxyIP cs6="-" cs6Label=SessionID
+<164>Jul 26 2024 20:11:23: %ASA-4-106023: Deny tcp src outside:100.64.29.189/5229 dst dmz-1:10.71.234.214/2004 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:11:26: %ASA-4-106023: Deny udp src outside:100.64.36.166/6465 dst dmz-1:10.71.234.214/3283 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:11:55: %ASA-4-106023: Deny udp src dmz-2:10.156.71.222/50224 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:12:30: %ASA-4-106023: Deny tcp src outside:100.64.33.216/52427 dst dmz-1:10.147.100.191/3270 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:23:08.627618-05:00 HOST-1055 procstate - - - root       120  0.0  0.0      0     0 ?        S    Jul20   0:00 [scsi_eh_3]
+<164>Jul 26 2024 20:12:31: %ASA-4-106023: Deny tcp src outside:100.64.36.169/43519 dst dmz-1:10.0.139.216/12349 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:23:39.478063-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<134>1 2024-07-26T20:23:54.500395-05:00 vcenter eam-main - - - 	at host-4450.example.internal(ResponseImpl.java:284) ~[vlsi-client.jar:?]
+<134>1 2024-07-26T20:23:58.683054-05:00 HOST-1055 observability-main - - - [2024-07-26T20:23:58,683] INFO845853[Thread-111] - host-4500.example.internal(PeriodicScheduler.java:149) - Plugin period value: 60 Projected period value: 60.0
+<164>Jul 26 2024 20:13:25: %ASA-4-106023: Deny tcp src outside:100.64.36.173/39314 dst dmz-1:10.147.100.191/3333 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:14:27: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/44565 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:14:36: %ASA-4-106023: Deny udp src dmz-2:10.58.236.204/38531 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:27:04.944324-05:00 HOST-1055 procstate - - - root        65  0.0  0.0      0     0 ?        S    Jul20   0:00 [irq/29-pciehp]
+<134>1 2024-07-26T20:27:04.974736-05:00 HOST-1055 procstate - - - vsan-he+ 31518  0.1  0.9 835980 121176 ?       Sl   Jul20  15:54 /usr/lib/vmware-vpx/vsan-health/bin/vsanvcmgmtd -s -c /usr/lib/vmware-vpx/vsan-health/VsanVcMgmtConfig.xml -u /etc/vmware-vsan-health/VsanMgmtCustomizedConfig.xml
+<164>Jul 26 2024 20:17:09: %ASA-4-106023: Deny udp src dmz-2:10.14.108.87/40416 dst outside:100.64.29.128/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:17:51: %ASA-4-106023: Deny tcp src outside:100.64.29.147/36969 dst dmz-1:10.71.234.214/7780 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:17:57: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/43685 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:17:59: %ASA-4-106023: Deny udp src dmz-2:10.65.107.121/41648 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:18:00: %ASA-4-106023: Deny udp src dmz-2:10.120.249.161/58626 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:18:00: %ASA-4-106023: Deny udp src dmz-2:10.78.84.127/58107 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:18:23: %ASA-4-106023: Deny tcp src outside:100.64.35.210/53514 dst dmz-1:10.127.41.182/64719 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:29:08.667528-05:00 HOST-1055 procstate - - - certmgr  28886  0.1  2.6 1776012 321508 ?      Sl   Jul20  11:43 /usr/java/jre-vmware/bin/vmware-certificatemanagement.launcher -Xmx210m -XX:CompressedClassSpaceSize=64m -Xss256k -XX:ParallelGCThreads=1 -Dlog4j2.formatMsgNoLookups=true -host-4681.example.internal=/usr/java/jre-vmware/lib/ext:/opt/vmware/jre_ext:/usr/java/jre-vmware/lib/ext-fips -host-4682.example.internal.approved_only=true -host-4683.example.internal.enable_jks=true -host-4684.example.internal==/etc/vmware/java/vmware-override-fips-java.security -host-4686.example.internal=true -host-4688.example.internal=13029 -host-4689.example.internal=false -host-4687.example.internal=localhost -host-4690.example.internal=true -host-4691.example.internal=/etc/vmware/vmware-vmon/svcCfgfiles/jmx/certificatemanagement.access -host-4692.example.internal=/etc/vmware/vmware-vmon/svcCfgfiles/jmx/certificatemanagement.password -Xms10m -Dlog4j.configurationFile=/usr/lib/vmware-certificatemanagement/config/log4j.properties -Dvim.logdir=/var/log/vmware/certificatemanagement -XX:+ForceTimeHighResolution -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=5000 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/log/vmware/certificatemanagement -XX:ErrorFile=/var/log/vmware/certificatemanagement/java_error%p.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintReferenceGC -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=1024K -Xloggc:/var/log/vmware/certificatemanagement/vmware-certificatemanagement-gc.log -XX:ThreadStackSize=256 -host-4832.example.internal=../lib:../../bin -classpath config:lib/*:/usr/lib/vmware-certificatemanagement/config:/usr/lib/vmware-certificatemanagement/lib/*:/usr/lib/vmware/grpc-sync-runtime/host-4845.example.internal:/usr/lib/vmware/grpc-sync-runtime/host-4846.example.internal:/usr/lib/vmware/grpc-sync-runtime/tokenservice-vmodl2.jar:/usr/lib/vmware/grpc-sync-runtime/host-4847.example.internal:/usr/lib/vmware/grpc-sync-runtime/host-4848.example.internal:/usr/lib/vmware/common-jars/jna.jar:/usr/lib/vmware/common-jars/platform.jar:/usr/lib/vmware/common-jars/host-4833.example.internal:/usr/lib/vmware/common-jars/host-4791.example.internal:/usr/lib/vmware/common-jars/host-4834.example.internal:/usr/lib/vmware/common-jars/host-4711.example.internal:/usr/lib/vmware/common-jars/host-4770.example.internal:/usr/lib/vmware/common-jars/host-4835.example.internal:/usr/lib/vmware/common-jars/host-4705.example.internal:/usr/lib/vmware/common-jars/host-4703.example.internal:/usr/lib/vmware/common-jars/host-4704.example.internal:/usr/lib/vmware/common-jars/host-4838.example.internal:/usr/lib/vmware/common-jars/host-4776.example.internal:/usr/lib/vmware/common-jars/host-4777.example.internal:/usr/lib/vmware/common-jars/host-4778.example.internal:/usr/lib/vmware/common-jars/host-4779.example.internal:/usr/lib/vmware/common-jars/host-4780.example.internal:/usr/lib/vmware/common-jars/host-4849.example.internal:/usr/lib/vmware/common-jars/host-4850.example.internal:/usr/lib/vmware/common-jars/host-4851.example.internal:/usr/lib/vmware/common-jars/host-4852.example.internal:/usr/lib/vmware/common-jars/host-4853.example.internal:/usr/lib/vmware/common-jars/host-4826.example.internal:/usr/lib/vmware/common-jars/host-4825.example.internal:/usr/lib/vmware/common-jars/host-4839.example.internal:/usr/lib/vmware/common-jars/host-4829.example.internal:/usr/lib/vmware/common-jars/host-4828.example.internal:/usr/lib/vmware/common-jars/host-4740.example.internal:/usr/lib/vmware/common-jars/host-4763.example.internal:/usr/lib/vmware/common-jars/host-4762.example.internal:/usr/lib/vmware/common-jars/host-4772.example.internal:/usr/lib/vmware-vmca/lib64/vmware-vmca-client.jar:/usr/lib/vmware/common-jars/host-4713.example.internal:/usr/lib/grpc-sync/host-4854.example.internal:/usr/lib/grpc-sync/host-4855.example.internal:/usr/lib/grpc-sync/host-4856.example.internal:/usr/lib/grpc-sync/host-4857.example.internal:/usr/lib/grpc-sync/host-4858.example.internal:/usr/lib/grpc-sync/host-4859.example.internal:/usr/lib/grpc-sync/host-4860.example.internal:/usr/lib/grpc-sync/host-4861.example.internal:/usr/lib/grpc-sync/host-4862.example.internal:/usr/lib/grpc-sync/host-4863.example.internal:/usr/lib/grpc-sync/host-4864.example.internal:/usr/lib/grpc-sync/host-4865.example.internal:/usr/lib/grpc-sync/host-4866.example.internal:/usr/lib/grpc-sync/host-4867.example.internal:/usr/lib/grpc-sync/host-4868.example.internal:/usr/lib/grpc-sync/host-4869.example.internal:/usr/lib/grpc-sync/host-4870.example.internal:/usr/lib/grpc-sync/host-4871.example.internal:/usr/lib/grpc-sync/host-4872.example.internal:/usr/lib/grpc-sync/host-4873.example.internal:/usr/lib/grpc-sync/host-4874.example.internal:/usr/lib/grpc-sync/host-4875.example.internal:/usr/lib/grpc-sync/host-4876.example.internal:/usr/lib/grpc-sync/host-4877.example.internal:/usr/lib/grpc-sync/host-4878.example.internal:/usr/lib/grpc-sync/host-4879.example.internal:/usr/lib/grpc-sync/host-4880.example.internal:/usr/lib/grpc-sync/host-4799.example.internal:/usr/lib/grpc-sync/host-4881.example.internal:/usr/lib/grpc-sync/host-4882.example.internal:/usr/lib/grpc-sync/host-4883.example.internal:/usr/lib/grpc-sync/host-4884.example.internal:/usr/lib/grpc-sync/host-4885.example.internal:/usr/lib/grpc-sync/host-4886.example.internal host-4887.example.internal certificatemanagement-vlsi.xml
+<164>Jul 26 2024 20:18:56: %ASA-4-106023: Deny tcp src outside:100.64.22.190/57620 dst dmz-1:10.0.139.216/2375 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:19:39: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/41418 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:19:56: %ASA-4-106023: Deny tcp src outside:100.64.23.19/62917 dst dmz-1:10.187.253.125/2375 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:30:51.740733-05:00 vcenter dnsmasq - - - Jul 26 20:30:51 dnsmasq[1808]: query[A] host-0172.example.internal from 100.64.160.85
+<164>Jul 26 2024 20:20:22: %ASA-4-106023: Deny tcp src outside:100.64.31.208/52528 dst dmz-1:10.0.139.216/54791 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:31:03.275936-05:00 HOST-1055 observability-main - - - [2024-07-26T20:31:03,274] INFO270444[Thread-111] - host-4500.example.internal(PeriodicScheduler.java:149) - Plugin period value: 60 Projected period value: 60.0
+<134>1 2024-07-26T20:31:14.647199-05:00 HOST-1055 envoy-access - - - 2024-07-27T01:31:14.646Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T01:31:14.095Z POST /lookupservice/sdk HTTP/1.1 200 via_upstream - 635 3322 10 10 0 100.64.160.85:55334 100.64.160.85:1080 100.64.160.85:42416 100.64.160.85:7090
+<164>Jul 26 2024 20:20:53: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/51921 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:31:39.679119-05:00 HOST-1055 eam-access - - - 100.64.160.85 10.135.191.70 - - [27/Jul/2024:01:31:33 +0000] [tomcat-http--17] "POST /eam/sdk HTTP/1.1" 500 318 [Processing time 1 msec] "Go-http-client/1.1"
+<164>Jul 26 2024 20:21:38: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/49207 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:22:37: %ASA-4-106023: Deny tcp src outside:100.64.29.22/56966 dst dmz-1:10.127.41.182/2423 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:24:02: %ASA-4-106023: Deny udp src dmz-2:10.132.254.110/40667 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:24:09: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/58154 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:24:30: %ASA-4-106023: Deny tcp src outside:100.64.26.18/54967 dst dmz-1:10.71.234.214/5601 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:24:33: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/64149 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:24:34: %ASA-4-106023: Deny icmp src outside:100.64.29.129 dst dmz-2:10.189.9.217 (type 3, code 13) by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:24:39: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/39583 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:35:31.893155-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:86)
+<164>Jul 26 2024 20:25:58: %ASA-4-106023: Deny tcp src outside:100.64.36.206/51605 dst dmz-1:10.71.234.214/1024 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:26:26: %ASA-4-106023: Deny tcp src outside:100.64.31.3/50177 dst dmz-1:10.147.100.191/80 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:27:02: %ASA-4-106023: Deny tcp src outside:100.64.32.97/39222 dst dmz-1:10.127.41.182/8081 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:27:46: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/38415 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:27:47: %ASA-4-106023: Deny tcp src outside:100.64.33.185/48531 dst dmz-1:10.127.41.182/5902 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:28:56: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/34290 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:29:37: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/50684 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:40:50.069466-05:00 HOST-1055 vpxd-main - - - 2024-07-26T20:40:50.066-05:00 info vpxd[29360] [Originator@6876 sub=vpxLro opID=sps-Main-405368-350-44450-75] [VpxLRO] -- FINISH session[52616e2c-8978-5fb0-20e2-0171faea4ed6]52e6e9d8-9af7-04eb-6df8-995336542cdd
+<134>1 2024-07-26T20:41:43.026441-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 20:31:05: %ASA-4-106023: Deny udp src dmz-2:10.164.73.178/47459 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:31:33: %ASA-4-106023: Deny udp src dmz-2:10.156.71.222/50780 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:32:10: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/36399 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:43:00.324705-05:00 vcenter eam-main - - - 	at host-4435.example.internal(Thread.java:750)
+<164>Jul 26 2024 20:32:59: %ASA-4-106023: Deny udp src dmz-2:10.162.39.247/36372 dst outside:198.51.100.27/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:44:29.670434-05:00 vcenter eam-main - - - 	at host-4442.example.internal(VimRoot.java:106) ~[eam-server.jar:?]
+<134>1 2024-07-26T20:45:20.784802-05:00 HOST-1055 envoy-access - - - 2024-07-27T01:45:20.784Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T01:45:13.173Z POST /ls/sdk HTTP/1.1 500 via_upstream - 4130 301 2 2 0 100.64.160.85:33450 100.64.160.85:443 100.64.160.85:58084 100.64.160.85:12080
+<164>Jul 26 2024 20:35:12: %ASA-4-106023: Deny tcp src outside:100.64.36.233/49507 dst dmz-1:10.127.41.182/20256 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:35:30: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/47969 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:36:24: %ASA-4-106023: Deny udp src dmz-2:10.69.210.251/46012 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:48:08.885883-05:00 HOST-1055 procstate - - - root      1476  0.0  0.0      0     0 ?        I<   Jul20   0:00 [ext4-rsv-conver]
+<164>Jul 26 2024 20:38:02: %ASA-4-106023: Deny tcp src outside:100.64.36.243/41152 dst dmz-1:10.147.100.191/51200 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:38:21: %ASA-4-106023: Deny tcp src outside:100.64.36.249/9220 dst dmz-1:10.147.100.191/35894 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:38:29: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/38972 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:39:07: %ASA-4-106023: Deny udp src dmz-2:10.156.71.222/47847 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:39:15: %ASA-4-106023: Deny tcp src outside:100.64.36.245/54334 dst dmz-1:10.147.100.191/1521 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:39:16: %ASA-4-106023: Deny tcp src outside:100.64.29.141/36596 dst dmz-1:10.147.100.191/6514 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:40:04: %ASA-4-106023: Deny udp src dmz-2:10.223.142.142/47402 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:40:17: %ASA-4-106023: Deny tcp src outside:100.64.27.227/57381 dst dmz-1:10.147.100.191/8388 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:40:17: %ASA-4-106023: Deny tcp src outside:100.64.36.252/50197 dst dmz-1:10.147.100.191/8869 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:40:47: %ASA-4-106023: Deny udp src dmz-2:10.213.245.45/37166 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:52:46.763417-05:00 vcenter eam-main - - - 	at host-4447.example.internal(HttpExchangeBase.java:57)
+<164>Jul 26 2024 20:42:45: %ASA-4-106023: Deny tcp src outside:100.64.37.9/55044 dst dmz-1:10.71.234.214/83 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:43:05: %ASA-4-106023: Deny tcp src outside:100.64.34.54/54565 dst dmz-1:10.187.253.125/13306 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:54:51.537510-05:00 vcenter dnsmasq - - - Jul 26 20:54:51 dnsmasq[1808]: reply host-0167.example.internal is <CNAME>
+<164>Jul 26 2024 20:45:27: %ASA-4-106023: Deny udp src dmz-2:10.65.107.121/52706 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:45:34: %ASA-4-106023: Deny udp src outside:100.64.31.9/49109 dst dmz-1:10.147.100.191/5008 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:45:42: %ASA-4-106023: Deny tcp src outside:100.64.33.216/52427 dst dmz-1:10.71.234.214/3357 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:45:49: %ASA-4-106023: Deny tcp src outside:100.64.27.225/17525 dst dmz-1:10.71.234.214/80 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T20:56:24.904949-05:00 HOST-1055 vpxd-main - - - 2024-07-26T20:56:24.883-05:00 info vpxd[29368] [Originator@6876 sub=vpxLro opID=sps-Main-405368-350-45384-86] [VpxLRO] -- BEGIN session[52616e2c-8978-5fb0-20e2-0171faea4ed6]520b2b60-d5d2-00e7-df0e-00e70d2590fc -- CatalogSyncManager -- host-4576.example.internal -- 52616e2c-8978-5fb0-20e2-0171faea4ed6(5274a24a-f980-89bd-32f7-ddfee31e9fc1)
+<164>Jul 26 2024 20:46:41: %ASA-4-106023: Deny udp src dmz-2:10.218.173.221/35396 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T20:57:27.464308-05:00 vcenter dnsmasq - - - Jul 26 20:57:27 dnsmasq[1808]: query[A] host-0171.example.internal from 100.64.160.85
+<164>Jul 26 2024 20:47:34: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/50169 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:48:19: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/36378 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:01:17.692762-05:00 HOST-1055 envoy-access - - - 2024-07-27T02:01:17.692Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T02:01:12.402Z POST /lookupservice/sdk HTTP/1.1 200 via_upstream - 672 3859 10 9 0 100.64.160.85:48314 100.64.160.85:1080 100.64.160.85:53552 100.64.160.85:7090
+<164>Jul 26 2024 20:50:51: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/46747 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:51:22: %ASA-4-106023: Deny udp src dmz-2:10.196.29.57/33041 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:02:21.282581-05:00 HOST-1055 envoy-access - - - 2024-07-27T02:02:21.282Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T02:02:19.796Z POST /lookupservice/sdk HTTP/1.1 200 via_upstream - 446 758 0 0 0 100.64.160.85:58712 100.64.160.85:1080 100.64.160.85:50512 100.64.160.85:7090
+<134>1 2024-07-26T21:02:53.704858-05:00 vcenter dnsmasq - - - Jul 26 21:02:53 dnsmasq[1808]: cached host-0167.example.internal is <CNAME>
+<164>Jul 26 2024 20:52:49: %ASA-4-106023: Deny tcp src outside:100.64.37.25/48151 dst dmz-1:10.127.41.182/8040 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:55:17: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/47372 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:55:31: %ASA-4-106023: Deny tcp src outside:100.64.37.45/58094 dst dmz-1:10.187.253.125/8001 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:55:39: %ASA-4-106023: Deny udp src dmz-2:10.43.213.170/41333 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:56:24: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/58598 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:56:50: %ASA-4-106023: Deny tcp src outside:100.64.37.38/50950 dst dmz-1:10.71.234.214/8808 by access-group "outside_access_in" [0x0, 0x0]
+<190>Jul 26 21:08:27 HOST-0102 CEF:0|Barracuda|WAF|1220|1000|GET|5|cat=TR dvc=10.71.234.214 duser="-" in=859 out=13453 suser="-" src=100.64.30.79 spt=55039 requestCookies=JSESSIONID\=AC0FD22079A999E6B3E730CF1CFA82F1                                                                 dhost=host-0173.example.internal outcome=200 suid="-" requestMethod=GET app=TLSv1.3 msg="-" requestContext=https://host-0173.example.internal/crm/Start.jsp?error=sessiontimeout dst=10.239.131.52 dpt=443 rt=1722046107621  start=Jul 26 2024 21:08:27  request=/servlet/eAndar.WebFileLibrary/3332/3735313432/SOC_NonCPA_Trans_Small.png requestClientApplication="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.64.160.212 Safari/537.36" dvchost=HOST-0102 externalId=190f1f24fd6-12c47df5 cs1Label=ClientType cs1="-" cs2Label=Protected cs2=PROTECTED cs3Label=ProxyIP cs3=100.64.30.79 cs4Label=ProfileMatched cs4=DEFAULT cs6Label=WFMatched cs6=VALID cn1Label=ServicePort cn1=443 cn2Label=CacheHit cn2=0 cn3Label=ProxyPort cn3=55039 flexNumber1Label=ServerTime(ms) flexNumber1=14 flexNumber2Label=USER-20657) flexNumber2=15 flexString1Label=ProtocolVersion flexString1=HTTP/1.1 BarracudaWafCustomHeader1="-" BarracudaWafCustomHeader2="-" BarracudaWafCustomHeader3="-" BarracudaWafResponseType=SERVER BarracudaWafSessionID="-"
+<164>Jul 26 2024 20:58:03: %ASA-4-106023: Deny tcp src outside:100.64.37.4/35007 dst dmz-1:10.71.234.214/50996 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:58:13: %ASA-4-106023: Deny tcp src outside:100.64.37.60/62000 dst dmz-1:10.71.234.214/9192 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 20:58:24: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/50261 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:09:06.589566-05:00 HOST-1055 vpxd-svcs-perf - - - 2024-07-26T21:09:06.589-05:00 [cache-sync-task [] INFO  host-4488.example.internal  opId=] Connection type: LDAP, Max allowed connections: 24, Number of active connections: 1, Number of idle connections: 1
+<164>Jul 26 2024 20:58:44: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/41614 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:09:34.648025-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T21:09:34.647-05:00 [tomcat-exec-13 [] INFO  host-4508.example.internal  opId=] SAML token for SubjectNameId [value=user-0824@example.net, format=http://host-3806.example.internal/claims/UPN] successfully parsed from XML
+<134>1 2024-07-26T21:09:50.545632-05:00 vcenter eam-main - - - 	at host-4458.example.internal(DefaultDataObjectFactory.java:25) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 20:59:16: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/43306 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 20:59:18: %ASA-4-106023: Deny tcp src outside:100.64.37.38/42835 dst dmz-1:10.147.100.191/8808 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:10:05.013856-05:00 HOST-1055 procstate - - - root      1560  0.0  0.0      0     0 ?        S    Jul20   0:02 [jbd2/dm-10-8]
+<134>1 2024-07-26T21:11:09.026511-05:00 HOST-1055 vsan-health-main - - - 2024-07-26T21:11:09.026-05:00 info vsanvcmgmtd[31717] [vSAN@6876 sub=AdapterServer opId=sps-Main-405368-350-46269-d771] Finished 'getAlarm' on 'vsanvp-notification-manager' (0 ms): done
+<164>Jul 26 2024 21:00:50: %ASA-4-106023: Deny udp src outside:100.64.37.67/24676 dst dmz-1:10.71.234.214/11211 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:01:00: %ASA-4-106023: Deny icmp src outside:100.64.29.129 dst dmz-2:10.189.9.217 (type 3, code 13) by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:00:56: %ASA-4-106023: Deny udp src outside:100.64.37.74/53675 dst dmz-1:10.0.139.216/1898 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:14:14.523284-05:00 HOST-1055 sps - - - 2024-07-26T21:14:14.523-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-4486.example.internal - OperationID present in invoker thread, adding suffix and re-using it sps-Main-405368-350-46454
+<164>Jul 26 2024 21:03:53: %ASA-4-106023: Deny tcp src outside:100.64.37.80/46476 dst dmz-1:10.147.100.191/3391 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:04:10: %ASA-4-106023: Deny tcp src outside:100.64.29.158/52013 dst dmz-1:10.0.139.216/1041 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:04:26: %ASA-4-106023: Deny tcp src outside:100.64.31.202/56105 dst dmz-1:10.127.41.182/28008 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:04:30: %ASA-4-106023: Deny tcp src outside:100.64.37.91/54368 dst dmz-1:10.0.139.216/500 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:04:54: %ASA-4-106023: Deny tcp src outside:100.64.26.88/36017 dst dmz-1:10.71.234.214/888 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:04:58: %ASA-4-106023: Deny udp src outside:100.64.19.10/41329 dst dmz-1:10.71.234.214/22452 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:05:14: %ASA-4-106023: Deny tcp src outside:100.64.27.224/56658 dst dmz-1:10.187.253.125/58892 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:05:26: %ASA-4-106023: Deny udp src dmz-2:10.58.236.204/52199 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:05:25: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/58309 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:16:28.977220-05:00 vcenter dnsmasq - - - Jul 26 21:16:28 dnsmasq[1808]: query[A] host-0171.example.internal from 100.64.160.85
+<134>1 2024-07-26T21:16:41.728254-05:00 vcenter eam-main - - - 	at host-4444.example.internal(MethodInvocationHandlerImpl.java:195) ~[vlsi-client.jar:?]
+<134>1 2024-07-26T21:16:53.259155-05:00 HOST-1055 vpxd-svcs-perf - - - 2024-07-26T21:16:53.259-05:00 [cache-sync-task [] INFO  host-4488.example.internal  opId=] Connection type: LDAP, Max allowed connections: 24, Number of active connections: 1, Number of idle connections: 1
+<134>1 2024-07-26T21:18:17.645455-05:00 vcenter eam-main - - - 	at host-4456.example.internal.<init>(ComplexStackContext.java:30)
+<164>Jul 26 2024 21:07:46: %ASA-4-106023: Deny udp src dmz-2:10.215.130.199/36218 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:07:52: %ASA-4-106023: Deny udp src dmz-2:10.166.236.242/48729 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:18:57.300012-05:00 HOST-1055 eam-main - - - 2024-07-27T02:18:57.299Z |  INFO | vim-monitor | OpId.java | 37 | [vim:loginExtensionByCertificate:13fdb258439be333] created from [Retry:Login:host-4481.example.internal:b5d54f89f1a79b09]
+<134>1 2024-07-26T21:18:57.300012-05:00 HOST-1055 eam-main - - - 2024-07-27T02:18:57.299Z |  INFO | vim-monitor | OpId.java | 37 | [vim:loginExtensionByCertificate:13fdb258439be333] created from [Retry:Login:host-4481.example.internal:b5d54f89f1a79b09]
+<164>Jul 26 2024 21:08:48: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/59410 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:20:08.428143-05:00 HOST-1055 procstate - - - vpostgr+ 33868  0.0  0.1 450760 13728 ?        Ss   Jul20   0:00 postgres: USER-20658 [local] idle
+<134>1 2024-07-26T21:20:19.625995-05:00 vcenter eam-main - - - 	at host-4452.example.internal(ResponseUnmarshaller.java:70)
+<164>Jul 26 2024 21:09:45: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/57862 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:20:29.449801-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T21:20:29.449-05:00 [Thread-6 [] INFO  host-4484.example.internal  opId=] PerfBucketKey [measurementPt=IDMPeriodicRefreshTenantCertificates, providerInfo=PROVIDERID-DEFAULT]
+<164>Jul 26 2024 21:10:01: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/54665 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:21:16.392298-05:00 vcenter eam-main - - - 	at host-4492.example.internal$SingleRequestDispatcher.dispatch(DispatcherImpl.java:290) [vlsi-server.jar:?]
+<164>Jul 26 2024 21:10:47: %ASA-4-106023: Deny udp src dmz-2:10.44.146.210/36256 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:11:25: %ASA-4-106023: Deny tcp src outside:100.64.37.119/62000 dst dmz-1:10.71.234.214/23 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:11:28: %ASA-4-106023: Deny tcp src outside:100.64.35.223/56565 dst dmz-1:10.71.234.214/1023 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:11:52: %ASA-4-106023: Deny udp src dmz-2:10.179.160.99/46811 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:12:03: %ASA-4-106023: Deny tcp src outside:100.64.26.88/43070 dst dmz-1:10.187.253.125/888 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:13:07: %ASA-4-106023: Deny tcp src outside:100.64.31.121/51783 dst dmz-1:10.71.234.214/45710 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:13:44: %ASA-4-106023: Deny tcp src outside:100.64.22.190/45379 dst dmz-1:10.71.234.214/4433 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:14:03: %ASA-4-106023: Deny tcp src outside:100.64.37.129/58078 dst dmz-1:10.127.41.182/56978 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:15:30: %ASA-4-106023: Deny udp src dmz-2:10.166.236.242/42293 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:28:04.080862-05:00 vcenter eam-main - - - 	at host-4441.example.internal$RetryingFuture$RetryActionImpl.proceed(MethodInvocationHandlerImpl.java:625) [vlsi-client.jar:?]
+<164>Jul 26 2024 21:17:40: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/47833 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:18:16: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/59936 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:29:24.979715-05:00 vcenter eam-main - - - 	at host-4441.example.internal$CallExecutor.sendCall(MethodInvocationHandlerImpl.java:693)
+<164>Jul 26 2024 21:18:50: %ASA-4-106023: Deny tcp src outside:100.64.36.233/53487 dst dmz-1:10.0.139.216/7070 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:18:58: %ASA-4-106023: Deny tcp src outside:100.64.35.164/51692 dst dmz-1:10.0.139.216/88 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:19:13: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/52576 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:19:26: %ASA-4-106023: Deny udp src dmz-2:10.89.7.184/45377 dst outside:198.51.100.27/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:30:10.304034-05:00 vcenter dnsmasq - - - Jul 26 21:30:10 dnsmasq[1808]: reply host-0167.example.internal is <CNAME>
+<134>1 2024-07-26T21:31:04.748570-05:00 HOST-1055 procstate - - - root     24053  0.4  0.0 825728  6648 ?        Sl   Jul20  45:14 /opt/likewise/sbin/lwregd --syslog
+<164>Jul 26 2024 21:20:59: %ASA-4-106023: Deny tcp src outside:100.64.32.207/42128 dst dmz-1:10.127.41.182/636 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:21:00: %ASA-4-106023: Deny tcp src outside:100.64.37.155/55809 dst dmz-1:10.127.41.182/5800 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:21:20: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/41105 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:31:59.795365-05:00 HOST-1055 analytics - - - 2024-07-26T21:31:59.790-05:00 phStageLogDrainerTaskExecutor-4  INFO  host-4985.example.internal Initializing with trust store at path: /usr/java/jre-vmware/lib/security/cacerts
+<134>1 2024-07-26T21:32:06.009707-05:00 HOST-1055 vsan-health-main - - - --> skipCnt = 0
+<164>Jul 26 2024 21:21:38: %ASA-4-106023: Deny udp src dmz-2:10.76.83.212/32930 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:21:38: %ASA-4-106023: Deny udp src dmz-2:10.76.83.212/32930 dst outside:192.0.2.148/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:32:12.425777-05:00 HOST-1055 vpxd-main - - - 2024-07-26T21:32:11.621-05:00 info vpxd[29402] [Originator@6876 sub=Default opID=175136a7] [VpxLRO] -- ERROR lro-528845 -- SessionManager -- host-4482.example.internal: host-4483.example.internal:\n--> Result:\n--> (host-4483.example.internal) {\n-->    faultCause = (vmodl.MethodFault) null, \n-->    faultMessage = <unset>\n-->    msg = ""\n--> }\n--> Args:\n--> \n--> Arg extensionKey:\n--> "host-4481.example.internal"\n--> Arg locale:\n-->
+<164>Jul 26 2024 21:21:41: %ASA-4-106023: Deny tcp src outside:100.64.33.216/52427 dst dmz-1:10.71.234.214/3251 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:21:40: %ASA-4-106023: Deny udp src dmz-2:10.152.67.202/54652 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:21:40: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/55756 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:21:44: %ASA-4-106023: Deny tcp src outside:100.64.37.159/60331 dst dmz-1:10.71.234.214/5672 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:21:41: %ASA-4-106023: Deny udp src dmz-2:10.76.83.212/32930 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:23:11: %ASA-4-106023: Deny udp src dmz-2:10.45.208.130/48158 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:23:31: %ASA-4-106023: Deny udp src dmz-2:10.94.83.123/52808 dst outside:100.64.29.135/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:23:39: %ASA-4-106023: Deny tcp src outside:100.64.32.153/34832 dst dmz-1:10.71.234.214/23 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:23:40: %ASA-4-106023: Deny tcp src outside:100.64.37.161/4332 dst dmz-1:10.71.234.214/4355 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:23:58: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/56738 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:24:10: %ASA-4-106023: Deny udp src dmz-2:10.164.73.178/59769 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:35:05.602025-05:00 HOST-1055 procstate - - - root     56585  0.0  0.0      0     0 ?        I    21:27   0:00 [kworker/0:1-events]
+<134>1 2024-07-26T21:35:05.572016-05:00 HOST-1055 procstate - - - root      1580  0.0  0.0      0     0 ?        I<   Jul20   0:00 [kdmflush]
+<164>Jul 26 2024 21:24:54: %ASA-4-106023: Deny udp src dmz-2:10.196.29.57/49761 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:36:15.058963-05:00 vcenter dnsmasq - - - Jul 26 21:36:15 dnsmasq[1808]: cached host-5065.example.internal is 198.51.100.107
+<134>1 2024-07-26T21:36:39.470902-05:00 HOST-1055 envoy-access - - - 2024-07-27T02:36:39.470Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T02:36:32.949Z POST /sdk HTTP/1.1 200 via_upstream - 847 600 3 2 1 100.64.160.85:47348 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<134>1 2024-07-26T21:36:39.470961-05:00 HOST-1055 envoy-access - - - 2024-07-27T02:36:39.470Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T02:36:33.175Z POST /sdk HTTP/1.1 200 via_upstream - 678 1591 3 2 0 100.64.160.85:47348 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<164>Jul 26 2024 21:26:29: %ASA-4-106023: Deny tcp src outside:100.64.29.145/33469 dst dmz-1:10.147.100.191/8027 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:27:29: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/35463 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:38:30.731568-05:00 HOST-1055 vpxd-main - - - 2024-07-26T21:38:30.718-05:00 warning vpxd[29460] [Originator@6876 sub=Vmomi opID=2fa5e765] VMOMI activation LRO failed; <<52e07269-5834-7ee5-d2a2-97a5f9523ce5, <TCP '100.64.160.85 : 8089'>, <TCP '100.64.160.85 : 34510'>>, SessionManager, host-4482.example.internal>, N3Vim5Fault12InvalidLogin9ExceptionE(Fault cause: host-4483.example.internal\n--> )\n--> [context]zKq7AVECAQAAAH1IQAETdnB4ZAAA7tg3bGlidm1hY29yZS5zbwAAp3gsACVsLQAL6TIBqbdvdnB4ZAAB8W99AY9r1oJZzgUBbGlidmltLXR5cGVzLnNvAIEYvWEBgRPAYAGBVMFgAYGC0GABgeX9XwGBsKdgAQCnSSMAT58jAKxkNwOHfwBsaWJwdGhyZWFkLnNvLjAABC82D2xpYmMuc28uNgA=[/context]
+<164>Jul 26 2024 21:28:33: %ASA-4-106023: Deny udp src dmz-2:10.213.245.45/38035 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:28:59: %ASA-4-106023: Deny tcp src outside:100.64.37.182/55932 dst dmz-1:10.147.100.191/8888 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:29:12: %ASA-4-106023: Deny tcp src outside:100.64.37.183/43398 dst dmz-1:10.71.234.214/1701 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:29:09: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/33751 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:29:09: %ASA-4-106023: Deny icmp src outside:100.64.29.129 dst dmz-2:10.189.9.217 (type 3, code 13) by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:29:19: %ASA-4-106023: Deny tcp src outside:100.64.37.186/54740 dst dmz-1:10.187.253.125/43342 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:29:29: %ASA-4-106023: Deny tcp src outside:100.64.36.142/56392 dst dmz-1:10.127.41.182/4432 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:40:12.690156-05:00 HOST-1055 eam-main - - - Caused by: host-4473.example.internal: Cannot complete login due to an incorrect user name or password.
+<134>1 2024-07-26T21:40:27.721516-05:00 vcenter eam-main - - - 	at host-4444.example.internal(MethodInvocationHandlerImpl.java:195)
+<134>1 2024-07-26T21:41:04.953032-05:00 HOST-1055 procstate - - - root        64  0.0  0.0      0     0 ?        S    Jul20   0:00 [irq/28-pciehp]
+<134>1 2024-07-26T21:41:04.966788-05:00 HOST-1055 procstate - - - updatem+ 31492  0.6  7.5 1662256 923876 ?      Sl   Jul20  67:15 /usr/lib/vmware-updatemgr/bin/updatemgr /usr/lib/vmware-updatemgr/bin/vci-integrity.xml
+<164>Jul 26 2024 21:30:44: %ASA-4-106023: Deny udp src dmz-2:10.14.108.87/60711 dst outside:100.64.29.128/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:41:34.948115-05:00 HOST-1055 ui-threadmonitor - - - [2024-07-26T21:41:34.947-05:00] [INFO ] PI-client-connection-monitor  host-4438.example.internal      vAPI-client-connection-monitor thread started...
+<164>Jul 26 2024 21:32:27: %ASA-4-106023: Deny tcp src outside:100.64.33.101/54291 dst dmz-1:10.187.253.125/6002 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:33:02: %ASA-4-106023: Deny udp src dmz-2:10.157.15.92/39233 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:44:25.234743-05:00 HOST-1055 eam-main - - - 2024-07-27T02:44:25.227Z |  WARN | vim-async-1 | ExtensionSessionRenewer.java | 227 | [Retry:Login:host-4481.example.internal:a30ac0fb4cd460e9] Re-login failed, due to:
+<164>Jul 26 2024 21:33:48: %ASA-4-106023: Deny udp src dmz-2:10.89.7.184/55281 dst outside:198.51.100.27/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:34:13: %ASA-4-106023: Deny tcp src outside:100.64.28.68/51299 dst dmz-1:10.71.234.214/9207 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:34:21: %ASA-4-106023: Deny tcp src outside:100.64.36.4/49706 dst dmz-1:10.187.253.125/9092 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:34:22: %ASA-4-106023: Deny tcp src outside:100.64.31.8/8298 dst dmz-1:10.187.253.125/8020 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:45:10.313150-05:00 HOST-1055 eam-main - - - 2024-07-27T02:45:10.312Z | ERROR | vlsi | DispatcherImpl.java | 468 | Internal server error during dispatch
+<164>Jul 26 2024 21:34:36: %ASA-4-106023: Deny tcp src outside:100.64.37.198/49214 dst dmz-1:10.127.41.182/143 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:34:50: %ASA-4-106023: Deny tcp src outside:100.64.29.184/53007 dst dmz-1:10.71.234.214/8064 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:34:55: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/39445 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:35:13: %ASA-4-106023: Deny tcp src outside:100.64.35.253/49434 dst dmz-1:10.0.139.216/8887 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:46:09.142502-05:00 HOST-1055 procstate - - - root        69  0.0  0.0      0     0 ?        S    Jul20   0:00 [irq/33-pciehp]
+<134>1 2024-07-26T21:46:08.864400-05:00 vcenter analytics - - - 	at host-4967.example.internal(Files.java:407)
+<164>Jul 26 2024 21:35:46: %ASA-4-106023: Deny udp src dmz-2:10.14.108.87/35056 dst outside:100.64.29.128/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:36:31: %ASA-4-106023: Deny icmp src outside:100.64.29.129 dst dmz-2:10.189.9.217 (type 3, code 13) by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:47:11.894221-05:00 vcenter eam-main - - - 	at host-4461.example.internal(Constructor.java:423) ~[?:1.8.0_345]
+<134>1 2024-07-26T21:47:43.478634-05:00 vcenter analytics - - - 	at host-4435.example.internal(Thread.java:750)
+<134>1 2024-07-26T21:48:00.140642-05:00 HOST-1055 vpxd-main - - - 2024-07-26T21:47:59.414-05:00 info vpxd[29367] [Originator@6876 sub=vpxLro opID=HB-SpecSync-host-16@8454755-2be9bff3] [VpxLRO] -- FINISH lro-529562
+<164>Jul 26 2024 21:37:26: %ASA-4-106023: Deny tcp src outside:100.64.32.165/52264 dst dmz-1:10.147.100.191/4022 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:37:40: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/65109 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:38:47: %ASA-4-106023: Deny tcp src outside:100.64.37.207/43140 dst dmz-1:10.187.253.125/2080 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:39:04: %ASA-4-106023: Deny tcp src outside:100.64.37.217/44965 dst dmz-1:10.187.253.125/27018 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:40:21: %ASA-4-106023: Deny tcp src outside:100.64.37.209/34788 dst dmz-1:10.187.253.125/2078 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:51:06.615467-05:00 HOST-1055 eam-access - - - 100.64.160.85 10.135.191.70 - - [27/Jul/2024:02:50:56 +0000] [tomcat-http--11] "POST /eam/sdk HTTP/1.1" 500 318 [Processing time 1 msec] "Go-http-client/1.1"
+<164>Jul 26 2024 21:40:25: %ASA-4-106023: Deny tcp src outside:100.64.37.220/54489 dst dmz-1:10.71.234.214/52200 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:51:11.427083-05:00 vcenter eam-main - - - 	at host-4455.example.internal(SoapFaultStackContext.java:41) ~[vlsi-client.jar:?]
+<134>1 2024-07-26T21:51:09.183915-05:00 HOST-1055 procstate - - - envoy    24568  0.0  0.0  69008   288 ?        Sl   Jul20   0:03 /usr/lib/vmware-envoy/envoy-logwriter /var/log/vmware/envoy 5 5242880
+<164>Jul 26 2024 21:40:40: %ASA-4-106023: Deny udp src outside:100.64.32.240/7206 dst dmz-1:10.187.253.125/1604 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:40:45: %ASA-4-106023: Deny tcp src outside:100.64.28.77/48956 dst dmz-1:10.127.41.182/81 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:41:06: %ASA-4-106023: Deny tcp src outside:100.64.31.133/52758 dst dmz-1:10.127.41.182/445 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:41:06: %ASA-4-106023: Deny tcp src outside:100.64.37.217/34474 dst dmz-1:10.0.139.216/27018 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:53:10.411647-05:00 vcenter eam-main - - - 	at host-4464.example.internal(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_345]
+<134>1 2024-07-26T21:53:14.724744-05:00 HOST-1055 sps - - - 2024-07-26T21:53:14.724-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-5060.example.internal - datastore info:FCDDatastore [datastoreID=ds:///vmfs/volumes/5f0f504d-7c9f928c-46ef-48df37123220/, lastObjectVClock=-1, lastSyncVClock=-1, retryCount=0]
+<164>Jul 26 2024 21:42:41: %ASA-4-106023: Deny tcp src outside:100.64.34.5/53641 dst dmz-1:10.147.100.191/427 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:42:43: %ASA-4-106023: Deny tcp src outside:100.64.37.225/41534 dst dmz-1:10.147.100.191/1080 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:42:44: %ASA-4-106023: Deny tcp src outside:100.64.30.242/54810 dst dmz-1:10.147.100.191/50580 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:42:46: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/58260 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:43:26: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/35901 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:55:04.944058-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<134>1 2024-07-26T21:55:08.978918-05:00 HOST-1055 procstate - - - root        18  0.0  0.0      0     0 ?        S    Jul20   0:22 [ksoftirqd/1]
+<164>Jul 26 2024 21:44:32: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/34183 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:45:02: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/37280 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T21:55:51.617934-05:00 vcenter eam-main - - - 	at host-4471.example.internal(VimRoot.java:78) ~[eam-server.jar:?]
+<134>1 2024-07-26T21:56:38.295341-05:00 vcenter eam-main - - - 	at host-4477.example.internal$loginExtension$4(SessionManager.java:154) ~[eam-server.jar:?]
+<164>Jul 26 2024 21:47:03: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/63850 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:47:31: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/51626 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:47:27: %ASA-4-106023: Deny udp src dmz-2:10.58.236.204/41765 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:48:18: %ASA-4-106023: Deny tcp src outside:100.64.37.237/56531 dst dmz-1:10.71.234.214/9001 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T21:59:16.473662-05:00 vcenter eam-main - - - 	at host-4450.example.internal(ResponseImpl.java:284) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 21:48:54: %ASA-4-106023: Deny tcp src outside:100.64.34.94/54193 dst dmz-1:10.0.139.216/110 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:48:55: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/61939 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:01:20.469142-05:00 vcenter eam-main - - - 	at host-4441.example.internal$RetryingFuture.setException(MethodInvocationHandlerImpl.java:541) [vlsi-client.jar:?]
+<134>1 2024-07-26T22:01:37.087590-05:00 vcenter eam-main - - - 	at host-4456.example.internal.<init>(ComplexStackContext.java:30) ~[vlsi-core.jar:?]
+<134>1 2024-07-26T22:01:37.088728-05:00 HOST-1055 eam-main - - -    object = ManagedObjectReference: type = Folder, value = group-d1, serverGuid = d1277caf-371e-4f81-bd28-47d2ed482473,
+<164>Jul 26 2024 21:51:11: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/55264 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:01:52.001546-05:00 HOST-1055 eam-main - - - 2024-07-27T03:01:52.001Z | ERROR | vlsi | DispatcherImpl.java | 468 | Internal server error during dispatch
+<134>1 2024-07-26T22:02:06.211475-05:00 HOST-1055 vpxd-main - - - 2024-07-26T22:02:06.191-05:00 info vpxd[29149] [Originator@6876 sub=vpxLro opID=sps-Main-405368-350-49326-e9] [VpxLRO] -- BEGIN session[52616e2c-8978-5fb0-20e2-0171faea4ed6]52660464-34c4-a029-d7f7-054b31ebda4c -- CatalogSyncManager -- host-4576.example.internal -- 52616e2c-8978-5fb0-20e2-0171faea4ed6(5274a24a-f980-89bd-32f7-ddfee31e9fc1)
+<134>1 2024-07-26T22:02:13.795399-05:00 HOST-1055 envoy-access - - - 2024-07-27T03:02:13.795Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T03:02:05.693Z POST /invsvc/vmomi/sdk/ HTTP/1.1 200 via_upstream - 631 72817 3 2 0 100.64.160.85:45550 100.64.160.85:1080 100.64.160.85:52684 100.64.160.85:10080
+<134>1 2024-07-26T22:02:20.753551-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:86)
+<164>Jul 26 2024 21:52:04: %ASA-4-106023: Deny udp src dmz-2:10.215.130.199/37947 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:52:06: %ASA-4-106023: Deny tcp src outside:100.64.37.248/56686 dst dmz-1:10.71.234.214/45248 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:52:17: %ASA-4-106023: Deny tcp src outside:100.64.29.143/31143 dst dmz-1:10.187.253.125/14414 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:52:17: %ASA-4-106023: Deny tcp src outside:100.64.29.143/31143 dst dmz-1:10.187.253.125/14414 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:52:57: %ASA-4-106023: Deny tcp src outside:100.64.29.65/51942 dst dmz-1:10.71.234.214/12321 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:53:01: %ASA-4-106023: Deny tcp src outside:100.64.30.129/42327 dst dmz-1:10.71.234.214/10258 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:54:11: %ASA-4-106023: Deny tcp src outside:100.64.35.120/56983 dst dmz-1:10.127.41.182/10000 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:05:36.741852-05:00 HOST-1055 vapi-endpoint - - - 2024-07-26T22:05:36.741-05:00 | INFO  | state-USER-20640            | ApiConnectionsLsUtil           | Unsupported source (metadata) type in metadata source entry host-5094.example.internal : /usr/lib/vmware-certificateauthority/config/metadata/host-5692.example.internal_authorization.json
+<164>Jul 26 2024 21:55:07: %ASA-4-106023: Deny tcp src outside:100.64.26.18/33188 dst dmz-1:10.187.253.125/179 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:55:08: %ASA-4-106023: Deny tcp src outside:100.64.29.184/48066 dst dmz-1:10.147.100.191/8064 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:55:56: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/51011 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:56:10: %ASA-4-106023: Deny tcp src outside:100.64.38.2/40214 dst dmz-1:10.127.41.182/4332 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 21:56:26: %ASA-4-106023: Deny udp src dmz-2:10.14.108.87/49428 dst outside:100.64.29.128/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 21:57:05: %ASA-4-106023: Deny tcp src outside:100.64.29.65/50341 dst dmz-1:10.147.100.191/12321 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:08:06.115476-05:00 HOST-1055 envoy-access - - - 2024-07-27T03:08:06.115Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T03:08:04.457Z POST /lookupservice/sdk HTTP/1.1 200 via_upstream - 619 3859 12 12 0 100.64.160.85:46782 100.64.160.85:1080 100.64.160.85:58012 100.64.160.85:7090
+<134>1 2024-07-26T22:09:08.561046-05:00 HOST-1055 procstate - - - root      1531  0.0  0.0      0     0 ?        S    Jul20   0:00 [jbd2/dm-8-8]
+<134>1 2024-07-26T22:09:28.291319-05:00 HOST-1055 observability-main - - - [2024-07-26T22:09:28,290] INFO175460[Thread-111] - host-4501.example.internal(PeriodicScheduler.java:107) - Executor is in progress: false Eligible for offload: false
+<164>Jul 26 2024 21:59:14: %ASA-4-106023: Deny tcp src outside:100.64.38.17/42153 dst dmz-1:10.147.100.191/7100 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:09:49.595549-05:00 vcenter eam-main - - - 	at host-4439.example.internal(MethodInvocationHandlerImpl.java:322)
+<134>1 2024-07-26T22:10:04.580804-05:00 HOST-1055 vsan-health-main - - - 2024-07-26T22:10:04.580-05:00 INFO vsan-mgmt[33641] [VsanPyVmomiProfiler::logProfile opID=noOpId]   ClusterMembers: 0.00s
+<134>1 2024-07-26T22:10:17.443960-05:00 HOST-1055 sso-tomcat - - - [27/Jul/2024:03:10:10 +0000] tomcat-http--6 [Request] 100.64.160.85:36860 to local 443 - HTTP/1.1 GET /openidconnect/.well-known/openid-configuration    [Response] 200 - 635 bytes    [Perf] process 3ms / commit 3ms / conn [+]
+<164>Jul 26 2024 22:00:07: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/56425 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:00:45: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/64502 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:11:48.802331-05:00 vcenter analytics - - - 	at host-4437.example.internal(ThreadPoolExecutor.java:1149)
+<134>1 2024-07-26T22:11:40.153037-05:00 vcenter eam-main - - - 	at host-4492.example.internal$SingleRequestDispatcher.handleBody(DispatcherImpl.java:373) [vlsi-server.jar:?]
+<164>Jul 26 2024 22:02:44: %ASA-4-106023: Deny tcp src outside:100.64.36.85/51868 dst dmz-1:10.0.139.216/33322 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:15:11.997573-05:00 vcenter dnsmasq - - - Jul 26 22:15:11 dnsmasq[1808]: query[A] host-0167.example.internal from 100.64.160.85
+<164>Jul 26 2024 22:04:51: %ASA-4-106023: Deny udp src dmz-2:10.218.173.221/38752 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:05:04: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/58291 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:05:20: %ASA-4-106023: Deny udp src dmz-2:10.149.56.12/35487 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:16:08.249550-05:00 HOST-1055 procstate - - - root      9453  0.0  0.0      0     0 ?        I    22:01   0:00 [kworker/0:3-cgroup_destroy]
+<164>Jul 26 2024 22:05:23: %ASA-4-106023: Deny udp src dmz-2:10.8.166.146/37729 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:05:48: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/49777 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:06:25: %ASA-4-106023: Deny tcp src outside:100.64.38.27/58235 dst dmz-1:10.147.100.191/8123 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:06:40: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/65165 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:06:41: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/33933 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:07:22: %ASA-4-106023: Deny tcp src outside:100.64.38.39/53899 dst dmz-1:10.71.234.214/55918 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:18:05.384977-05:00 HOST-1055 procstate - - - root      1804  0.0  0.0   8256  4232 ?        Ss   Jul20   0:00 /usr/sbin/sshd -D
+<164>Jul 26 2024 22:08:00: %ASA-4-106023: Deny icmp src outside:100.64.29.129 dst dmz-2:10.189.9.217 (type 3, code 13) by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:08:05: %ASA-4-106023: Deny tcp src outside:100.64.38.34/60191 dst dmz-1:10.147.100.191/60000 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:19:00.972899-05:00 HOST-1055 eam-main - - - }
+<164>Jul 26 2024 22:08:55: %ASA-4-106023: Deny tcp src outside:100.64.38.40/54245 dst dmz-1:10.127.41.182/22 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:19:51.002231-05:00 vcenter dnsmasq - - - Jul 26 22:19:50 dnsmasq[1808]: reply k.sni.global.fastly.net is 100.64.162.132
+<134>1 2024-07-26T22:19:55.573743-05:00 vcenter dnsmasq - - - Jul 26 22:19:55 dnsmasq[1808]: forwarded host-0170.example.internal to 10.76.167.163
+<164>Jul 26 2024 22:09:28: %ASA-4-106023: Deny icmp src dmz-1:10.187.253.125 dst outside:100.64.38.43 (type 3, code 3) by access-group "dmz_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:09:36: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/41491 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:09:29: %ASA-4-106023: Deny tcp src outside:100.64.38.44/52641 dst dmz-1:10.71.234.214/2521 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:09:29: %ASA-4-106023: Deny icmp src dmz-1:10.187.253.125 dst outside:100.64.38.43 (type 3, code 3) by access-group "dmz_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:10:14: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/55927 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:11:17: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/61905 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:11:21: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/33370 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:11:33: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/34998 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:12:07: %ASA-4-106023: Deny tcp src outside:100.64.36.160/53313 dst dmz-1:10.127.41.182/8800 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:12:49: %ASA-4-106023: Deny udp src dmz-2:10.118.78.52/47149 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:12:54: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/60841 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:24:04.831734-05:00 HOST-1055 procstate - - - root      9909  0.0  0.1  48908 14340 tty2     Ss+  Jul20   0:00 /usr/bin/python /usr/lib/applmgmt/base/bin/vherdrunner /usr/lib/applmgmt/dcui/dcui.py noquit
+<164>Jul 26 2024 22:14:08: %ASA-4-106023: Deny tcp src outside:100.64.38.48/42659 dst dmz-1:10.187.253.125/1364 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:24:58.428132-05:00 vcenter dnsmasq - - - Jul 26 22:24:58 dnsmasq[1808]: query[A] host-0174.example.internal from 100.64.160.85
+<164>Jul 26 2024 22:15:01: %ASA-4-106023: Deny tcp src outside:100.64.37.239/21140 dst dmz-1:10.71.234.214/2375 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:26:22.831945-05:00 HOST-1055 eam-main - - - 2024-07-27T03:26:22.830Z | ERROR | vim-monitor | VcListener.java | 124 | An unexpected error in the changes polling loop
+<164>Jul 26 2024 22:16:45: %ASA-4-106023: Deny udp src dmz-2:10.164.73.178/47712 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:17:29: %ASA-4-106023: Deny tcp src outside:100.64.33.146/22227 dst dmz-1:10.0.139.216/52200 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:17:29: %ASA-4-106023: Deny tcp src outside:100.64.33.146/22227 dst dmz-1:10.0.139.216/52200 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:17:42: %ASA-4-106023: Deny tcp src outside:100.64.38.61/51371 dst dmz-1:10.127.41.182/9080 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:18:43: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/53617 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:18:44: %ASA-4-106023: Deny udp src outside:100.64.33.62/21482 dst dmz-1:10.147.100.191/3702 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:19:15: %ASA-4-106023: Deny udp src dmz-2:10.152.67.202/37785 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:19:53: %ASA-4-106023: Deny tcp src outside:100.64.34.252/52906 dst dmz-1:10.0.139.216/30083 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:30:40.232551-05:00 HOST-1055 vsan-health-main - - - 2024-07-26T22:30:40.231-05:00 info vsanvcmgmtd[27241] [vSAN@6876 sub=CnsOpStats opId=b35fdc8b] [VslmCloneVStorageObject stats] period: 300s, startTime: 1722048365 - ttlReq: 0, maxDur: 0, avgDur: 0, maxCncr: 0
+<164>Jul 26 2024 22:20:29: %ASA-4-106023: Deny udp src dmz-2:10.76.175.229/42202 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:20:57: %ASA-4-106023: Deny tcp src outside:100.64.37.150/55551 dst dmz-1:10.0.139.216/111 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:21:09: %ASA-4-106023: Deny tcp src outside:100.64.38.69/52839 dst dmz-1:10.71.234.214/8282 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:22:31: %ASA-4-106023: Deny tcp src outside:100.64.38.68/41551 dst dmz-1:10.71.234.214/22 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:22:34: %ASA-4-106023: Deny udp src dmz-2:10.149.56.12/42826 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:22:50: %ASA-4-106023: Deny tcp src outside:100.64.38.68/44359 dst dmz-1:10.0.139.216/22 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:34:01.264123-05:00 vcenter eam-main - - - 	at host-4460.example.internal(Class.java:442) ~[?:1.8.0_345]
+<134>1 2024-07-26T22:34:14.450312-05:00 HOST-1055 envoy-access - - - 2024-07-27T03:34:14.048Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T03:34:07.054Z POST /ls/sdk HTTP/1.1 200 via_upstream - 497 249 1 1 0 100.64.160.85:33450 100.64.160.85:443 100.64.160.85:59998 100.64.160.85:12080
+<164>Jul 26 2024 22:23:55: %ASA-4-106023: Deny tcp src outside:100.64.31.4/50552 dst dmz-1:10.127.41.182/16102 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:24:16: %ASA-4-106023: Deny udp src dmz-2:10.78.84.127/36617 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:25:10: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/52205 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:25:59: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/63600 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:26:10: %ASA-4-106023: Deny udp src outside:100.64.38.82/43488 dst dmz-1:10.187.253.125/500 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:37:06.529996-05:00 vcenter eam-main - - - 	at host-4467.example.internal(AuditedJob.java:58)
+<134>1 2024-07-26T22:38:09.809476-05:00 vcenter eam-main - - - 	at host-4457.example.internal$UnmarshallSoapFaultContext.parse(UnmarshallerImpl.java:167)
+<134>1 2024-07-26T22:38:08.951843-05:00 HOST-1055 procstate - - - root        83  0.0  0.0      0     0 ?        S    Jul20   0:00 [irq/47-pciehp]
+<164>Jul 26 2024 22:27:49: %ASA-4-106023: Deny udp src dmz-2:10.151.168.191/34393 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:27:49: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/57273 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:28:41: %ASA-4-106023: Deny udp src outside:100.64.38.89/57075 dst dmz-1:10.147.100.191/1434 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:40:09.157711-05:00 HOST-1055 procstate - - - root         8  0.0  0.0      0     0 ?        I<   Jul20   0:15 [kworker/0:1H-events_highpri]
+<164>Jul 26 2024 22:30:08: %ASA-4-106023: Deny udp src dmz-2:10.145.105.123/38925 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:30:29: %ASA-4-106023: Deny tcp src outside:100.64.33.252/43067 dst dmz-1:10.0.139.216/2096 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:41:06.815285-05:00 HOST-1055 sps - - - 2024-07-26T22:41:06.815-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-5059.example.internal - Synchronizing datastore ds:///vmfs/volumes/5f08cd10-fde9e1e0-e844-48df37123220/ forceFullSync = false
+<134>1 2024-07-26T22:41:19.073012-05:00 vcenter eam-main - - - 	at host-4450.example.internal(ResponseImpl.java:284) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 22:31:15: %ASA-4-106023: Deny tcp src outside:100.64.35.128/51764 dst dmz-1:10.71.234.214/47804 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:31:20: %ASA-4-106023: Deny tcp src outside:100.64.30.120/5276 dst dmz-1:10.127.41.182/2628 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:31:22: %ASA-4-106023: Deny tcp src outside:100.64.31.194/1024 dst dmz-1:10.71.234.214/2375 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:31:43: %ASA-4-106023: Deny tcp src outside:100.64.31.80/58498 dst dmz-1:10.0.139.216/28772 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:31:55: %ASA-4-106023: Deny tcp src outside:100.64.36.63/55501 dst dmz-1:10.187.253.125/8010 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:42:50.942079-05:00 HOST-1055 sps - - - 2024-07-26T22:42:50.941-05:00 [pool-2-thread-20] INFO  opId= host-4485.example.internal - [VLSI-client] Active thread count is: 2, Core Pool size is: 20, Queue size: 0, Time spent waiting in queue: 0 millis
+<164>Jul 26 2024 22:32:20: %ASA-4-106023: Deny udp src dmz-2:10.179.160.99/42978 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:33:35: %ASA-4-106023: Deny udp src dmz-2:10.185.50.93/45267 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:34:02: %ASA-4-106023: Deny udp src dmz-2:10.119.120.151/59697 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:34:12: %ASA-4-106023: Deny udp src dmz-2:10.119.120.151/51822 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:34:47: %ASA-4-106023: Deny tcp src outside:100.64.38.106/53227 dst dmz-1:10.147.100.191/9002 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:34:59: %ASA-4-106023: Deny udp src dmz-2:10.44.146.210/45291 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:35:02: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/42863 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:35:15: %ASA-4-106023: Deny tcp src outside:100.64.34.65/40629 dst dmz-1:10.187.253.125/25100 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:35:37: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/47024 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:36:11: %ASA-4-106023: Deny tcp src outside:100.64.36.225/49884 dst dmz-1:10.0.139.216/80 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:36:37: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/42423 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:37:39: %ASA-4-106023: Deny tcp src outside:100.64.32.207/37047 dst dmz-1:10.147.100.191/2455 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:37:42: %ASA-4-106023: Deny udp src dmz-2:10.176.245.196/34399 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:48:30.883790-05:00 vcenter eam-main - - - 	at host-4451.example.internal(HttpExchange.java:54)
+<164>Jul 26 2024 22:38:17: %ASA-4-106023: Deny tcp src outside:100.64.30.129/7854 dst dmz-1:10.147.100.191/465 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:39:28: %ASA-4-106023: Deny udp src dmz-2:10.148.183.254/45442 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:39:33: %ASA-4-106023: Deny udp src dmz-2:10.179.160.99/46393 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:39:35: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/42892 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:51:00.497654-05:00 vcenter eam-main - - - 	at host-4450.example.internal(ResponseImpl.java:284) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 22:40:22: %ASA-4-106023: Deny tcp src outside:100.64.38.111/50837 dst dmz-1:10.147.100.191/7001 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:51:37.978727-05:00 vcenter dnsmasq - - - Jul 26 22:51:37 dnsmasq[1808]: query[A] host-0167.example.internal from 100.64.160.85
+<164>Jul 26 2024 22:41:02: %ASA-4-106023: Deny udp src dmz-2:10.120.249.161/57357 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:41:03: %ASA-4-106023: Deny tcp src outside:100.64.37.238/42167 dst dmz-1:10.147.100.191/8083 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:42:15: %ASA-4-106023: Deny tcp src outside:100.64.35.164/49203 dst dmz-1:10.187.253.125/60000 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:42:40: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/55024 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:53:24.274247-05:00 vcenter eam-main - - - 	at host-4490.example.internal(DispatcherImpl.java:246) [vlsi-server.jar:?]
+<164>Jul 26 2024 22:42:51: %ASA-4-106023: Deny udp src dmz-2:10.23.31.218/34054 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:53:53.722383-05:00 vcenter eam-main - - - 	at host-4446.example.internal(HttpProtocolBindingImpl.java:114) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 22:43:39: %ASA-4-106023: Deny udp src dmz-2:10.76.175.229/41741 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:43:47: %ASA-4-106023: Deny tcp src outside:100.64.37.26/33923 dst dmz-1:10.187.253.125/20257 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:44:06: %ASA-4-106023: Deny udp src dmz-2:10.213.245.45/58680 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:54:56.982763-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 22:44:26: %ASA-4-106023: Deny udp src dmz-2:10.119.120.151/58496 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:55:10.004761-05:00 vcenter eam-main - - - 	at host-4460.example.internal(Class.java:442) ~[?:1.8.0_345]
+<164>Jul 26 2024 22:44:48: %ASA-4-106023: Deny tcp src outside:100.64.15.78/19330 dst dmz-1:10.147.100.191/4242 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:44:55: %ASA-4-106023: Deny udp src dmz-2:10.76.175.229/44822 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:55:43.336847-05:00 HOST-1055 envoy-access - - - 2024-07-27T03:55:43.336Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T03:55:34.479Z POST /sdk HTTP/1.1 200 via_upstream - 678 1591 2 1 0 100.64.160.85:56306 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<164>Jul 26 2024 22:45:17: %ASA-4-106023: Deny tcp src outside:100.64.33.216/52427 dst dmz-1:10.147.100.191/3323 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:45:29: %ASA-4-106023: Deny udp src dmz-2:10.223.142.142/39530 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:56:18.339022-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T22:56:18.338-05:00 [tomcat-exec-10 [] INFO  host-4505.example.internal  opId=] User ORG-0396.local\machine-dd8068b1-ab78-4195-b294-c9caf480904f who belongs to group ORG-0396.local\Administrators has top-level Admin privileges to invoke API host-4506.example.internal.vc_trusts.list
+<134>1 2024-07-26T22:57:09.125395-05:00 HOST-1055 procstate - - - root      1316  0.0  0.0      0     0 ?        I<   Jul20   0:00 [ext4-rsv-conver]
+<164>Jul 26 2024 22:46:23: %ASA-4-106023: Deny udp src dmz-2:10.152.67.202/45549 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:46:47: %ASA-4-106023: Deny udp src outside:100.64.33.6/41863 dst dmz-1:10.71.234.214/3389 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:46:50: %ASA-4-106023: Deny tcp src outside:100.64.29.147/48508 dst dmz-1:10.147.100.191/12414 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:58:15.256874-05:00 vcenter eam-main - - - 	at host-4461.example.internal(Constructor.java:423) ~[?:1.8.0_345]
+<164>Jul 26 2024 22:48:10: %ASA-4-106023: Deny udp src dmz-2:10.149.56.12/51759 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:59:05.501117-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 22:48:28: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/38152 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T22:59:19.531457-05:00 vcenter eam-main - - - 	at host-4471.example.internal(VimRoot.java:78)
+<164>Jul 26 2024 22:48:54: %ASA-4-106023: Deny tcp src outside:100.64.28.68/47845 dst dmz-1:10.147.100.191/9207 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:49:10: %ASA-4-106023: Deny tcp src outside:100.64.29.141/43221 dst dmz-1:10.147.100.191/6514 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T22:59:59.936711-05:00 HOST-1055 sps - - - 2024-07-26T22:59:59.936-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-4486.example.internal - OperationID present in invoker thread, adding suffix and re-using it sps-Main-405368-350-52799
+<134>1 2024-07-26T23:00:12.244618-05:00 vcenter dnsmasq - - - Jul 26 23:00:12 dnsmasq[1808]: query[A] host-0167.example.internal from 100.64.160.85
+<164>Jul 26 2024 22:49:54: %ASA-4-106023: Deny udp src dmz-2:10.156.71.222/39855 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:00:43.607039-05:00 HOST-1055 observability-main - - - [2024-07-26T23:00:43,606] INFO250776[Thread-111] - host-4501.example.internal(PeriodicScheduler.java:107) - Executor is in progress: false Eligible for offload: false
+<164>Jul 26 2024 22:50:44: %ASA-4-106023: Deny udp src dmz-2:10.23.31.218/45557 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:02:42.462976-05:00 HOST-1055 analytics - - - 2024-07-26T23:02:42.462-05:00 phservices-collector-thread  INFO  host-4503.example.internal Data collector doesn't yet need to run.
+<134>1 2024-07-26T23:03:30.061589-05:00 vcenter eam-main - - - 	at host-4457.example.internal$UnmarshallSoapFaultContext.unmarshall(UnmarshallerImpl.java:105) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 22:53:45: %ASA-4-106023: Deny udp src outside:100.64.38.152/30719 dst dmz-1:10.0.139.216/500 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:54:31: %ASA-4-106023: Deny tcp src outside:100.64.38.156/46562 dst dmz-1:10.147.100.191/20020 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:55:08: %ASA-4-106023: Deny tcp src outside:100.64.38.153/48561 dst dmz-1:10.71.234.214/465 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:06:09.153103-05:00 HOST-1055 procstate - - - root     24136  0.0  0.0 316764  3056 ?        Sl   Jul20   0:21 /opt/likewise/sbin/lwiod --syslog
+<164>Jul 26 2024 22:55:51: %ASA-4-106023: Deny udp src dmz-2:10.58.236.204/37504 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:06:30.490751-05:00 HOST-1055 analytics - - - 2024-07-26T23:06:30.489-05:00 phStageLogDrainerTaskExecutor-5  INFO  host-4985.example.internal Initializing with trust store at path: /usr/java/jre-vmware/lib/security/cacerts
+<134>1 2024-07-26T23:06:56.903953-05:00 HOST-1055 eam-main - - - 2024-07-27T04:06:56.903Z |  INFO | vim-monitor | OpId.java | 37 | [vim:loginExtensionByCertificate:93f56fca924d22c0] created from [Retry:Login:host-4481.example.internal:6f4a4283843d1fa8]
+<164>Jul 26 2024 22:56:31: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/55264 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:56:56: %ASA-4-106023: Deny tcp src outside:100.64.38.17/49459 dst dmz-1:10.0.139.216/9304 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:57:23: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/55274 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:08:03.201011-05:00 HOST-1055 vpxd-main - - - 2024-07-26T23:08:02.062-05:00 info vpxd[29426] [Originator@6876 sub=vpxLro opID=HB-SpecSync-host-16@8455043-47623b31] [VpxLRO] -- FINISH lro-534166
+<164>Jul 26 2024 22:57:28: %ASA-4-106023: Deny tcp src outside:100.64.32.27/54897 dst dmz-1:10.147.100.191/1337 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 22:57:29: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/55965 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 22:59:08: %ASA-4-106023: Deny udp src dmz-2:10.152.67.202/39252 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:10:05.475190-05:00 HOST-1055 procstate - - - root       692  0.0  0.0      0     0 ?        I<   Jul20   0:00 [kdmflush]
+<164>Jul 26 2024 22:59:42: %ASA-4-106023: Deny tcp src outside:100.64.36.58/51266 dst dmz-1:10.147.100.191/2600 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:10:25.172523-05:00 vcenter vmafdd - - - 2024-07-27T04:10:25.172 [vmafdd][INFO] VecsSrvWriteCertOrCrlToDisk: cert/crl already exists as /var/lib/vmware-vpx/docRoot/certs/717e0b33.0, so will not write again.
+<164>Jul 26 2024 22:59:56: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/59647 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:00:22: %ASA-4-106023: Deny tcp src outside:100.64.32.73/53314 dst dmz-1:10.187.253.125/8822 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:01:05: %ASA-4-106023: Deny udp src dmz-2:10.185.50.93/44410 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:01:16: %ASA-4-106023: Deny tcp src outside:100.64.29.138/21691 dst dmz-1:10.187.253.125/47482 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:01:29: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/52869 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:12:33.769302-05:00 vcenter eam-main - - - 	at host-4450.example.internal(ResponseImpl.java:284) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 23:02:03: %ASA-4-106023: Deny udp src dmz-2:10.78.84.127/57927 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:13:35.050275-05:00 vcenter eam-main - - - 	at host-4451.example.internal(HttpExchange.java:54)
+<164>Jul 26 2024 23:03:36: %ASA-4-106023: Deny tcp src outside:100.64.29.199/55215 dst dmz-1:10.147.100.191/9121 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:04:40: %ASA-4-106023: Deny tcp src outside:100.64.35.62/54020 dst dmz-1:10.0.139.216/5907 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:15:17.926940-05:00 vcenter dnsmasq - - - Jul 26 23:15:17 dnsmasq[1808]: cached host-0167.example.internal is <CNAME>
+<134>1 2024-07-26T23:15:35.617746-05:00 vcenter dnsmasq - - - Jul 26 23:15:35 dnsmasq[1808]: query[A] host-0171.example.internal from 100.64.160.85
+<134>1 2024-07-26T23:17:09.519324-05:00 vcenter eam-main - - - 	at host-4436.example.internal$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_345]
+<134>1 2024-07-26T23:17:48.597409-05:00 vcenter eam-main - - - 	at host-4441.example.internal$CallExecutor.executeCall(MethodInvocationHandlerImpl.java:674) ~[vlsi-client.jar:?]
+<134>1 2024-07-26T23:17:48.595849-05:00 vcenter eam-main - - - 	at host-4435.example.internal(Thread.java:750) [?:1.8.0_345]
+<164>Jul 26 2024 23:07:24: %ASA-4-106023: Deny tcp src outside:100.64.37.63/50533 dst dmz-1:10.0.139.216/47753 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:07:32: %ASA-4-106023: Deny tcp src outside:100.64.38.189/53451 dst dmz-1:10.71.234.214/48024 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:20:02.440249-05:00 HOST-1055 vmon - - - 2024-07-27T04:20:02.440Z In(05) host-24539 <vpxd-svcs> Reset fail counters of service.
+<164>Jul 26 2024 23:09:22: %ASA-4-106023: Deny tcp src outside:100.64.38.197/43368 dst dmz-1:10.0.139.216/7443 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:20:08.685740-05:00 HOST-1055 procstate - - - root     57911  0.0  0.0  14912   316 ?        S    23:20   0:00 /usr/sbin/CROND -n
+<164>Jul 26 2024 23:10:35: %ASA-4-106023: Deny tcp src outside:100.64.35.157/54801 dst dmz-1:10.147.100.191/9722 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:22:29.776093-05:00 vcenter eam-main - - - 	at host-4439.example.internal(MethodInvocationHandlerImpl.java:322) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 23:12:08: %ASA-4-106023: Deny tcp src outside:100.64.38.167/55773 dst dmz-1:10.127.41.182/10086 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:12:25: %ASA-4-106023: Deny tcp src outside:100.64.31.146/60047 dst dmz-1:10.187.253.125/55648 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:12:52: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/43492 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:12:56: %ASA-4-106023: Deny tcp src outside:100.64.38.206/53022 dst dmz-1:10.127.41.182/47978 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:24:02.687398-05:00 vcenter eam-main - - - 	at host-4455.example.internal(SoapFaultStackContext.java:41) ~[vlsi-client.jar:?]
+<134>1 2024-07-26T23:24:08.862338-05:00 HOST-1055 procstate - - - root      1411  0.0  0.0      0     0 ?        I<   Jul20   0:00 [kdmflush]
+<164>Jul 26 2024 23:14:06: %ASA-4-106023: Deny udp src dmz-2:10.215.130.199/42126 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:25:04.662798-05:00 HOST-1055 procstate - - - root      1476  0.0  0.0      0     0 ?        I<   Jul20   0:00 [ext4-rsv-conver]
+<164>Jul 26 2024 23:15:23: %ASA-4-106023: Deny tcp src outside:100.64.38.213/58508 dst dmz-1:10.71.234.214/3342 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:15:54: %ASA-4-106023: Deny udp src outside:100.64.26.18/35466 dst dmz-1:10.0.139.216/5353 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:16:00: %ASA-4-106023: Deny tcp src outside:100.64.38.212/52550 dst dmz-1:10.187.253.125/7547 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:15:58: %ASA-4-106023: Deny tcp src outside:100.64.35.51/55914 dst dmz-1:10.147.100.191/20 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:16:07: %ASA-4-106023: Deny udp src dmz-2:10.119.120.151/53417 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:16:48: %ASA-4-106023: Deny udp src dmz-2:10.1.160.2/51125 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:17:15: %ASA-4-106023: Deny tcp src outside:100.64.26.84/44804 dst dmz-1:10.71.234.214/12560 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:28:05.128293-05:00 HOST-1055 procstate - - - root     24048  0.0  0.0 370524  2796 ?        Sl   Jul20   0:16 /opt/likewise/sbin/lwsmd --start-as-daemon --syslog
+<134>1 2024-07-26T23:28:27.247148-05:00 HOST-1055 eam-main - - - 2024-07-27T04:28:27.247Z |  INFO | vim-monitor | OpId.java | 37 | [vim:loginExtensionByCertificate:f229e3bec7c03193] created from [Retry:Login:host-4481.example.internal:5d6a5d8f5d0633cb]
+<164>Jul 26 2024 23:18:42: %ASA-4-106023: Deny udp src dmz-2:10.176.78.216/38684 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:19:25: %ASA-4-106023: Deny udp src dmz-2:10.132.254.110/38425 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:30:03.014805-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T23:30:03.014-05:00 [tomcat-exec-10 [] INFO  host-4505.example.internal  opId=] User ORG-0396.local\machine-dd8068b1-ab78-4195-b294-c9caf480904f who belongs to group ORG-0396.local\Administrators has top-level Admin privileges to invoke API host-4506.example.internal.vc_trusts.list
+<164>Jul 26 2024 23:19:30: %ASA-4-106023: Deny tcp src outside:100.64.31.30/52427 dst dmz-1:10.187.253.125/8842 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:19:33: %ASA-4-106023: Deny udp src dmz-2:10.118.78.52/59961 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:30:14.226687-05:00 HOST-1055 vum-vmacore - - - 2024-07-26T23:30:14.226-05:00 info vmware-vum-server[33557] [Originator@6876 sub=VumVapiAuthzFilter] [RequireAdminUserAuthz 332] RequireAdminUserAuthz::Invoke Method is host-5088.example.internal
+<134>1 2024-07-26T23:31:21.025679-05:00 HOST-1055 vpxd-svcs-perf - - - 2024-07-26T23:31:21.023-05:00 [cache-sync-task [] INFO  host-4488.example.internal  opId=] Connection type: LDAP, Max allowed connections: 24, Number of active connections: 1, Number of idle connections: 1
+<164>Jul 26 2024 23:21:15: %ASA-4-106023: Deny tcp src outside:100.64.38.228/43426 dst dmz-1:10.71.234.214/9080 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:21:17: %ASA-4-106023: Deny tcp src outside:100.64.28.68/43163 dst dmz-1:10.71.234.214/9095 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:32:18.178874-05:00 vcenter eam-main - - - 	at host-4464.example.internal(DelegatingConstructorAccessorImpl.java:45)
+<134>1 2024-07-26T23:33:04.333920-05:00 HOST-1055 envoy-access - - - 2024-07-27T04:32:59.460Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T04:32:48.405Z POST /vsanHealth/ HTTP/1.1 200 via_upstream - 616 397 2 2 0 100.64.160.85:44364 100.64.160.85:1080 - /var/run/vmware-vsan/vsan-sdk-pipe
+<164>Jul 26 2024 23:22:49: %ASA-4-106023: Deny tcp src outside:100.64.33.135/63611 dst dmz-1:10.147.100.191/15884 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:23:09: %ASA-4-106023: Deny udp src dmz-2:10.94.83.123/55452 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:23:16: %ASA-4-106023: Deny tcp src outside:100.64.29.232/55336 dst dmz-1:10.71.234.214/12513 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:23:58: %ASA-4-106023: Deny icmp src dmz-1:10.187.253.125 dst outside:100.64.19.66 (type 3, code 3) by access-group "dmz_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:24:41: %ASA-4-106023: Deny tcp src outside:100.64.36.1/56695 dst dmz-1:10.147.100.191/47942 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:25:15: %ASA-4-106023: Deny tcp src outside:100.64.33.15/58586 dst dmz-1:10.71.234.214/10954 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:36:09.219551-05:00 HOST-1055 lookupsvc-localhost_access - - - [26/Jul/2024:23:36:08 -0500] tomcat-http--13 [Request] 100.64.160.85:45582 to local 1080 - HTTP/1.1 POST /lookupservice/sdk    [Response] 200 - 758 bytes    [Perf] process 0ms / commit 0ms / conn [+]
+<164>Jul 26 2024 23:25:44: %ASA-4-106023: Deny tcp src outside:100.64.32.162/50744 dst dmz-1:10.71.234.214/48145 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:36:38.313793-05:00 vcenter dnsmasq - - - Jul 26 23:36:38 dnsmasq[1808]: reply host-0167.example.internal is <CNAME>
+<134>1 2024-07-26T23:37:32.026270-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 23:26:58: %ASA-4-106023: Deny udp src outside:100.64.38.239/26357 dst dmz-1:10.187.253.125/10001 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:27:45: %ASA-4-106023: Deny udp src dmz-2:10.94.83.123/40464 dst outside:100.64.29.135/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:28:17: %ASA-4-106023: Deny udp src dmz-2:10.218.173.221/51461 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:39:37.842119-05:00 HOST-1055 wcpsvc - - - 2024-07-27T04:39:37.841Z info wcp [eamagency/util.go:246] [opID=vCLS] Returning the list of clusters: [ClusterComputeResource:domain-c8]
+<164>Jul 26 2024 23:29:16: %ASA-4-106023: Deny udp src dmz-2:10.213.245.45/51800 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:29:59: %ASA-4-106023: Deny udp src dmz-2:10.196.29.57/60934 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:31:13: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/62189 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:42:46.898714-05:00 HOST-1055 envoy-access - - - 2024-07-27T04:42:46.898Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T04:42:41.779Z POST /sdk HTTP/1.1 200 via_upstream - 614 1433 1 0 0 100.64.160.85:56306 100.64.160.85:1080 100.64.160.85:59580 100.64.160.85:8085
+<164>Jul 26 2024 23:32:31: %ASA-4-106023: Deny udp src dmz-2:10.132.254.110/38330 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:32:40: %ASA-4-106023: Deny tcp src outside:100.64.32.8/49240 dst dmz-1:10.147.100.191/52200 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:44:35.385596-05:00 vcenter dnsmasq - - - Jul 26 23:44:35 dnsmasq[1808]: reply k.sni.global.fastly.net is 100.64.162.132
+<164>Jul 26 2024 23:34:19: %ASA-4-106023: Deny udp src dmz-2:10.164.73.178/39406 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:45:21.506271-05:00 HOST-1055 wcpsvc - - - 2024-07-27T04:45:21.506Z debug wcp [notifications/notifications.go:250] [opID=669b11f8] No notifications. seqNum: 1, Current seqNum: 0
+WitFoo-WinLogBeat ::: {"@metadata":{"beat":"winlogbeat","type":"_doc","version":"8.2.2"},"@timestamp":"2024-07-27T04:45:39.876Z","agent":{"ephemeral_id":"560ff567-a3d5-4557-8b6c-45687da4c8d6","id":"76eb9f91-c210-4b95-9288-5a2c5f4e1a67","name":"HOST-1027","type":"winlogbeat","version":"8.2.2"},"ecs":{"version":"8.0.0"},"event":{"action":"Security Group Management","code":"4799","created":"2024-07-27T04:45:41.749Z","kind":"event","outcome":"success","provider":"Microsoft-Windows-Security-Auditing"},"host":{"name":"host-4511.example.internal"},"log":{"level":"information"},"message":"A security-enabled local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tMACHINE-0868$\n\tAccount Domain:\t\tDMZ\n\tLogon ID:\t\t0x3E7\n\nGroup:\n\tSecurity ID:\t\tS-1-5-21-1000000000-2000000000-3000000000-0001\n\tGroup Name:\t\tBackup Operators\n\tGroup Domain:\t\tUSER-17961\n\nProcess Information:\n\tProcess ID:\t\t0x6374\n\tProcess Name:\t\tC:\\Windows\\System32\\VSSVC.exe","organization":"ORG-0005","senderHost":"10.165.166.232","sensitivity":"normal","winlog":{"activity_id":"{9f7bbe69-371c-4017-ac70-a3830fd951dc}","api":"wineventlog","channel":"Security","computer_name":"host-4511.example.internal","event_data":{"CallerProcessId":"0x6374","CallerProcessName":"C:\\Windows\\System32\\VSSVC.exe","SubjectDomainName":"DMZ","SubjectLogonId":"0x3e7","SubjectUserName":"MACHINE-0868$","SubjectUserSid":"S-1-5-18","TargetDomainName":"USER-17961","TargetSid":"S-1-5-21-1000000000-2000000000-3000000000-0001","TargetUserName":"USER-20650"},"event_id":"4799","keywords":["Audit Success"],"opcode":"Info","process":{"pid":708,"thread":{"id":24984}},"provider_guid":"{54849625-5478-4994-a5ba-3e3b0328c30d}","provider_name":"Microsoft-Windows-Security-Auditing","record_id":5836625,"task":"Security Group Management"}}
+<134>1 2024-07-26T23:45:45.087741-05:00 HOST-1055 vpxd-main - - - 2024-07-26T23:45:45.015-05:00 info vpxd[29454] [Originator@6876 sub=vpxLro opID=b35fe136-19] [VpxLRO] -- FINISH lro-535987
+<134>1 2024-07-26T23:46:46.119544-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-26T23:46:46.119-05:00 [tomcat-exec-28 [] INFO  host-4508.example.internal  opId=] SAML token for SubjectNameId [value=user-0824@example.net, format=http://host-3806.example.internal/claims/UPN] successfully parsed from XML
+<134>1 2024-07-26T23:47:05.359462-05:00 HOST-1055 procstate - - - root      1813  0.0  0.0  13924  1564 tty1     Ss+  Jul20   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+<164>Jul 26 2024 23:37:16: %ASA-4-106023: Deny udp src outside:100.64.30.35/51262 dst dmz-1:10.187.253.125/5353 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:38:41: %ASA-4-106023: Deny udp src dmz-2:10.58.236.204/48910 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:39:10: %ASA-4-106023: Deny udp src dmz-2:10.14.108.87/40877 dst outside:100.64.29.128/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:50:41.325316-05:00 vcenter eam-main - - - 	at host-4457.example.internal$UnmarshallSoapFaultContext.parse(UnmarshallerImpl.java:167) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 23:40:34: %ASA-4-106023: Deny tcp src outside:100.64.38.23/56239 dst dmz-1:10.127.41.182/3263 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:51:11.873525-05:00 HOST-1055 envoy-access - - - 2024-07-27T04:51:07.145Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T04:51:06.669Z POST /sdk HTTP/1.1 200 via_upstream - 503 386 3 1 1 100.64.160.85:49124 100.64.160.85:1080 100.64.160.85:49948 100.64.160.85:8085
+<134>1 2024-07-26T23:51:15.159897-05:00 HOST-1055 sso-tomcat - - - [27/Jul/2024:04:51:05 +0000] tomcat-http--33 [Request] 100.64.160.85:56506 to local 1080 - HTTP/1.1 POST /sts/STSService/ORG-0396.local    [Response] 200 - 10259 bytes    [Perf] process 17ms / commit 17ms / conn [+]
+<134>1 2024-07-26T23:51:31.567488-05:00 vcenter eam-main - - - 	at host-4442.example.internal(VimRoot.java:101)
+<134>1 2024-07-26T23:51:49.521255-05:00 HOST-1055 wcpsvc - - - 2024-07-27T04:51:49.521Z info wcp [eamagency/util.go:246] [opID=vCLS] Returning the list of clusters: [ClusterComputeResource:domain-c8]
+<164>Jul 26 2024 23:41:22: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/37984 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:42:00: %ASA-4-106023: Deny tcp src outside:100.64.36.39/51001 dst dmz-1:10.127.41.182/8282 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:42:07: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/59829 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-26T23:53:47.519011-05:00 HOST-1055 vmon - - - 2024-07-27T04:53:47.513Z In(05) host-24539 <vcha> Skip service health check. State STOPPED, Curr request 0
+<164>Jul 26 2024 23:44:02: %ASA-4-106023: Deny tcp src outside:100.64.36.65/42141 dst dmz-1:10.127.41.182/20257 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:44:34: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/36106 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:44:37: %ASA-4-106023: Deny tcp src outside:100.64.34.240/55930 dst dmz-1:10.0.139.216/10443 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:55:36.515296-05:00 vcenter eam-main - - - 	at host-4437.example.internal(ThreadPoolExecutor.java:1149) [?:1.8.0_345]
+<164>Jul 26 2024 23:45:04: %ASA-4-106023: Deny tcp src outside:100.64.29.195/45755 dst dmz-1:10.127.41.182/2628 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:45:06: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/64953 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:45:12: %ASA-4-106023: Deny tcp src outside:100.64.34.51/55611 dst dmz-1:10.127.41.182/1244 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:45:57: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/47273 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:45:57: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/47273 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:46:07: %ASA-4-106023: Deny udp src dmz-2:10.149.56.12/44461 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:46:41: %ASA-4-106023: Deny tcp src outside:100.64.34.146/50310 dst dmz-1:10.0.139.216/5985 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:47:16: %ASA-4-106023: Deny tcp src outside:100.64.38.196/39075 dst dmz-1:10.147.100.191/10443 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-26T23:58:15.730403-05:00 vcenter eam-main - - - 	at host-4441.example.internal$CallExecutor.executeCall(MethodInvocationHandlerImpl.java:674) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 23:48:48: %ASA-4-106023: Deny udp src dmz-2:10.149.56.12/50987 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:00:01.676433-05:00 vcenter eam-main - - - 	at host-4452.example.internal(ResponseUnmarshaller.java:70) ~[vlsi-client.jar:?]
+<164>Jul 26 2024 23:49:33: %ASA-4-106023: Deny udp src dmz-2:10.65.107.121/34347 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:00:49.356778-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:86) ~[vlsi-core.jar:?]
+<164>Jul 26 2024 23:51:02: %ASA-4-106023: Deny udp src dmz-2:10.43.213.170/39855 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:51:05: %ASA-4-106023: Deny tcp src outside:100.64.39.36/46064 dst dmz-1:10.147.100.191/1337 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:51:16: %ASA-4-106023: Deny udp src dmz-2:10.23.31.218/46539 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:51:35: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/50307 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:02:30.192664-05:00 HOST-1055 analytics - - - 2024-07-27T00:02:30.192-05:00 data-app-collector-ORG-0396.adc.7_0U3  INFO  host-4503.example.internal Data collector doesn't yet need to run.
+<164>Jul 26 2024 23:51:56: %ASA-4-106023: Deny tcp src outside:100.64.30.149/56792 dst dmz-1:10.147.100.191/29069 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:52:02: %ASA-4-106023: Deny tcp src outside:100.64.39.39/48700 dst dmz-1:10.147.100.191/2455 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:52:18: %ASA-4-106023: Deny tcp src outside:100.64.29.189/26557 dst dmz-1:10.71.234.214/9090 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:02:58.924458-05:00 HOST-1055 envoy-access - - - 2024-07-27T05:02:58.924Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T05:02:45.505Z POST /eam/sdk HTTP/1.1 500 via_upstream - 400 318 2 1 0 100.64.160.85:54958 100.64.160.85:443 100.64.160.85:32880 100.64.160.85:15005
+<134>1 2024-07-27T00:03:08.957344-05:00 HOST-1055 eam-main - - - 	... 9 more
+<164>Jul 26 2024 23:52:35: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/51772 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:52:50: %ASA-4-106023: Deny udp src dmz-2:10.100.246.171/48477 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:53:47: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/49074 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:02: %ASA-4-106023: Deny udp src dmz-2:10.192.248.239/42131 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:03: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/49841 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:04: %ASA-4-106023: Deny udp src dmz-2:10.45.208.130/46567 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:05: %ASA-4-106023: Deny udp src dmz-2:10.65.107.121/50699 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:05: %ASA-4-106023: Deny udp src dmz-2:10.192.248.239/42131 dst outside:192.0.2.148/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:54:05: %ASA-4-106023: Deny udp src dmz-2:10.192.248.239/42131 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:55:38: %ASA-4-106023: Deny udp src dmz-2:10.23.31.218/37142 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 26 2024 23:56:55: %ASA-4-106023: Deny udp src dmz-2:10.45.208.130/43630 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:07:46.132594-05:00 vcenter eam-main - - - 	at host-4461.example.internal(Constructor.java:423) ~[?:1.8.0_345]
+<134>1 2024-07-27T00:07:41.110521-05:00 HOST-1055 eam-api - - - 2024-07-27T05:07:41.110Z |  INFO | vim-monitor | SessionManager.java | 146 | [Retry:Login:host-4481.example.internal:8d94547868d16c8d] Logging extension host-4481.example.internal to vCenter
+<134>1 2024-07-27T00:07:55.793942-05:00 HOST-1055 vpxd-main - - - 2024-07-27T00:07:55.702-05:00 warning vpxd[29385] [Originator@6876 sub=vmomi.soapStub[16] opID=TaskLoop-host-19] SOAP request returned HTTP failure; <SSL(<io_obj p:0x00007fbeb470bf78, h:25, <TCP '10.135.191.70 : 38316'>, <TCP '10.73.181.151 : 443'>>), /vpxa>, method: waitForUpdates; code: 500(Internal Server Error)
+<164>Jul 26 2024 23:57:59: %ASA-4-106023: Deny tcp src outside:100.64.39.47/54008 dst dmz-1:10.147.100.191/111 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:57:59: %ASA-4-106023: Deny tcp src outside:100.64.26.196/53688 dst dmz-1:10.187.253.125/47193 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 26 2024 23:58:01: %ASA-4-106023: Deny udp src dmz-2:10.94.83.123/52742 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:08:44.821464-05:00 HOST-1055 eam-main - - - 2024-07-27T05:08:44.820Z | ERROR | vim-monitor | VcListener.java | 124 | An unexpected error in the changes polling loop
+<134>1 2024-07-27T00:10:31.762280-05:00 HOST-1055 eam-main - - - 2024-07-27T05:10:31.762Z |  INFO | vim-monitor | VcListener.java | 125 | Full stack trace: host-4470.example.internal: Unexpected error communicating with the vCenter server.
+<134>1 2024-07-27T00:10:31.762032-05:00 vcenter eam-main - - - 	at host-4467.example.internal(AuditedJob.java:58) [eam-server.jar:?]
+<164>Jul 27 2024 00:02:22: %ASA-4-106023: Deny udp src outside:100.64.39.58/36641 dst dmz-1:10.71.234.214/5353 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:02:26: %ASA-4-106023: Deny tcp src outside:100.64.30.84/55400 dst dmz-1:10.127.41.182/58603 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:03:51: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/53251 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:53: %ASA-4-106023: Deny udp src dmz-2:10.240.58.130/54869 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:52: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/40616 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:53: %ASA-4-106023: Deny udp src dmz-2:10.240.58.130/54869 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:56: %ASA-4-106023: Deny udp src dmz-2:10.240.58.130/54869 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:56: %ASA-4-106023: Deny udp src dmz-2:10.47.200.140/54252 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:03:56: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/46635 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:04:07: %ASA-4-106023: Deny udp src dmz-2:10.185.50.93/54154 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:04:07: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/40104 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:15:02.866822-05:00 HOST-1055 vsan-health-main - - - 2024-07-27T00:15:02.866-05:00 info vsanvcmgmtd[31717] [vSAN@6876 sub=AdapterServer opId=sps-Main-405368-350-57302-e2ed] Finished 'getEvent' on 'vsanvp-notification-manager' (0 ms): done
+<164>Jul 27 2024 00:04:27: %ASA-4-106023: Deny tcp src outside:100.64.27.227/46231 dst dmz-1:10.187.253.125/9990 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:15:25.545698-05:00 vcenter eam-main - - - 	at host-4449.example.internal(HttpExchangeBase.java:271) ~[vlsi-client.jar:?]
+<164>Jul 27 2024 00:04:47: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/47995 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:05:20: %ASA-4-106023: Deny udp src dmz-2:10.132.254.110/43484 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:16:09.126505-05:00 HOST-1055 procstate - - - root         3  0.0  0.0      0     0 ?        I<   Jul20   0:00 [rcu_gp]
+<164>Jul 27 2024 00:06:20: %ASA-4-106023: Deny tcp src outside:100.64.29.65/56435 dst dmz-1:10.0.139.216/62080 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:16:58.887075-05:00 vcenter eam-main - - - 	at host-4465.example.internal(FutureRunnable.java:55) [eam-server.jar:?]
+WitFoo-WinLogBeat ::: {"@metadata":{"beat":"winlogbeat","type":"_doc","version":"8.2.2"},"@timestamp":"2024-07-27T05:18:06.042Z","agent":{"ephemeral_id":"b79c7c1c-0967-4917-a7db-9f93e350cd3c","id":"52172d09-b951-4f28-89ec-73acf30ac1bc","name":"HOST-1026","type":"winlogbeat","version":"8.2.2"},"ecs":{"version":"8.0.0"},"event":{"action":"Security Group Management","code":"4799","created":"2024-07-27T05:18:07.302Z","kind":"event","outcome":"success","provider":"Microsoft-Windows-Security-Auditing"},"host":{"name":"host-4507.example.internal"},"log":{"level":"information"},"message":"A security-enabled local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tMACHINE-0867$\n\tAccount Domain:\t\tDMZ\n\tLogon ID:\t\t0x3E7\n\nGroup:\n\tSecurity ID:\t\tS-1-5-21-1000000000-2000000000-3000000000-0029\n\tGroup Name:\t\tAdministrators\n\tGroup Domain:\t\tUSER-17961\n\nProcess Information:\n\tProcess ID:\t\t0xb78\n\tProcess Name:\t\tC:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","organization":"ORG-0005","senderHost":"10.76.133.90","sensitivity":"normal","winlog":{"activity_id":"{17b6b1cf-c08e-4676-8567-2543af175b0e}","api":"wineventlog","channel":"Security","computer_name":"host-4507.example.internal","event_data":{"CallerProcessId":"0xb78","CallerProcessName":"C:\\Program Files\\SentinelOne\\Sentinel Agent 21.6.5.1072\\SentinelAgent.exe","SubjectDomainName":"DMZ","SubjectLogonId":"0x3e7","SubjectUserName":"MACHINE-0867$","SubjectUserSid":"S-1-5-18","TargetDomainName":"USER-17961","TargetSid":"S-1-5-21-1000000000-2000000000-3000000000-0029","TargetUserName":"Administrators"},"event_id":"4799","keywords":["Audit Success"],"opcode":"Info","process":{"pid":708,"thread":{"id":764}},"provider_guid":"{54849625-5478-4994-a5ba-3e3b0328c30d}","provider_name":"Microsoft-Windows-Security-Auditing","record_id":7295256,"task":"Security Group Management"}}
+<164>Jul 27 2024 00:07:25: %ASA-4-106023: Deny udp src outside:100.64.31.97/36946 dst dmz-1:10.71.234.214/50000 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:07:38: %ASA-4-106023: Deny udp src dmz-2:10.196.29.57/50934 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:18:16.214094-05:00 HOST-1055 eam-main - - - 	... 9 more
+<164>Jul 27 2024 00:08:04: %ASA-4-106023: Deny udp src dmz-2:10.185.50.93/49953 dst outside:100.64.29.127/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:08:30: %ASA-4-106023: Deny tcp src outside:100.64.27.214/51769 dst dmz-1:10.147.100.191/2943 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:08:33: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/55377 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:08:59: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/60539 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:09:40: %ASA-4-106023: Deny udp src outside:100.64.35.114/13686 dst dmz-1:10.127.41.182/1434 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:10:20: %ASA-4-106023: Deny udp src dmz-2:10.94.83.123/33387 dst outside:100.64.29.135/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:10:40: %ASA-4-106023: Deny udp src outside:100.64.27.241/53009 dst dmz-1:10.147.100.191/5632 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:21:15.930438-05:00 HOST-1055 sps - - - 2024-07-27T00:21:15.930-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-5060.example.internal - datastore info:FCDDatastore [datastoreID=ds:///vmfs/volumes/5f08cd10-fde9e1e0-e844-48df37123220/, lastObjectVClock=-1, lastSyncVClock=-1, retryCount=0]
+<134>1 2024-07-27T00:21:16.046044-05:00 HOST-1055 sps - - - 2024-07-27T00:21:16.045-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-4486.example.internal - OperationID present in invoker thread, adding suffix and re-using it sps-Main-405368-350-57676
+<134>1 2024-07-27T00:21:23.660706-05:00 HOST-1055 StatsMonitor - - - 2024-07-27T00:21:23.660-05:00 info StatsMonitor[24784] [Originator@6876 sub=StatsMonitor] [Unit test] Alarm check cfg warning threshold=75 critical threshold=85 warning alarm raise count=5 critical alarm raise count=5
+<164>Jul 27 2024 00:10:53: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/50497 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:12:10: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/35920 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:23:09.020582-05:00 HOST-1055 procstate - - - root     28011  0.0  0.0  21028  7388 ?        R    00:23   0:00 /usr/bin/python /usr/lib/applmgmt/backup_restore/scripts/SchedulerCron.py
+<134>1 2024-07-27T00:23:30.772935-05:00 vcenter dnsmasq - - - Jul 27 00:23:30 dnsmasq[1808]: query[AAAA] host-0167.example.internal from 100.64.160.85
+<164>Jul 27 2024 00:14:12: %ASA-4-106023: Deny udp src dmz-2:10.120.249.161/57222 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:14:34: %ASA-4-106023: Deny udp src dmz-2:10.240.222.180/51915 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:25:36.105286-05:00 HOST-1055 vdtc-main - - - 2024-07-27T00:25:36.105-05:00 info vdtc[140425757853504] [Originator@6876 sub=Default] Buffers allocated: 100, available: 99, processed: 192024, dropped: 0.
+<164>Jul 27 2024 00:15:17: %ASA-4-106023: Deny udp src dmz-2:10.178.71.174/38300 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:26:08.215768-05:00 HOST-1055 eam-main - - - 	... 9 more
+<134>1 2024-07-27T00:27:21.092548-05:00 vcenter dnsmasq - - - Jul 27 00:27:21 dnsmasq[1808]: reply host-0167.example.internal is <CNAME>
+<164>Jul 27 2024 00:17:09: %ASA-4-106023: Deny udp src dmz-2:10.44.146.210/51428 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:28:00.157976-05:00 vcenter eam-main - - - 	at host-4437.example.internal(ThreadPoolExecutor.java:1149) [?:1.8.0_345]
+<134>1 2024-07-27T00:28:37.709698-05:00 HOST-1055 envoy-access - - - 2024-07-27T05:28:33.281Z info envoy[140113906853696] [Originator@6876 sub=Default] 2024-07-27T05:28:31.909Z POST /lookupservice/sdk HTTP/1.1 200 via_upstream - 672 3859 8 8 0 100.64.160.85:52232 100.64.160.85:1080 100.64.160.85:36464 100.64.160.85:7090
+<164>Jul 27 2024 00:18:04: %ASA-4-106023: Deny tcp src outside:100.64.39.90/55168 dst dmz-1:10.0.139.216/8980 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:18:05: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/61630 dst dmz-1:172.27.122.200/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:18:37: %ASA-4-106023: Deny tcp src outside:100.64.31.190/41122 dst dmz-1:10.71.234.214/9090 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:29:16.970694-05:00 vcenter dnsmasq - - - Jul 27 00:29:16 dnsmasq[1808]: forwarded host-0167.example.internal to 10.76.167.163
+<164>Jul 27 2024 00:19:04: %ASA-4-106023: Deny udp src dmz-2:10.230.205.133/34472 dst outside:100.64.29.125/123 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:19:13: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/63609 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:30:23.719808-05:00 vcenter eam-main - - - 	at host-4457.example.internal$UnmarshallSoapFaultContext.parse(UnmarshallerImpl.java:167) ~[vlsi-core.jar:?]
+<164>Jul 27 2024 00:20:09: %ASA-4-106023: Deny udp src dmz-2:10.136.222.101/59191 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:31:01.644983-05:00 HOST-1055 sps - - - 2024-07-27T00:31:01.644-05:00 [pool-29-thread-1] INFO  opId=sps-SHPoller-405451-645 host-4987.example.internal - Checking vpxd connectivity
+<164>Jul 27 2024 00:20:33: %ASA-4-106023: Deny tcp src outside:100.64.39.94/56202 dst dmz-1:10.147.100.191/17780 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:32:42.300140-05:00 HOST-1055 eam-api - - - 2024-07-27T05:32:42.299Z |  INFO | vim-monitor | SessionManager.java | 146 | [Retry:Login:host-4481.example.internal:aa5b93d81a48fdc6] Logging extension host-4481.example.internal to vCenter
+<164>Jul 27 2024 00:22:11: %ASA-4-106023: Deny tcp src outside:100.64.36.142/55795 dst dmz-1:10.71.234.214/8082 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:33:45.015668-05:00 vcenter eam-main - - - 	at host-4441.example.internal$CallExecutor.executeCall(MethodInvocationHandlerImpl.java:674)
+<164>Jul 27 2024 00:23:29: %ASA-4-106023: Deny udp src dmz-2:10.166.236.242/34078 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:34:16.653768-05:00 vcenter eam-main - - - 	at host-4449.example.internal(HttpExchangeBase.java:271)
+<134>1 2024-07-27T00:34:54.229108-05:00 HOST-1055 trustmanagement-svcs - - - 2024-07-27T00:34:54.228-05:00 [Thread-6 [] INFO  host-4484.example.internal  opId=] PerfBucketKey [measurementPt=LdapBindConnection, providerInfo=LDAP://host-4496.example.internal:389]
+<164>Jul 27 2024 00:24:46: %ASA-4-106023: Deny udp src dmz-2:10.152.67.202/56369 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:26:11: %ASA-4-106023: Deny udp src dmz-2:10.237.156.189/38007 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:37:09.911998-05:00 vcenter eam-main - - - 	at host-4475.example.internal(ExtensionSessionRenewer.java:149) [eam-server.jar:?]
+<164>Jul 27 2024 00:27:04: %ASA-4-106023: Deny tcp src outside:100.64.32.22/53712 dst dmz-1:10.127.41.182/9322 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:38:08.877806-05:00 HOST-1055 procstate - - - root        63  0.0  0.0      0     0 ?        S    Jul20   0:00 [irq/27-pciehp]
+<164>Jul 27 2024 00:28:25: %ASA-4-106023: Deny udp src dmz-2:10.76.175.229/59517 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:28:24: %ASA-4-106023: Deny udp src dmz-2:10.132.122.230/45540 dst dmz-1:172.18.17.245/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:28:24: %ASA-4-106023: Deny udp src dmz-2:10.132.122.230/45540 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:28:26: %ASA-4-106023: Deny udp src dmz-2:10.213.245.45/35289 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:28:27: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/46349 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:39:08.514619-05:00 HOST-1055 observability-main - - - [2024-07-27T00:39:08,514] INFO155684[Thread-111] - host-4500.example.internal(PeriodicScheduler.java:149) - Plugin period value: 60 Projected period value: 60.0
+<164>Jul 27 2024 00:28:38: %ASA-4-106023: Deny tcp src outside:100.64.34.137/5831 dst dmz-1:10.71.234.214/51259 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:39:25.109799-05:00 vcenter trustmanagement-svcs - - - 	at host-4435.example.internal(Thread.java:750) [?:1.8.0_345]
+<134>1 2024-07-27T00:39:46.527219-05:00 vcenter eam-main - - - 	at host-4459.example.internal(UnmarshallerImpl.java:92) ~[vlsi-core.jar:?]
+<164>Jul 27 2024 00:29:17: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/55466 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:29:49: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/34304 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:30:07: %ASA-4-106023: Deny udp src dmz-2:10.82.211.232/55764 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:30:16: %ASA-4-106023: Deny udp src dmz-2:10.33.114.142/53193 dst outside:192.168.211.139/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:41:08.741248-05:00 HOST-1055 procstate - - - root         2  0.0  0.0      0     0 ?        S    Jul20   0:00 [kthreadd]
+<164>Jul 27 2024 00:32:02: %ASA-4-106023: Deny icmp src outside:100.64.39.118 dst dmz-1:10.71.234.214 (type 8, code 0) by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:32:49: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/62782 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:32:55: %ASA-4-106023: Deny udp src dmz-2:10.120.249.161/33520 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:32:52: %ASA-4-106023: Deny tcp src outside:100.64.39.111/50295 dst dmz-1:10.147.100.191/8080 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:33:06: %ASA-4-106023: Deny tcp src outside:100.64.29.34/37162 dst dmz-1:10.187.253.125/16007 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:33:14: %ASA-4-106023: Deny udp src dmz-2:10.106.37.87/52950 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:44:16.670997-05:00 vcenter eam-main - - - 	at host-4437.example.internal(ThreadPoolExecutor.java:1149) [?:1.8.0_345]
+<134>1 2024-07-27T00:45:05.639743-05:00 HOST-1055 vpxd-svcs-access - - - [27/Jul/2024:00:44:56 -0500] 100.64.160.85 431 tomcat-exec-279 200 "VMware vim-java 1.0" POST /invsvc/vmomi/sdk/ HTTP/1.1
+<164>Jul 27 2024 00:34:50: %ASA-4-106023: Deny udp src dmz-2:10.136.222.101/39924 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:46:36.283142-05:00 vcenter eam-main - - - 	at host-4452.example.internal(ResponseUnmarshaller.java:70) ~[vlsi-client.jar:?]
+<164>Jul 27 2024 00:36:12: %ASA-4-106023: Deny udp src outside:100.64.30.216/5093 dst dmz-1:10.127.41.182/5093 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:36:14: %ASA-4-106023: Deny udp src dmz-2:10.89.7.184/37181 dst outside:198.51.100.27/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:36:27: %ASA-4-106023: Deny tcp src outside:100.64.29.189/8768 dst dmz-1:10.71.234.214/3260 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:37:58: %ASA-4-106023: Deny udp src outside:100.64.32.92/36129 dst dmz-1:10.0.139.216/27961 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:37:58: %ASA-4-106023: Deny udp src outside:100.64.32.92/36129 dst dmz-1:10.0.139.216/27961 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:37:58: %ASA-4-106023: Deny tcp src outside:100.64.39.130/55173 dst dmz-1:10.187.253.125/3525 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:38:57: %ASA-4-106023: Deny tcp src outside:100.64.29.65/44773 dst dmz-1:10.71.234.214/9113 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:39:07: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/50417 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:40:06: %ASA-4-106023: Deny tcp src outside:100.64.30.14/46299 dst dmz-1:10.127.41.182/9763 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:40:35: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/51858 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:51:15.833507-05:00 vcenter dnsmasq - - - Jul 27 00:51:15 dnsmasq[1808]: cached host-0172.example.internal is 10.209.48.204
+<164>Jul 27 2024 00:41:49: %ASA-4-106023: Deny udp src outside:100.64.39.135/43847 dst dmz-1:10.71.234.214/8088 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:42:35: %ASA-4-106023: Deny udp src dmz-2:10.93.192.25/49940 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:54:04.876885-05:00 HOST-1055 procstate - - - root      1672  0.1  0.0 321516  6980 ?        Ssl  Jul20  15:15 /usr/bin/vmtoolsd
+<164>Jul 27 2024 00:43:33: %ASA-4-106023: Deny tcp src outside:100.64.30.149/24986 dst dmz-1:10.127.41.182/9631 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:43:49: %ASA-4-106023: Deny tcp src outside:100.64.32.236/40781 dst dmz-1:10.187.253.125/47332 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:44:57: %ASA-4-106023: Deny tcp src outside:100.64.31.53/57549 dst dmz-1:10.187.253.125/2096 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:45:12: %ASA-4-106023: Deny udp src outside:100.64.39.135/40690 dst dmz-1:10.0.139.216/8088 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:45:53: %ASA-4-106023: Deny tcp src outside:100.64.31.61/56298 dst dmz-1:10.0.139.216/9830 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:46:06: %ASA-4-106023: Deny udp src dmz-2:10.223.142.142/47174 dst outside:100.64.29.124/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:46:27: %ASA-4-106023: Deny udp src dmz-2:10.164.73.178/60869 dst outside:100.64.29.131/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:46:41: %ASA-4-106023: Deny udp src dmz-2:10.247.107.208/53101 dst outside:198.51.100.31/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<134>1 2024-07-27T00:57:42.279921-05:00 vcenter dnsmasq - - - Jul 27 00:57:42 dnsmasq[1808]: query[AAAA] host-0167.example.internal from 100.64.160.85
+<134>1 2024-07-27T00:58:01.766718-05:00 HOST-1055 sps - - - 2024-07-27T00:58:01.766-05:00 [pool-25-thread-1] INFO  opId=sps-Main-405368-350 host-5060.example.internal - datastore info:FCDDatastore [datastoreID=ds:///vmfs/volumes/5ef233c3-37b7b1f6-8857-48df37ad954c/, lastObjectVClock=-1, lastSyncVClock=-1, retryCount=0]
+<164>Jul 27 2024 00:47:40: %ASA-4-106023: Deny udp src outside:100.64.30.94/42718 dst dmz-1:10.187.253.125/5353 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:47:54: %ASA-4-106023: Deny tcp src outside:100.64.35.51/56958 dst dmz-1:10.127.41.182/20256 by access-group "outside_access_in" [0x0, 0x0]
+<134>1 2024-07-27T00:58:39.314889-05:00 vcenter eam-main - - - 	at host-4467.example.internal(AuditedJob.java:58)
+<164>Jul 27 2024 00:48:18: %ASA-4-106023: Deny tcp src outside:100.64.33.216/52427 dst dmz-1:10.71.234.214/3338 by access-group "outside_access_in" [0x0, 0x0]
+<164>Jul 27 2024 00:48:51: %ASA-4-106023: Deny udp src dmz-2:10.69.210.251/44374 dst dmz-1:172.22.219.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]
+<164>Jul 27 2024 00:49:11: %ASA-4-106023: Deny udp src dmz-2:10.27.228.92/64705 dst dmz-1:172.31.240.171/53 by access-group "dmz-2_access_in_1" [0x0, 0x0]

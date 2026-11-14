@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 /** Small markdown renderer for the app's own text (assistant answers, EDA summary).
  *  Supports headings, bullet/numbered lists, tables, **bold**, `code`, links and citation
- *  tags [E12] / [K3] / [S], which become buttons when `onCite` is given. Raw HTML is never rendered. */
+ *  tags [E12] / [K3] / [F1] / [S], which become buttons when `onCite` is given. Raw HTML is never rendered. */
 export function Markdown({ text, onCite }: { text: string; onCite?: (id: string) => void }) {
   const lines = text.replace(/\r/g, "").split("\n");
   const out: ReactNode[] = [];
@@ -53,13 +53,13 @@ export function Markdown({ text, onCite }: { text: string; onCite?: (id: string)
   return <>{out}</>;
 }
 
-const TOKEN = /(\*\*[^*]+\*\*|`[^`]+`|\[(?:E\d+|K\d+|S)\]|\[[^\]]+\]\([^)]+\))/g;
+const TOKEN = /(\*\*[^*]+\*\*|`[^`]+`|\[(?:E\d+|K\d+|F\d+|S)\]|\[[^\]]+\]\([^)]+\))/g;
 
 function inline(s: string, onCite?: (id: string) => void): ReactNode[] {
   return s.split(TOKEN).filter(Boolean).map((part, j) => {
     if (part.startsWith("**")) return <strong key={j}>{part.slice(2, -2)}</strong>;
     if (part.startsWith("`")) return <code key={j}>{part.slice(1, -1)}</code>;
-    const cite = /^\[(E\d+|K\d+|S)\]$/.exec(part);
+    const cite = /^\[(E\d+|K\d+|F\d+|S)\]$/.exec(part);
     if (cite) {
       const id = cite[1];
       const label = id === "S" ? "case facts" : id;

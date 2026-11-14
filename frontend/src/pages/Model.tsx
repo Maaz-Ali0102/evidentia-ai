@@ -5,13 +5,65 @@ import { ErrorNote, Spinner } from "../components/ui";
 const MN: Record<string, string> = { logreg: "Logistic Regression", random_forest: "Random Forest" };
 const SPLIT: Record<string, string> = { POOLED_temporal: "Both organisations (deployed)", "B_temporal_ORG-0005": "ORG-0005 · Cisco ASA", "A_temporal_ORG-0004": "ORG-0004 · AWS VPC" };
 const f = (v: number | null | undefined, d = 3) => (v == null ? "–" : v.toFixed(d));
+const CMP_MODELS: Record<string, string> = { ...MN, hist_gb: "HistGradientBoosting", xgboost: "XGBoost", lightgbm: "LightGBM" };
+const pct = (v: number) => `${(v * 100).toFixed(1)}%`;
+
+// Stage 2 comparison of LR and RF against three boosting models, written by scripts/compare_models.py
+// to reports/metrics/model_comparison.json and reports/figures/C*.png.
+function Comparison({ cmp }: { cmp: Record<string, any> }) {
+  const splits = Object.keys(cmp.results);
+  const [split, setSplit] = useState(splits.includes("B_temporal_ORG-0005") ? "B_temporal_ORG-0005" : splits[0]);
+  const rows = Object.entries(cmp.results[split] as Record<string, any>);
+  const best = rows.reduce((a, b) => (b[1].test.pr_auc_positive > a[1].test.pr_auc_positive ? b : a))[0];
+  const conf = `C3_confusion_${split}.png`;
+  const metricsFig = split === "A_temporal_ORG-0004" ? null : `C5_metrics_${split}.png`;
+  return (
+    <section className="panel">
+      <div className="panel-head">
+        <div>
+          <h2>Model comparison: Logistic Regression and Random Forest vs boosting</h2>
+          <p>Suspicious vs malicious, five models under identical rules: same records, splits and features; settings and threshold
+            chosen by grouped cross-validation on the training window; test window scored once. Accuracy is shown to make a point:
+            the models with the highest accuracy can catch the fewest attacks.</p>
+        </div>
+        <label className="small">Trained and tested on{" "}
+          <select className="input" style={{ minWidth: 230 }} value={split} onChange={(e) => setSplit(e.target.value)}>
+            {splits.map((s) => <option key={s} value={s}>{SPLIT[s] ?? s}</option>)}
+          </select>
+        </label>
+      </div>
+      <div className="table-wrap"><table>
+        <thead><tr><th>Model</th><th className="num">PR-AUC</th><th className="num">chance</th><th className="num">ROC-AUC</th>
+          <th className="num">malicious caught</th><th className="num">missed</th><th className="num">false alarms</th>
+          <th className="num">mal. precision</th><th className="num">mal. recall</th><th className="num">accuracy</th></tr></thead>
+        <tbody>{rows.map(([mn, r]) => {
+          const t = r.test, [[, fp], [fn, tp]] = t.confusion_matrix, mal = t.per_class.malicious;
+          return (<tr key={mn}><td>{CMP_MODELS[mn] ?? mn}{mn === best && <span className="muted small"> · highest PR-AUC</span>}</td>
+            <td className="num"><b>{f(t.pr_auc_positive)}</b></td><td className="num muted">{f(t.positive_rate_baseline)}</td><td className="num">{f(t.roc_auc)}</td>
+            <td className="num">{tp.toLocaleString()} / {(tp + fn).toLocaleString()}</td><td className="num">{fn.toLocaleString()}</td><td className="num">{fp.toLocaleString()}</td>
+            <td className="num">{f(mal.precision, 2)}</td><td className="num">{pct(mal.recall)}</td><td className="num muted">{pct(t.accuracy)}</td></tr>);
+        })}</tbody>
+      </table></div>
+      <p className="small muted panel-body">PR-AUC judges the ranking of records without a cut-off; the counts and accuracy come from the one threshold each model chose
+        on its training data. HistGradientBoosting uses the context features only (it cannot take the sparse text features).</p>
+      <div className="panel-body grid" style={{ gap: 16 }}>
+        <figure className="figure" style={{ margin: 0 }}><img src="/api/figures/C2_prauc_bars.png" alt="Test PR-AUC of five models on three splits, with the random-guess level" /><figcaption className="figure-title">PR-AUC: boosting does not beat Logistic Regression or Random Forest</figcaption></figure>
+        <figure className="figure" style={{ margin: 0 }}><img src={`/api/figures/${conf}`} alt="Suspicious vs malicious confusion matrices of five models" /><figcaption className="figure-title">Confusion matrices at each model's chosen threshold</figcaption></figure>
+      </div>
+      <div className="panel-body figure-grid">
+        {metricsFig && <figure className="figure" style={{ margin: 0 }}><img src={`/api/figures/${metricsFig}`} alt="Every metric for every model as grouped bars" /><figcaption className="figure-title">All metrics side by side: accuracy is high for every model</figcaption></figure>}
+        <figure className="figure" style={{ margin: 0 }}><img src="/api/figures/C1_class_imbalance.png" alt="Record counts per class on a log scale" /><figcaption className="figure-title">Class imbalance: malicious is 0.38% of records</figcaption></figure>
+      </div>
+    </section>
+  );
+}
 
 export function Model() {
   const [m, setM] = useState<Record<string, any> | null>(null);
   const [err, setErr] = useState<unknown>(null);
   useEffect(() => {
-    Promise.all(["stage2", "three_class", "iforest", "stage1_within_product", "relations"].map((n) => api.metric(n).catch(() => null)))
-      .then(([stage2, three, iso, s1, rel]) => setM({ stage2, three, iso, s1, rel })).catch(setErr);
+    Promise.all(["stage2", "three_class", "iforest", "stage1_within_product", "relations", "model_comparison"].map((n) => api.metric(n).catch(() => null)))
+      .then(([stage2, three, iso, s1, rel, cmp]) => setM({ stage2, three, iso, s1, rel, cmp })).catch(setErr);
   }, []);
   if (err) return <div className="page"><ErrorNote error={err} /></div>;
   if (!m) return <Spinner />;
@@ -44,6 +96,8 @@ export function Model() {
           <figure className="figure" style={{ margin: 0 }}><img src="/api/figures/R2_three_class_confusion.png" alt="Confusion matrices for the three-class models" /><figcaption className="figure-title">Three classes: where the errors fall</figcaption></figure>
         </div>
       </section>
+
+      {m.cmp && <Comparison cmp={m.cmp} />}
 
       <div className="grid cols-even">
         <section className="panel">

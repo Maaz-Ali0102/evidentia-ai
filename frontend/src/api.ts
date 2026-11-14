@@ -42,10 +42,16 @@ export interface EventDetail {
   links: Link[];
 }
 
+export interface Finding {
+  id: string; rule: string; severity: "high" | "medium" | "low"; title: string; summary: string;
+  tactic: string; technique: string; event_ids: number[]; n_events: number; first_utc: string | null;
+  last_utc: string | null; indicators: string[]; actions: string[]; related: string[];
+}
+
 export interface AskResult {
   chat_id: number; question: string; answer_markdown: string; seconds: number; warnings: string[];
   citations: { events: { id: string; event_id: number; file: string; row: number; time_utc: string | null; message: string }[];
-    knowledge: { id: string; title: string; text: string }[] };
+    knowledge: { id: string; title: string; text: string }[]; findings?: Finding[] };
   retrieved: { events: number; links: number; knowledge: number; focus_matches: number | null };
   llm: { provider: string; model: string | null; external: boolean; note: string };
 }
@@ -95,6 +101,8 @@ export const api = {
     req<{ kind: string; value: string; events: number; files: number; malicious: number; suspicious: number; anomalies: number }[]>(
       `/api/cases/${id}/entities?limit=${limit}${q ? `&q=${encodeURIComponent(q)}` : ""}`),
   graph: (id: string, focus?: string) => req<GraphData>(`/api/cases/${id}/graph${focus ? `?focus=${encodeURIComponent(focus)}` : ""}`),
+  findings: (id: string) => req<Finding[]>(`/api/cases/${id}/findings`),
+  detectionRules: () => req<{ builtin: string[]; sigma: { loaded: number; unsupported: { rule: string; reason: string }[] } }>("/api/detection-rules"),
   ask: (id: string, question: string) => req<AskResult>(`/api/cases/${id}/ask`, json({ question })),
   chats: (id: string) => req<AskResult[]>(`/api/cases/${id}/chats`),
   llm: () => req<LlmStatus>("/api/llm"),
