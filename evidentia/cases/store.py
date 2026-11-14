@@ -111,9 +111,7 @@ class CaseStore:
 
     @contextmanager
     def db(self, case_id: str):
-        path = self.root / case_id / "case.sqlite"
-        if not (self.root / case_id / "case.json").exists():
-            raise CaseNotFound(case_id)
+        path = self._dir(case_id) / "case.sqlite"   # same ID check (regex + case.json) as every other access
         con = sqlite3.connect(path, timeout=30)
         con.row_factory = sqlite3.Row
         try:

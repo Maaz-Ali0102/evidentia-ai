@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import threading
 from pathlib import Path
+from typing import Literal
 
 import pandas as pd
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
@@ -24,6 +25,8 @@ from ..cases.store import CaseNotFound, CaseStore
 from ..ml.orchestrator import MLOrchestrator
 from ..rag import embed
 from ..rag.answer import answer
+from ..ingestion.entities import KINDS
+from ..ingestion.upload import ALIASES
 from ..rag.llm import llm_status
 from ..relations import mapper
 
@@ -33,6 +36,11 @@ METRICS = ROOT / "reports" / "metrics"
 FIGURES = ROOT / "reports" / "figures"
 DIST = ROOT / "frontend" / "dist"
 MAX_UPLOAD = 50 * 1024 * 1024
+MAX_FILES_PER_UPLOAD = 20
+MAX_SEARCH = 200            # longest search text / indicator accepted in a query string
+CHUNK = 1024 * 1024
+Model = Literal["lr", "rf"]
+Cls = Literal["benign", "suspicious", "malicious", "not applicable"]
 SEV = {"malicious": 3, "suspicious": 2, "benign": 1, "not applicable": 0}
 
 app = FastAPI(title="Evidentia AI", version="2.0")
@@ -63,6 +71,35 @@ def _cls_sql(model: str) -> str:
 
 def _rows(cur) -> list[dict]:
     return [dict(r) for r in cur.fetchall()]
+
+
+def _like(text: str) -> str:
+    """User text for a LIKE pattern: % and _ are matched literally (used with ESCAPE '\\')."""
+    return "%" + text.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
+
+
+def _check_column_map(cmap) -> dict[str, str] | None:
+    """A column mapping must be {target field: source column}, targets from ALIASES; anything else is a 400."""
+    if cmap is None:
+        return None
+    if not isinstance(cmap, dict) or len(cmap) > len(ALIASES):
+        raise HTTPException(400, "column_map must be an object {field: column}")
+    for k, v in cmap.items():
+        if k not in ALIASES:
+            raise HTTPException(400, f"column_map: unknown field '{k}'. Allowed: {', '.join(sorted(ALIASES))}")
+        if not isinstance(v, str) or not 0 < len(v) <= 200:
+            raise HTTPException(400, f"column_map: column name for '{k}' must be text of 1-200 characters")
+    return cmap
+
+
+async def _read_limited(f: UploadFile) -> bytes:
+    """Read an upload in 1 MB chunks and stop as soon as it passes MAX_UPLOAD (never holds more than that)."""
+    buf = bytearray()
+    while chunk := await f.read(CHUNK):
+        buf += chunk
+        if len(buf) > MAX_UPLOAD:
+            raise HTTPException(413, f"{f.filename} is larger than 50 MB")
+    return bytes(buf)
 
 
 # ---------------------------------------------------------------------------------------- meta
@@ -154,18 +191,19 @@ def list_files(cid: str):
 @app.post("/api/cases/{cid}/files", status_code=202)
 async def upload_files(cid: str, files: list[UploadFile] = File(...), column_map: str | None = Form(default=None)):
     store.meta(cid)
-    cmap = json.loads(column_map) if column_map else None
-    out = []
-    for f in files:
-        data = await f.read()
-        if len(data) > MAX_UPLOAD:
-            raise HTTPException(413, f"{f.filename} is larger than 50 MB")
-        out.append(_start(cid, f.filename or "upload", data, cmap))
-    return out
+    if len(files) > MAX_FILES_PER_UPLOAD:
+        raise HTTPException(400, f"at most {MAX_FILES_PER_UPLOAD} files per upload")
+    try:
+        cmap = json.loads(column_map) if column_map else None
+    except json.JSONDecodeError:
+        raise HTTPException(400, "column_map is not valid JSON")
+    cmap = _check_column_map(cmap)
+    datas = [(f.filename or "upload", await _read_limited(f)) for f in files]   # all checked before any is stored
+    return [_start(cid, name, data, cmap) for name, data in datas]
 
 
 class SampleReq(BaseModel):
-    names: list[str] = []
+    names: list[str] = Field(default_factory=list, max_length=50)
 
 
 @app.post("/api/cases/{cid}/samples", status_code=202)
@@ -190,18 +228,22 @@ def verify(cid: str, fid: int):
 
 
 class Remap(BaseModel):
-    column_map: dict[str, str]
+    column_map: dict[str, str] = Field(max_length=len(ALIASES))
 
 
 @app.post("/api/cases/{cid}/files/{fid}/remap", status_code=202)
 def remap(cid: str, fid: int, body: Remap):
     """Re-parse a stored original with a hand-made column mapping (the original is not modified)."""
+    _check_column_map(body.column_map)
     try:
         path = store.original_path(cid, fid)
     except KeyError:
         raise HTTPException(404, "unknown file")
     with store.db(cid) as con:
-        name = con.execute("SELECT name FROM files WHERE file_id=?", (fid,)).fetchone()["name"]
+        row = con.execute("SELECT name, status FROM files WHERE file_id=?", (fid,)).fetchone()
+        if row["status"] == "processing":
+            raise HTTPException(409, "This file is still being processed. Remap it when it is ready.")
+        name = row["name"]
         ids = "SELECT event_id FROM events WHERE file_id=?"
         for t in ("ml", "entities"):
             con.execute(f"DELETE FROM {t} WHERE event_id IN ({ids})", (fid,))
@@ -214,10 +256,15 @@ def remap(cid: str, fid: int, body: Remap):
 
 # ---------------------------------------------------------------------------------------- events
 @app.get("/api/cases/{cid}/events")
-def events(cid: str, model: str = "lr", cls: list[str] = Query(default=[]), file_id: int | None = None,
-           q: str | None = None, entity: str | None = None, anomaly: bool = False, disagree: bool = False,
+def events(cid: str, model: Model = "lr", cls: list[Cls] = Query(default=[]), file_id: int | None = None,
+           q: str | None = Query(default=None, max_length=MAX_SEARCH),
+           entity: str | None = Query(default=None, max_length=MAX_SEARCH),
+           anomaly: bool = False, disagree: bool = False,
            t0: float | None = None, t1: float | None = None,
-           sort: str = "time", offset: int = 0, limit: int = Query(default=100, le=500)):
+           sort: Literal["time", "risk", "row"] = "time", offset: int = Query(default=0, ge=0),
+           limit: int = Query(default=100, ge=1, le=500)):
+    if t0 is not None and t1 is not None and t0 > t1:
+        raise HTTPException(400, "t0 must not be after t1")
     c = _cls_sql(model)
     where, args = ["1=1"], []
     if t0 is not None:
@@ -233,8 +280,8 @@ def events(cid: str, model: str = "lr", cls: list[str] = Query(default=[]), file
         where.append("e.file_id=?")
         args.append(file_id)
     if q:
-        where.append("e.message LIKE ?")
-        args.append(f"%{q}%")
+        where.append("e.message LIKE ? ESCAPE '\\'")
+        args.append(_like(q))
     if entity:
         where.append("e.event_id IN (SELECT event_id FROM entities WHERE value=?)")
         args.append(entity)
@@ -245,7 +292,7 @@ def events(cid: str, model: str = "lr", cls: list[str] = Query(default=[]), file
     order = {"time": "e.ts IS NULL, e.ts, e.event_id",
              "risk": f"CASE {c} WHEN 'malicious' THEN 3 WHEN 'suspicious' THEN 2 WHEN 'benign' THEN 1 ELSE 0 END DESC, "
                      f"m.{'rf' if model == 'rf' else 'lr'}_p_mal DESC",
-             "row": "e.file_id, e.source_row"}.get(sort, "e.ts")
+             "row": "e.file_id, e.source_row"}[sort]
     base = f"FROM events e JOIN files f USING(file_id) LEFT JOIN ml m USING(event_id) WHERE {' AND '.join(where)}"
     with store.db(cid) as con:
         total = con.execute(f"SELECT COUNT(*) {base}", args).fetchone()[0]
@@ -290,7 +337,7 @@ def event_detail(cid: str, eid: int):
 
 
 @app.get("/api/cases/{cid}/timeline")
-def timeline(cid: str, model: str = "lr", bucket: int = 60):
+def timeline(cid: str, model: Model = "lr", bucket: int = 60):
     c = _cls_sql(model)
     p = "rf_p_mal" if model == "rf" else "lr_p_mal"
     bucket = max(10, min(bucket, 86400))
@@ -310,14 +357,15 @@ def timeline(cid: str, model: str = "lr", bucket: int = 60):
 
 
 @app.get("/api/cases/{cid}/entities")
-def entities(cid: str, kind: str | None = None, q: str | None = None, limit: int = Query(default=50, le=500)):
+def entities(cid: str, kind: Literal[KINDS] | None = None, q: str | None = Query(default=None, max_length=MAX_SEARCH),
+             limit: int = Query(default=50, ge=1, le=500)):
     where, args = ["1=1"], []
     if kind:
         where.append("en.kind=?")
         args.append(kind)
     if q:
-        where.append("en.value LIKE ?")
-        args.append(f"%{q}%")
+        where.append("en.value LIKE ? ESCAPE '\\'")
+        args.append(_like(q))
     with store.db(cid) as con:
         return _rows(con.execute(
             "SELECT en.kind, en.value, COUNT(*) AS events, COUNT(DISTINCT e.file_id) AS files, "
@@ -329,7 +377,8 @@ def entities(cid: str, kind: str | None = None, q: str | None = None, limit: int
 
 
 @app.get("/api/cases/{cid}/graph")
-def graph(cid: str, focus: str | None = None, limit: int = Query(default=60, le=200)):
+def graph(cid: str, focus: str | None = Query(default=None, max_length=MAX_SEARCH),
+          limit: int = Query(default=60, ge=1, le=200)):
     """Evidence graph. Without focus: the riskiest indicators, the files they appear in, and how often
     indicators occur together. With focus=<indicator>: its events, their mapper links and co-indicators."""
     with store.db(cid) as con:
@@ -429,6 +478,8 @@ if DIST.exists():
 
     @app.get("/{path:path}", include_in_schema=False)
     def spa(path: str):
+        if path == "api" or path.startswith("api/"):      # an unknown API address is a 404, not the web page
+            raise HTTPException(404, "unknown API endpoint")
         p = DIST / path
         if path and p.resolve().is_relative_to(DIST.resolve()) and p.is_file():
             return FileResponse(p)
